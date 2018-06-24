@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/Game.dir/main.cpp.o CMakeFiles/Game.dir/game.cpp.o CMakeFiles/Game.dir/textureManager.cpp.o CMakeFiles/Game.dir/GameObject.cpp.o CMakeFiles/Game.dir/Map.cpp.o  -o Game -lSDL2 -lSDL2_image 
