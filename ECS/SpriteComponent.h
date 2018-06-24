@@ -17,8 +17,8 @@ public:
     void init() override {
         position = &entity->getComponent<PositionComponent>();
         srcRect.x = srcRect.y = 0;
-        srcRect.w = srcRect.h = 32;
-        destRect.w = destRect.h = 64;
+        srcRect.w = srcRect.h = 64;
+        destRect.w = destRect.h = 128;
     }
 
     void update() override {

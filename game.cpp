@@ -41,7 +41,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     map = new Map();
     player.addComponent<PositionComponent>();
-    player.addComponent<SpriteComponent>("assets/player.png");
+    player.addComponent<SpriteComponent>("../assets/player.png");
 }
 
 void Game::handleEvents() {
@@ -63,13 +63,13 @@ void Game::render() {
     map->DrawMap();
     // NULL, NULL: use the whole image and render it to the whole rectangle
     // this is where we could add stuff to render
+    manager.draw();
     SDL_RenderPresent(renderer);
 }
 
 void Game::update() {
     manager.refresh();
     manager.update();
-
 }
 
 void Game::clean() {
