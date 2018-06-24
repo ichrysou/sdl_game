@@ -22,12 +22,12 @@ class PositionComponent : public Component {
     int y() { return ypos; }
 
     void init() override {
-        xpos = 0;
-        ypos = 0;
+        /* xpos = 0; */
+        /* ypos = 0; */
     }
     void update() override {
         xpos++;
-        ypos++;
+         ypos++;
     }
     void setPos(int x, int y) {
         xpos = x;

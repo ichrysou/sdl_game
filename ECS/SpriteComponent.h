@@ -16,6 +16,9 @@ public:
     }
     void init() override {
         position = &entity->getComponent<PositionComponent>();
+        std::cout << "position " << position << std::endl;
+        std::cout << "position x" << position->x() << std::endl;
+        std::cout << "position y" << position->y() << std::endl;
         srcRect.x = srcRect.y = 0;
         srcRect.w = srcRect.h = 64;
         destRect.w = destRect.h = 128;
