@@ -9,10 +9,12 @@
 /home/ichrysou/projects/sdl_game/ECS/Components.h
 ECS.h
 /home/ichrysou/projects/sdl_game/ECS/ECS.h
-PositionComponent.h
-/home/ichrysou/projects/sdl_game/ECS/PositionComponent.h
+TransformComponent.h
+/home/ichrysou/projects/sdl_game/ECS/TransformComponent.h
 SpriteComponent.h
 /home/ichrysou/projects/sdl_game/ECS/SpriteComponent.h
+KeyboardController.h
+/home/ichrysou/projects/sdl_game/ECS/KeyboardController.h
 
 /home/ichrysou/projects/sdl_game/ECS/ECS.h
 algorithm
@@ -28,7 +30,11 @@ memory
 vector
 -
 
-/home/ichrysou/projects/sdl_game/ECS/PositionComponent.h
+/home/ichrysou/projects/sdl_game/ECS/KeyboardController.h
+../game.h
+/home/ichrysou/projects/sdl_game/game.h
+ECS.h
+/home/ichrysou/projects/sdl_game/ECS/ECS.h
 Components.h
 /home/ichrysou/projects/sdl_game/ECS/Components.h
 
@@ -37,6 +43,12 @@ Components.h
 /home/ichrysou/projects/sdl_game/ECS/Components.h
 SDL2/SDL.h
 /home/ichrysou/projects/sdl_game/ECS/SDL2/SDL.h
+
+/home/ichrysou/projects/sdl_game/ECS/TransformComponent.h
+Components.h
+/home/ichrysou/projects/sdl_game/ECS/Components.h
+../Vector2D.h
+/home/ichrysou/projects/sdl_game/Vector2D.h
 
 /home/ichrysou/projects/sdl_game/GameObject.cpp
 GameObject.h
@@ -58,6 +70,14 @@ textureManager.h
 game.h
 /home/ichrysou/projects/sdl_game/game.h
 
+/home/ichrysou/projects/sdl_game/Vector2D.cpp
+Vector2D.h
+/home/ichrysou/projects/sdl_game/Vector2D.h
+
+/home/ichrysou/projects/sdl_game/Vector2D.h
+iostream
+-
+
 /home/ichrysou/projects/sdl_game/game.cpp
 game.h
 /home/ichrysou/projects/sdl_game/game.h
@@ -67,6 +87,8 @@ Map.h
 /home/ichrysou/projects/sdl_game/Map.h
 ECS/Components.h
 /home/ichrysou/projects/sdl_game/ECS/Components.h
+Vector2D.h
+/home/ichrysou/projects/sdl_game/Vector2D.h
 
 /home/ichrysou/projects/sdl_game/game.h
 stdio.h

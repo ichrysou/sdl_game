@@ -177,6 +177,33 @@ Map.cpp.s:
 	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Map.cpp.s
 .PHONY : Map.cpp.s
 
+Vector2D.o: Vector2D.cpp.o
+
+.PHONY : Vector2D.o
+
+# target to build an object file
+Vector2D.cpp.o:
+	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Vector2D.cpp.o
+.PHONY : Vector2D.cpp.o
+
+Vector2D.i: Vector2D.cpp.i
+
+.PHONY : Vector2D.i
+
+# target to preprocess a source file
+Vector2D.cpp.i:
+	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Vector2D.cpp.i
+.PHONY : Vector2D.cpp.i
+
+Vector2D.s: Vector2D.cpp.s
+
+.PHONY : Vector2D.s
+
+# target to generate assembly for a file
+Vector2D.cpp.s:
+	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Vector2D.cpp.s
+.PHONY : Vector2D.cpp.s
+
 game.o: game.cpp.o
 
 .PHONY : game.o
@@ -273,6 +300,9 @@ help:
 	@echo "... Map.o"
 	@echo "... Map.i"
 	@echo "... Map.s"
+	@echo "... Vector2D.o"
+	@echo "... Vector2D.i"
+	@echo "... Vector2D.s"
 	@echo "... game.o"
 	@echo "... game.i"
 	@echo "... game.s"

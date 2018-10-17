@@ -11,11 +11,16 @@ CMakeFiles/Game.dir/Map.cpp.o: ../Map.h
 CMakeFiles/Game.dir/Map.cpp.o: ../game.h
 CMakeFiles/Game.dir/Map.cpp.o: ../textureManager.h
 
+CMakeFiles/Game.dir/Vector2D.cpp.o: ../Vector2D.cpp
+CMakeFiles/Game.dir/Vector2D.cpp.o: ../Vector2D.h
+
 CMakeFiles/Game.dir/game.cpp.o: ../ECS/Components.h
 CMakeFiles/Game.dir/game.cpp.o: ../ECS/ECS.h
-CMakeFiles/Game.dir/game.cpp.o: ../ECS/PositionComponent.h
+CMakeFiles/Game.dir/game.cpp.o: ../ECS/KeyboardController.h
 CMakeFiles/Game.dir/game.cpp.o: ../ECS/SpriteComponent.h
+CMakeFiles/Game.dir/game.cpp.o: ../ECS/TransformComponent.h
 CMakeFiles/Game.dir/game.cpp.o: ../Map.h
+CMakeFiles/Game.dir/game.cpp.o: ../Vector2D.h
 CMakeFiles/Game.dir/game.cpp.o: ../game.cpp
 CMakeFiles/Game.dir/game.cpp.o: ../game.h
 CMakeFiles/Game.dir/game.cpp.o: ../textureManager.h

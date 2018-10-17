@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ichrysou/projects/sdl_game/GameObject.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/GameObject.cpp.o"
   "/home/ichrysou/projects/sdl_game/Map.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Map.cpp.o"
+  "/home/ichrysou/projects/sdl_game/Vector2D.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Vector2D.cpp.o"
   "/home/ichrysou/projects/sdl_game/game.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/game.cpp.o"
   "/home/ichrysou/projects/sdl_game/main.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/main.cpp.o"
   "/home/ichrysou/projects/sdl_game/textureManager.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/textureManager.cpp.o"
