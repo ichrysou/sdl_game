@@ -123,6 +123,33 @@ Game/fast:
 	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/build
 .PHONY : Game/fast
 
+Collision.o: Collision.cpp.o
+
+.PHONY : Collision.o
+
+# target to build an object file
+Collision.cpp.o:
+	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Collision.cpp.o
+.PHONY : Collision.cpp.o
+
+Collision.i: Collision.cpp.i
+
+.PHONY : Collision.i
+
+# target to preprocess a source file
+Collision.cpp.i:
+	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Collision.cpp.i
+.PHONY : Collision.cpp.i
+
+Collision.s: Collision.cpp.s
+
+.PHONY : Collision.s
+
+# target to generate assembly for a file
+Collision.cpp.s:
+	$(MAKE) -f CMakeFiles/Game.dir/build.make CMakeFiles/Game.dir/Collision.cpp.s
+.PHONY : Collision.cpp.s
+
 GameObject.o: GameObject.cpp.o
 
 .PHONY : GameObject.o
@@ -294,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Game"
 	@echo "... edit_cache"
+	@echo "... Collision.o"
+	@echo "... Collision.i"
+	@echo "... Collision.s"
 	@echo "... GameObject.o"
 	@echo "... GameObject.i"
 	@echo "... GameObject.s"

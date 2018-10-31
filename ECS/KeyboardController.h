@@ -6,13 +6,16 @@
 class KeyboardController : public Component {
 public:
     TransformComponent *transform;
+    SpriteComponent *sprite;
     void init() override
     {
         transform = &entity->getComponent<TransformComponent>();
+        sprite = &entity->getComponent<SpriteComponent>();
     }
 
     void update() override
     {
+
         if(Game::event.type == SDL_KEYDOWN)
         {
             switch(Game::event.key.keysym.sym)

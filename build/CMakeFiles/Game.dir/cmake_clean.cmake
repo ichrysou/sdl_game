@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Game.dir/GameObject.cpp.o"
   "CMakeFiles/Game.dir/Map.cpp.o"
   "CMakeFiles/Game.dir/Vector2D.cpp.o"
+  "CMakeFiles/Game.dir/Collision.cpp.o"
   "Game.pdb"
   "Game"
 )

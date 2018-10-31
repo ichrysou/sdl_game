@@ -1,6 +1,7 @@
 set(CMAKE_C_COMPILER /usr/bin/gcc)
 set(CMAKE_CXX_COMPILER /usr/bin/g++)
 set(CMAKE_BUILD_TYPE Debug)
+set (CMAKE_CXX_STANDARD 14)
 project(Game)
-add_executable(Game main.cpp game.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp)
+add_executable(Game main.cpp game.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp Collision.cpp)
 target_link_libraries(Game SDL2 SDL2_image)

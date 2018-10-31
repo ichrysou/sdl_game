@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/ichrysou/projects/sdl_game/Collision.cpp
+Collision.h
+/home/ichrysou/projects/sdl_game/Collision.h
+
+/home/ichrysou/projects/sdl_game/Collision.h
+SDL2/SDL.h
+-
+
+/home/ichrysou/projects/sdl_game/ECS/ColliderComponent.h
+string
+-
+SDL2/SDL.h
+/home/ichrysou/projects/sdl_game/ECS/SDL2/SDL.h
+ECS.h
+/home/ichrysou/projects/sdl_game/ECS/ECS.h
+TransformComponent.h
+/home/ichrysou/projects/sdl_game/ECS/TransformComponent.h
+
 /home/ichrysou/projects/sdl_game/ECS/Components.h
 ECS.h
 /home/ichrysou/projects/sdl_game/ECS/ECS.h
@@ -15,6 +33,8 @@ SpriteComponent.h
 /home/ichrysou/projects/sdl_game/ECS/SpriteComponent.h
 KeyboardController.h
 /home/ichrysou/projects/sdl_game/ECS/KeyboardController.h
+ColliderComponent.h
+/home/ichrysou/projects/sdl_game/ECS/ColliderComponent.h
 
 /home/ichrysou/projects/sdl_game/ECS/ECS.h
 algorithm
@@ -43,6 +63,8 @@ Components.h
 /home/ichrysou/projects/sdl_game/ECS/Components.h
 SDL2/SDL.h
 /home/ichrysou/projects/sdl_game/ECS/SDL2/SDL.h
+../textureManager.h
+/home/ichrysou/projects/sdl_game/textureManager.h
 
 /home/ichrysou/projects/sdl_game/ECS/TransformComponent.h
 Components.h
@@ -89,6 +111,8 @@ ECS/Components.h
 /home/ichrysou/projects/sdl_game/ECS/Components.h
 Vector2D.h
 /home/ichrysou/projects/sdl_game/Vector2D.h
+Collision.h
+/home/ichrysou/projects/sdl_game/Collision.h
 
 /home/ichrysou/projects/sdl_game/game.h
 stdio.h

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/ichrysou/projects/sdl_game/Collision.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Collision.cpp.o"
   "/home/ichrysou/projects/sdl_game/GameObject.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/GameObject.cpp.o"
   "/home/ichrysou/projects/sdl_game/Map.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Map.cpp.o"
   "/home/ichrysou/projects/sdl_game/Vector2D.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Vector2D.cpp.o"
