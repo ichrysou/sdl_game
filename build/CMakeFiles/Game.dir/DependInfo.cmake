@@ -4,18 +4,23 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ichrysou/projects/sdl_game/Collision.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Collision.cpp.o"
-  "/home/ichrysou/projects/sdl_game/GameObject.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/GameObject.cpp.o"
-  "/home/ichrysou/projects/sdl_game/Map.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Map.cpp.o"
-  "/home/ichrysou/projects/sdl_game/Vector2D.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/Vector2D.cpp.o"
-  "/home/ichrysou/projects/sdl_game/game.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/game.cpp.o"
-  "/home/ichrysou/projects/sdl_game/main.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/main.cpp.o"
-  "/home/ichrysou/projects/sdl_game/textureManager.cpp" "/home/ichrysou/projects/sdl_game/build/CMakeFiles/Game.dir/textureManager.cpp.o"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Collision.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/Collision.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/ECS/ECS.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/ECS/ECS.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/GameObject.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/GameObject.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/Map.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Vector2D.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/Vector2D.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/game.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/game.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/main.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/main.obj"
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/textureManager.cpp" "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/Game.dir/textureManager.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include"
+  "../ECS"
+  "../"
+  "../Dev/SDL2_image-2.0.1/include"
   )
 
 # Targets to which this target links.

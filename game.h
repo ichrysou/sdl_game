@@ -1,17 +1,13 @@
-#ifndef Game_hpp
-#define Game_hpp
+#pragma once
 
 #include <stdio.h>
 #include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL.h>
-#include <SDL/SDL_image.h>
+#include <SDL.h>
+#include <SDL_image.h>
 #include <vector>
 
 class ColliderComponent;
-
 class Game {
-
 public:
     Game();
     ~Game();
@@ -27,7 +23,8 @@ public:
     static SDL_Renderer *renderer;
     static SDL_Event event;
     static std::vector<ColliderComponent*> colliders;
-
+    static void AddTile(int id, int x, int y);
+    
 private:
     int cntr;
     bool isRunning;
@@ -37,4 +34,3 @@ private:
 
 };
 
-#endif  /* Game_hpp */

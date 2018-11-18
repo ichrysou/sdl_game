@@ -1,6 +1,6 @@
-The system is: Linux - 4.13.0-45-generic - x86_64
+The system is: Windows - 10.0.17134 - AMD64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /usr/bin/gcc 
+Compiler: C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe 
 Build flags: 
 Id flags:  
 
@@ -8,12 +8,12 @@ The output was:
 0
 
 
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
 
-The C compiler identification is GNU, found in "/home/ichrysou/projects/sdl_game/build/CMakeFiles/3.10.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/3.13.0-rc2/CompilerIdC/a.exe"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /usr/bin/g++ 
+Compiler: C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe 
 Build flags: 
 Id flags:  
 
@@ -21,152 +21,106 @@ The output was:
 0
 
 
-Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
 
-The CXX compiler identification is GNU, found in "/home/ichrysou/projects/sdl_game/build/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/3.13.0-rc2/CompilerIdCXX/a.exe"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_27736/fast"
-/usr/bin/make -f CMakeFiles/cmTC_27736.dir/build.make CMakeFiles/cmTC_27736.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_27736.dir/testCCompiler.c.o
-/usr/bin/gcc    -o CMakeFiles/cmTC_27736.dir/testCCompiler.c.o   -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_27736
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27736.dir/link.txt --verbose=1
-/usr/bin/gcc      -rdynamic CMakeFiles/cmTC_27736.dir/testCCompiler.c.o  -o cmTC_27736 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_816eb/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_816eb.dir/build.make CMakeFiles/cmTC_816eb.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_816eb.dir/testCCompiler.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"    -o CMakeFiles/cmTC_816eb.dir/testCCompiler.c.obj   -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_816eb.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_816eb.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_816eb.dir/objects.a @CMakeFiles/cmTC_816eb.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"      -Wl,--whole-archive CMakeFiles/cmTC_816eb.dir/objects.a -Wl,--no-whole-archive  -o cmTC_816eb.exe -Wl,--out-implib,libcmTC_816eb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_816eb.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_66f4f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_66f4f.dir/build.make CMakeFiles/cmTC_66f4f.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o
-/usr/bin/gcc    -o CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_66f4f
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66f4f.dir/link.txt --verbose=1
-/usr/bin/gcc     -v -rdynamic CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o  -o cmTC_66f4f 
-Using built-in specs.
-COLLECT_GCC=/usr/bin/gcc
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
-OFFLOAD_TARGET_NAMES=nvptx-none
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.3.0-21ubuntu1~16.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
-Thread model: posix
-gcc version 7.3.0 (Ubuntu 7.3.0-21ubuntu1~16.04) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_66f4f' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccTQzHIa.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_66f4f /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtend.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_66f4f' '-mtune=generic' '-march=x86-64'
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_335f8/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_335f8.dir/build.make CMakeFiles/cmTC_335f8.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_335f8.dir/CMakeCCompilerABI.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"    -o CMakeFiles/cmTC_335f8.dir/CMakeCCompilerABI.c.obj   -c "C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCCompilerABI.c"
+Linking C executable cmTC_335f8.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_335f8.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_335f8.dir/objects.a @CMakeFiles/cmTC_335f8.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"     -v -Wl,--whole-archive CMakeFiles/cmTC_335f8.dir/objects.a -Wl,--no-whole-archive  -o cmTC_335f8.exe -Wl,--out-implib,libcmTC_335f8.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Using built-in specs.
+COLLECT_GCC=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe
+COLLECT_LTO_WRAPPER=C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe
+Target: i686-w64-mingw32
+Configured with: ../../../src/gcc-8.1.0/configure --host=i686-w64-mingw32 --build=i686-w64-mingw32 --target=i686-w64-mingw32 --prefix=/mingw32 --with-sysroot=/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --disable-sjlj-exceptions --with-dwarf2 --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=i686 --with-tune=generic --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-pkgversion='i686-posix-dwarf-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/lib -L/c/mingw810/prerequisites/i686-zlib-static/lib -L/c/mingw810/prerequisites/i686-w64-mingw32-static/lib -Wl,--large-address-aware'
+Thread model: posix
+gcc version 8.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 project) 
+COMPILER_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/bin/
+LIBRARY_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_335f8.exe' '-mtune=generic' '-march=i686'
+ C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/collect2.exe -plugin C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\ichrysou\AppData\Local\Temp\ccN2rvFd.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 -m i386pe -Bdynamic -o cmTC_335f8.exe C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/crt2.o C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtbegin.o -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0 -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles/cmTC_335f8.dir/objects.a --no-whole-archive --out-implib libcmTC_335f8.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_335f8.exe' '-mtune=generic' '-march=i686'
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
-  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp]
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_66f4f/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_66f4f.dir/build.make CMakeFiles/cmTC_66f4f.dir/build]
-  ignore line: [make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/gcc    -o CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_66f4f]
-  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66f4f.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/gcc     -v -rdynamic CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o  -o cmTC_66f4f ]
+  ignore line: [Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_335f8/fast"]
+  ignore line: [C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_335f8.dir/build.make CMakeFiles/cmTC_335f8.dir/build]
+  ignore line: [make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_335f8.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"    -o CMakeFiles/cmTC_335f8.dir/CMakeCCompilerABI.c.obj   -c "C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCCompilerABI.c"]
+  ignore line: [Linking C executable cmTC_335f8.exe]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_335f8.dir/objects.a]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_335f8.dir/objects.a @CMakeFiles/cmTC_335f8.dir/objects1.rsp]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"     -v -Wl,--whole-archive CMakeFiles/cmTC_335f8.dir/objects.a -Wl,--no-whole-archive  -o cmTC_335f8.exe -Wl,--out-implib,libcmTC_335f8.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/gcc]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
-  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
-  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.3.0-21ubuntu1~16.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [COLLECT_GCC=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\gcc.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe]
+  ignore line: [Target: i686-w64-mingw32]
+  ignore line: [Configured with: ../../../src/gcc-8.1.0/configure --host=i686-w64-mingw32 --build=i686-w64-mingw32 --target=i686-w64-mingw32 --prefix=/mingw32 --with-sysroot=/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --disable-sjlj-exceptions --with-dwarf2 --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=i686 --with-tune=generic --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-pkgversion='i686-posix-dwarf-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/lib -L/c/mingw810/prerequisites/i686-zlib-static/lib -L/c/mingw810/prerequisites/i686-w64-mingw32-static/lib -Wl,--large-address-aware']
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 7.3.0 (Ubuntu 7.3.0-21ubuntu1~16.04) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_66f4f' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccTQzHIa.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_66f4f /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtend.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
-    arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccTQzHIa.res] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [-plugin-opt=-pass-through=-lc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [--sysroot=/] ==> ignore
-    arg [--build-id] ==> ignore
-    arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-export-dynamic] ==> ignore
-    arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-o] ==> ignore
-    arg [cmTC_66f4f] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crt1.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbegin.o] ==> ignore
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-    arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_66f4f.dir/CMakeCCompilerABI.c.o] ==> ignore
-    arg [-lgcc] ==> lib [gcc]
-    arg [--push-state] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [--pop-state] ==> ignore
-    arg [-lc] ==> lib [c]
-    arg [-lgcc] ==> lib [gcc]
-    arg [--push-state] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [--pop-state] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtend.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o] ==> ignore
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7] ==> [/usr/lib/gcc/x86_64-linux-gnu/7]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-  collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> [/usr/lib]
-  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/7;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  ignore line: [gcc version 8.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 project) ]
+  ignore line: [COMPILER_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_335f8.exe' '-mtune=generic' '-march=i686']
+  ignore line: [ C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/collect2.exe -plugin C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\ichrysou\AppData\Local\Temp\ccN2rvFd.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 -m i386pe -Bdynamic -o cmTC_335f8.exe C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/crt2.o C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtbegin.o -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0 -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles/cmTC_335f8.dir/objects.a --no-whole-archive --out-implib libcmTC_335f8.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_335f8.exe' '-mtune=generic' '-march=i686']
+  ignore line: [make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp']
+  ignore line: []
+  implicit libs: []
+  implicit dirs: []
   implicit fwks: []
 
 
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_aabc8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_aabc8.dir/build.make CMakeFiles/cmTC_aabc8.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_aabc8.dir/feature_tests.c.o
-/usr/bin/gcc   -std=c11 -o CMakeFiles/cmTC_aabc8.dir/feature_tests.c.o   -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_aabc8
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aabc8.dir/link.txt --verbose=1
-/usr/bin/gcc      -rdynamic CMakeFiles/cmTC_aabc8.dir/feature_tests.c.o  -o cmTC_aabc8 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_a077a/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_a077a.dir/build.make CMakeFiles/cmTC_a077a.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a077a.dir/feature_tests.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"   -std=c11 -o CMakeFiles/cmTC_a077a.dir/feature_tests.c.obj   -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_a077a.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_a077a.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_a077a.dir/objects.a @CMakeFiles/cmTC_a077a.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"      -Wl,--whole-archive CMakeFiles/cmTC_a077a.dir/objects.a -Wl,--no-whole-archive  -o cmTC_a077a.exe -Wl,--out-implib,libcmTC_a077a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_a077a.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -176,17 +130,18 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a2fac/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a2fac.dir/build.make CMakeFiles/cmTC_a2fac.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a2fac.dir/feature_tests.c.o
-/usr/bin/gcc   -std=c99 -o CMakeFiles/cmTC_a2fac.dir/feature_tests.c.o   -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_a2fac
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2fac.dir/link.txt --verbose=1
-/usr/bin/gcc      -rdynamic CMakeFiles/cmTC_a2fac.dir/feature_tests.c.o  -o cmTC_a2fac 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_6fe6f/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_6fe6f.dir/build.make CMakeFiles/cmTC_6fe6f.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6fe6f.dir/feature_tests.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"   -std=c99 -o CMakeFiles/cmTC_6fe6f.dir/feature_tests.c.obj   -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_6fe6f.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_6fe6f.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_6fe6f.dir/objects.a @CMakeFiles/cmTC_6fe6f.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"      -Wl,--whole-archive CMakeFiles/cmTC_6fe6f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_6fe6f.exe -Wl,--out-implib,libcmTC_6fe6f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_6fe6f.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -196,17 +151,18 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_55bae/fast"
-/usr/bin/make -f CMakeFiles/cmTC_55bae.dir/build.make CMakeFiles/cmTC_55bae.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_55bae.dir/feature_tests.c.o
-/usr/bin/gcc   -std=c90 -o CMakeFiles/cmTC_55bae.dir/feature_tests.c.o   -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_55bae
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55bae.dir/link.txt --verbose=1
-/usr/bin/gcc      -rdynamic CMakeFiles/cmTC_55bae.dir/feature_tests.c.o  -o cmTC_55bae 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_3a48d/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_3a48d.dir/build.make CMakeFiles/cmTC_3a48d.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3a48d.dir/feature_tests.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"   -std=c90 -o CMakeFiles/cmTC_3a48d.dir/feature_tests.c.obj   -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_3a48d.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_3a48d.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_3a48d.dir/objects.a @CMakeFiles/cmTC_3a48d.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"      -Wl,--whole-archive CMakeFiles/cmTC_3a48d.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3a48d.exe -Wl,--out-implib,libcmTC_3a48d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_3a48d.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -214,143 +170,175 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f9968/fast"
-/usr/bin/make -f CMakeFiles/cmTC_f9968.dir/build.make CMakeFiles/cmTC_f9968.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f9968.dir/testCXXCompiler.cxx.o
-/usr/bin/g++     -o CMakeFiles/cmTC_f9968.dir/testCXXCompiler.cxx.o -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_f9968
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9968.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_f9968.dir/testCXXCompiler.cxx.o  -o cmTC_f9968 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_c2448/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_c2448.dir/build.make CMakeFiles/cmTC_c2448.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c2448.dir/testCXXCompiler.cxx.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"     -o CMakeFiles/cmTC_c2448.dir/testCXXCompiler.cxx.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_c2448.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_c2448.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_c2448.dir/objects.a @CMakeFiles/cmTC_c2448.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"      -Wl,--whole-archive CMakeFiles/cmTC_c2448.dir/objects.a -Wl,--no-whole-archive  -o cmTC_c2448.exe -Wl,--out-implib,libcmTC_c2448.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_c2448.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_13d3a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_13d3a.dir/build.make CMakeFiles/cmTC_13d3a.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/g++     -o CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_13d3a
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13d3a.dir/link.txt --verbose=1
-/usr/bin/g++      -v -rdynamic CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_13d3a 
-Using built-in specs.
-COLLECT_GCC=/usr/bin/g++
-COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
-OFFLOAD_TARGET_NAMES=nvptx-none
-OFFLOAD_TARGET_DEFAULT=1
-Target: x86_64-linux-gnu
-Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.3.0-21ubuntu1~16.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
-Thread model: posix
-gcc version 7.3.0 (Ubuntu 7.3.0-21ubuntu1~16.04) 
-COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_13d3a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cchpHOju.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_13d3a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtend.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_13d3a' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_e7375/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_e7375.dir/build.make CMakeFiles/cmTC_e7375.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e7375.dir/CMakeCXXCompilerABI.cpp.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"     -o CMakeFiles/cmTC_e7375.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp"
+Linking CXX executable cmTC_e7375.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_e7375.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_e7375.dir/objects.a @CMakeFiles/cmTC_e7375.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"     -v -Wl,--whole-archive CMakeFiles/cmTC_e7375.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e7375.exe -Wl,--out-implib,libcmTC_e7375.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Using built-in specs.
+COLLECT_GCC=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe
+COLLECT_LTO_WRAPPER=C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe
+Target: i686-w64-mingw32
+Configured with: ../../../src/gcc-8.1.0/configure --host=i686-w64-mingw32 --build=i686-w64-mingw32 --target=i686-w64-mingw32 --prefix=/mingw32 --with-sysroot=/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --disable-sjlj-exceptions --with-dwarf2 --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=i686 --with-tune=generic --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-pkgversion='i686-posix-dwarf-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/lib -L/c/mingw810/prerequisites/i686-zlib-static/lib -L/c/mingw810/prerequisites/i686-w64-mingw32-static/lib -Wl,--large-address-aware'
+Thread model: posix
+gcc version 8.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 project) 
+COMPILER_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/bin/
+LIBRARY_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/;C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e7375.exe' '-shared-libgcc' '-mtune=generic' '-march=i686'
+ C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/collect2.exe -plugin C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\ichrysou\AppData\Local\Temp\cc0uZdk5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 -m i386pe -Bdynamic -u ___register_frame_info -u ___deregister_frame_info -o cmTC_e7375.exe C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/crt2.o C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtbegin.o -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0 -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles/cmTC_e7375.dir/objects.a --no-whole-archive --out-implib libcmTC_e7375.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e7375.exe' '-shared-libgcc' '-mtune=generic' '-march=i686'
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
-  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp]
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_13d3a/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_13d3a.dir/build.make CMakeFiles/cmTC_13d3a.dir/build]
-  ignore line: [make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/g++     -o CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_13d3a]
-  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13d3a.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/g++      -v -rdynamic CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_13d3a ]
+  ignore line: [Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_e7375/fast"]
+  ignore line: [C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_e7375.dir/build.make CMakeFiles/cmTC_e7375.dir/build]
+  ignore line: [make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_e7375.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"     -o CMakeFiles/cmTC_e7375.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp"]
+  ignore line: [Linking CXX executable cmTC_e7375.exe]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_e7375.dir/objects.a]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_e7375.dir/objects.a @CMakeFiles/cmTC_e7375.dir/objects1.rsp]
+  ignore line: [cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"     -v -Wl,--whole-archive CMakeFiles/cmTC_e7375.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e7375.exe -Wl,--out-implib,libcmTC_e7375.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ]
   ignore line: [Using built-in specs.]
-  ignore line: [COLLECT_GCC=/usr/bin/g++]
-  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
-  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
-  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
-  ignore line: [Target: x86_64-linux-gnu]
-  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.3.0-21ubuntu1~16.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [COLLECT_GCC=C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin\g++.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=C:/Program\ Files\ (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe]
+  ignore line: [Target: i686-w64-mingw32]
+  ignore line: [Configured with: ../../../src/gcc-8.1.0/configure --host=i686-w64-mingw32 --build=i686-w64-mingw32 --target=i686-w64-mingw32 --prefix=/mingw32 --with-sysroot=/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --disable-sjlj-exceptions --with-dwarf2 --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=i686 --with-tune=generic --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/i686-w64-mingw32-static --with-pkgversion='i686-posix-dwarf-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/include -I/c/mingw810/prerequisites/i686-zlib-static/include -I/c/mingw810/prerequisites/i686-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32/opt/lib -L/c/mingw810/prerequisites/i686-zlib-static/lib -L/c/mingw810/prerequisites/i686-w64-mingw32-static/lib -Wl,--large-address-aware']
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 7.3.0 (Ubuntu 7.3.0-21ubuntu1~16.04) ]
-  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_13d3a' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cchpHOju.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_13d3a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtend.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
-    arg [-plugin] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cchpHOju.res] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [--sysroot=/] ==> ignore
-    arg [--build-id] ==> ignore
-    arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [--hash-style=gnu] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-export-dynamic] ==> ignore
-    arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-o] ==> ignore
-    arg [cmTC_13d3a] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crt1.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbegin.o] ==> ignore
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib]
-    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
-    arg [-L/lib/../lib] ==> dir [/lib/../lib]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
-    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
-    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_13d3a.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-    arg [-lstdc++] ==> lib [stdc++]
-    arg [-lm] ==> lib [m]
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [-lgcc] ==> lib [gcc]
-    arg [-lc] ==> lib [c]
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [-lgcc] ==> lib [gcc]
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtend.o] ==> ignore
-    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o] ==> ignore
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7] ==> [/usr/lib/gcc/x86_64-linux-gnu/7]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> [/usr/lib]
-  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
-  collapse library dir [/lib/../lib] ==> [/lib]
-  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
-  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
-  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> [/usr/lib]
-  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/7;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  ignore line: [gcc version 8.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 project) ]
+  ignore line: [COMPILER_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/]
+  ignore line: [C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e7375.exe' '-shared-libgcc' '-mtune=generic' '-march=i686']
+  ignore line: [ C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/collect2.exe -plugin C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../libexec/gcc/i686-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\ichrysou\AppData\Local\Temp\cc0uZdk5.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/i686-810-posix-dwarf-rt_v6-rev0/mingw32 -m i386pe -Bdynamic -u ___register_frame_info -u ___deregister_frame_info -o cmTC_e7375.exe C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib/crt2.o C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtbegin.o -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0 -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib/../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/lib -LC:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles/cmTC_e7375.dir/objects.a --no-whole-archive --out-implib libcmTC_e7375.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e7375.exe' '-shared-libgcc' '-mtune=generic' '-march=i686']
+  ignore line: [make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp']
+  ignore line: []
+  implicit libs: []
+  implicit dirs: []
   implicit fwks: []
 
 
 
 
-Detecting CXX [-std=c++1z] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Detecting CXX [-std=c++2a] compiler features compiled with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d0fb6/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d0fb6.dir/build.make CMakeFiles/cmTC_d0fb6.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d0fb6.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++1z -o CMakeFiles/cmTC_d0fb6.dir/feature_tests.cxx.o -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_d0fb6
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d0fb6.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_d0fb6.dir/feature_tests.cxx.o  -o cmTC_d0fb6 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_940be/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_940be.dir/build.make CMakeFiles/cmTC_940be.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_940be.dir/feature_tests.cxx.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"    -std=c++2a -o CMakeFiles/cmTC_940be.dir/feature_tests.cxx.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_940be.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_940be.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_940be.dir/objects.a @CMakeFiles/cmTC_940be.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"      -Wl,--whole-archive CMakeFiles/cmTC_940be.dir/objects.a -Wl,--no-whole-archive  -o cmTC_940be.exe -Wl,--out-implib,libcmTC_940be.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_940be.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++17] compiler features compiled with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_e8522/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_e8522.dir/build.make CMakeFiles/cmTC_e8522.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e8522.dir/feature_tests.cxx.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"    -std=c++17 -o CMakeFiles/cmTC_e8522.dir/feature_tests.cxx.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e8522.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_e8522.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_e8522.dir/objects.a @CMakeFiles/cmTC_e8522.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"      -Wl,--whole-archive CMakeFiles/cmTC_e8522.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e8522.exe -Wl,--out-implib,libcmTC_e8522.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_e8522.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -413,17 +401,18 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ee3a7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ee3a7.dir/build.make CMakeFiles/cmTC_ee3a7.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ee3a7.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++14 -o CMakeFiles/cmTC_ee3a7.dir/feature_tests.cxx.o -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ee3a7
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee3a7.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_ee3a7.dir/feature_tests.cxx.o  -o cmTC_ee3a7 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_f96f8/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_f96f8.dir/build.make CMakeFiles/cmTC_f96f8.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f96f8.dir/feature_tests.cxx.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"    -std=c++14 -o CMakeFiles/cmTC_f96f8.dir/feature_tests.cxx.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_f96f8.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_f96f8.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_f96f8.dir/objects.a @CMakeFiles/cmTC_f96f8.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"      -Wl,--whole-archive CMakeFiles/cmTC_f96f8.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f96f8.exe -Wl,--out-implib,libcmTC_f96f8.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_f96f8.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -486,17 +475,18 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8c765/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8c765.dir/build.make CMakeFiles/cmTC_8c765.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_8c765.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++11 -o CMakeFiles/cmTC_8c765.dir/feature_tests.cxx.o -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_8c765
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c765.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_8c765.dir/feature_tests.cxx.o  -o cmTC_8c765 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_a25c8/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_a25c8.dir/build.make CMakeFiles/cmTC_a25c8.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a25c8.dir/feature_tests.cxx.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"    -std=c++11 -o CMakeFiles/cmTC_a25c8.dir/feature_tests.cxx.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_a25c8.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_a25c8.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_a25c8.dir/objects.a @CMakeFiles/cmTC_a25c8.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"      -Wl,--whole-archive CMakeFiles/cmTC_a25c8.dir/objects.a -Wl,--no-whole-archive  -o cmTC_a25c8.exe -Wl,--out-implib,libcmTC_a25c8.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_a25c8.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -559,17 +549,18 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2c4bc/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2c4bc.dir/build.make CMakeFiles/cmTC_2c4bc.dir/build
-make[1]: Entering directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_2c4bc.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++98 -o CMakeFiles/cmTC_2c4bc.dir/feature_tests.cxx.o -c /home/ichrysou/projects/sdl_game/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_2c4bc
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c4bc.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_2c4bc.dir/feature_tests.cxx.o  -o cmTC_2c4bc 
-make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CMakeTmp'
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_337de/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_337de.dir/build.make CMakeFiles/cmTC_337de.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_337de.dir/feature_tests.cxx.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"    -std=c++98 -o CMakeFiles/cmTC_337de.dir/feature_tests.cxx.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_337de.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_337de.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_337de.dir/objects.a @CMakeFiles/cmTC_337de.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/g++.exe"      -Wl,--whole-archive CMakeFiles/cmTC_337de.dir/objects.a -Wl,--no-whole-archive  -o cmTC_337de.exe -Wl,--out-implib,libcmTC_337de.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_337de.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -629,3 +620,47 @@ make[1]: Leaving directory '/home/ichrysou/projects/sdl_game/build/CMakeFiles/CM
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_2d48f/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_2d48f.dir/build.make CMakeFiles/cmTC_2d48f.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2d48f.dir/CheckIncludeFile.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"    -o CMakeFiles/cmTC_2d48f.dir/CheckIncludeFile.c.obj   -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_2d48f.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_2d48f.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_2d48f.dir/objects.a @CMakeFiles/cmTC_2d48f.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"      -Wl,--whole-archive CMakeFiles/cmTC_2d48f.dir/objects.a -Wl,--no-whole-archive  -o cmTC_2d48f.exe -Wl,--out-implib,libcmTC_2d48f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_2d48f.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the pthread_create exist passed with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_e4a06/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_e4a06.dir/build.make CMakeFiles/cmTC_e4a06.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e4a06.dir/CheckSymbolExists.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"    -o CMakeFiles/cmTC_e4a06.dir/CheckSymbolExists.c.obj   -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_e4a06.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E remove -f CMakeFiles/cmTC_e4a06.dir/objects.a
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/ar.exe" cr CMakeFiles/cmTC_e4a06.dir/objects.a @CMakeFiles/cmTC_e4a06.dir/objects1.rsp
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe"      -Wl,--whole-archive CMakeFiles/cmTC_e4a06.dir/objects.a -Wl,--no-whole-archive  -o cmTC_e4a06.exe -Wl,--out-implib,libcmTC_e4a06.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_e4a06.dir/linklibs.rsp
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+
+File c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

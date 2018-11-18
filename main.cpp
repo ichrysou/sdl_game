@@ -1,13 +1,13 @@
 #include <iostream>
 #include "game.h"
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 1024;
 
 Game *game = nullptr;
 
 
-int main(int argc, const char* argv[]) {
+int main(int argc, char* argv[]) {
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
@@ -16,10 +16,11 @@ int main(int argc, const char* argv[]) {
     int frameTime;
 
     game = new Game();
-    game->init("THE GAME", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+    game->init("THE GAME", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, false);
     while (game->running()) {
         frameStart = SDL_GetTicks();
         game->handleEvents();
+  
         game->update();
         game->render();
 
@@ -31,4 +32,5 @@ int main(int argc, const char* argv[]) {
     }
 
     game->clean();
+    return 0;
 }

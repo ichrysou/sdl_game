@@ -23,7 +23,7 @@ public:
             case SDLK_w:
                 transform->velocity.y = -1;
                 break;
-            case SDLK_a:
+            case SDLK_a://TODO: fix movement, react on key press not key down?
                 transform->velocity.x = -1;
                 break;
             case SDLK_s:
@@ -44,13 +44,15 @@ public:
                 transform->velocity.y = 0;
                 break;
             case SDLK_a:
-                transform->velocity.x = 0;
+                if (transform->velocity.x == -1)            
+                    transform->velocity.x = 0;
                 break;
             case SDLK_s:
                 transform->velocity.y = 0;
                 break;
             case SDLK_d:
-                transform->velocity.x = 0;
+                if (transform->velocity.x == 1)            
+                    transform->velocity.x = 0;
                 break;
             default:
                 break;

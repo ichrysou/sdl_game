@@ -3,7 +3,7 @@
 #include "ECS.h"
 
 #include "TransformComponent.h"
-#include "SDL2/SDL.h"
+#include "SDL.h"
 
 
 class TileComponent : public Component {
@@ -26,19 +26,10 @@ public:
 
         switch(id) {
 
-        case 0:        case 1:
-            path = "assets/dirt.png";
-            break;
-
-            path = "assets/water.png";
-            break;
-
-        case 1:
-            path = "assets/dirt.png";
-            break;
-
-        case 2:
-            path = "assets/grass.png";
+        case 0: // rock
+        case 1: // wall
+        case 2: // water
+            path = "../assets/tiles.png";
             break;
 
         default:
@@ -46,14 +37,13 @@ public:
         }
 
     }
+
     void init() override
     {
-        entity->addComponent<TransformComponent>(tileRect.x, tileRect.y, tileRect.w, tileRect.h, 1);
-        transform = &entity->getComponent<TransformComponent>();
-
+        entity->addComponent<TransformComponent>(tileRect.x, tileRect.y, tileRect.w, tileRect.h, 2); // TODO: scale for tiles?
         entity->addComponent<SpriteComponent>(path);
         sprite = &entity->getComponent<SpriteComponent>();
-    }
-
+        sprite->setSrcOffset(tileID);
+   }
 
 };

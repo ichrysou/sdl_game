@@ -1,23 +1,28 @@
 #include "game.h"
 #include "textureManager.h"
 #include "Map.h"
-#include "ECS/Components.h"
+#include "Components.h"
 #include "Vector2D.h"
 #include "Collision.h"
 
-Map *map;
+#define NUMBER_OF_ENEMIES 10
+
 SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
+
 Manager manager;
 
 std::vector<ColliderComponent*> Game::colliders;
 
 auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
+//auto& wall(manager.addEntity());
 
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
+enum groupLabels : std::size_t {
+    groupMap,
+    groupPlayers,
+    groupEnemies,
+    groupColliders
+};
 
 Game::~Game() {}
 
@@ -48,23 +53,24 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    map = new Map();
+    Map::LoadMap("../assets/tilesets/map", 32, 32);
 
-    tile0.addComponent<TileComponent>(200, 200, 32, 32, 0);
-    tile1.addComponent<TileComponent>(250, 250, 32, 32, 1);
-
-    tile1.addComponent<ColliderComponent>("dirt");
-
-    tile2.addComponent<TileComponent>(150, 150, 32, 32, 2);
-
-    player.addComponent<TransformComponent>();
-    player.addComponent<SpriteComponent>("/home/ichrysou/Downloads/knight.png");
+    player.addComponent<TransformComponent>(200, 200, 64, 64, 1);
+    player.addComponent<SpriteComponent>("knight", "../assets/knight.png", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
+    player.addGroup(groupPlayers);
 
-    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 30, 1);
-    wall.addComponent<SpriteComponent>("../assets/dirt.png");
-    wall.addComponent<ColliderComponent>("wall");
+    for (int i = 0; i < NUMBER_OF_ENEMIES; i++) {
+        auto& enemy = manager.addEntity();
+        enemy.addComponent<TransformComponent>(600 + i * 32, 800, 32, 32, 2);
+        enemy.addComponent<SpriteComponent>("skeleton", "../assets/skeleton.png", true);
+        enemy.addComponent<ColliderComponent>("skeleton");
+        enemy.addGroup(groupEnemies);
+    }
+    //wall.addComponent<TransformComponent>(300.0f, 300.0f, 32, 32, 1);
+    //wall.addComponent<SpriteComponent>("../assets/dirt.png");
+    //wall.addComponent<ColliderComponent>("wall");
 }
 
 void Game::handleEvents() {
@@ -81,25 +87,58 @@ void Game::handleEvents() {
     }
 }
 // this is where we add all our textures to be rendered
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
+
 void Game::render() {
     SDL_RenderClear(renderer);
-    map->DrawMap();
     // NULL, NULL: use the whole image and render it to the whole rectangle
     // this is where we could add stuff to render
-    manager.draw();
+    for (auto &tile : tiles) {
+        tile->draw();
+    }
+    for (auto &player : players) {
+        player->draw();
+    }
+    for (auto &enemy : enemies) {
+        enemy->draw();
+    }
+
+
     SDL_RenderPresent(renderer);
 }
 
 void Game::update() {
+    Vector2D playerPos = player.getComponent<TransformComponent>().position;
+     
     manager.refresh();
     manager.update();
-    if (player.getComponent<TransformComponent>().position.x > 400) {
-        player.getComponent<SpriteComponent>().setTex("../assets/enemy.png");
+    for (auto& tile : tiles) {
+        if (!tile->hasComponent<ColliderComponent>())
+            continue;
+        if (Collision::AABB(player.getComponent<ColliderComponent>().collider
+                        , tile->getComponent<ColliderComponent>().collider)) {
+             player.getComponent<TransformComponent>().position = playerPos;
+        } 
     }
-    if (Collision::AABB(player.getComponent<ColliderComponent>().collider
-                        , wall.getComponent<ColliderComponent>().collider)) {
-        std::cout << "Wall Hit" << std::endl;
-        player.getComponent<TransformComponent>().velocity * -1;
+
+    for (auto& enemy : enemies) {
+        float speed_x = -1 + rand() % 3;
+        speed_x *= rand()%1?0:1;
+        float speed_y = -1 + rand() % 3;
+        speed_y *= rand()%1?0:1;
+        Vector2D lvelocity(speed_x, speed_y);
+        if (!(SDL_GetTicks() % 20)) {
+        Vector2D player_pos = player.getComponent<TransformComponent>().position;
+            Vector2D towards_player = (player_pos - enemy->getComponent<TransformComponent>().position);
+            lvelocity = ((towards_player / towards_player.Length())*3);  
+        }
+        enemy->getComponent<TransformComponent>().velocity = lvelocity;
+        if (Collision::AABB(player.getComponent<ColliderComponent>().collider
+                        , enemy->getComponent<ColliderComponent>().collider)) {
+             player.getComponent<TransformComponent>().position = playerPos;
+        }
     }
 
 }
@@ -110,3 +149,13 @@ void Game::clean() {
     SDL_Quit();
     std::cout << "Game Cleaned!" << std::endl;
 }
+
+void Game::AddTile(int id, int x, int y) {
+    auto& tile(manager.addEntity());
+    //TODO: change tile size it can be read form the map file
+    tile.addComponent<TileComponent>(x, y, 16, 16, id);
+    tile.addGroup(groupMap);
+    if (id == 1)
+        tile.addComponent<ColliderComponent>("wall");
+}
+
