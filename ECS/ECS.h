@@ -139,7 +139,7 @@ class Manager {
     }
 
     std::vector<Entity*>& getGroup(GroupID lgroup) {
-        groupedEntities[lgroup];
+        return groupedEntities[lgroup];
     }
 
     Entity& addEntity() {

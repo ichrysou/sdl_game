@@ -26,7 +26,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/FindPackageMessage.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/FindThreads.cmake"
-  "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/GNUtoMS_lib.bat.in"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-GNU-C-ABI.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-GNU-C.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
@@ -51,7 +50,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/CMakeGNUtoMS_lib.bat"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

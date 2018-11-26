@@ -19,4 +19,4 @@ link_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2/lib/x86)
 link_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2_image-2.0.1/lib/x86)
 add_executable(Game main.cpp game.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp Collision.cpp ECS/ECS.cpp)
 
-target_link_libraries(Game SDL2main SDL2 SDL2_image)
+target_link_libraries(Game SDL2main SDL2 SDL2_image libpng16-16)

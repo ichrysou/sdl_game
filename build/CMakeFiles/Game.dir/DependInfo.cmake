@@ -17,7 +17,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include"
+  "../Dev/SDL2/include"
   "../ECS"
   "../"
   "../Dev/SDL2_image-2.0.1/include"

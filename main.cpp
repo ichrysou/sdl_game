@@ -1,4 +1,6 @@
+
 #include <iostream>
+
 #include "game.h"
 
 const int SCREEN_WIDTH = 1024;

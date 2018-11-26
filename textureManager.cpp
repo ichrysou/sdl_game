@@ -1,11 +1,19 @@
 #include "textureManager.h"
 #include <SDL_image.h>
 
+#include <direct.h>
+#include <stdlib.h>
+#include <stdio.h>
 SDL_Texture * TextureManager::LoadTexture(const char *texture) {
+
     SDL_Surface *tempSurface = IMG_Load(texture);
+    if (!tempSurface) {
+        printf("%s\n", IMG_GetError());
+    }
     SDL_Texture *tex = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
     if (!tex) {
         printf("%s\n", SDL_GetError());
+
     }
     SDL_FreeSurface(tempSurface);
 

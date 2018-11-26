@@ -6,5 +6,6 @@
         "ostream": "cpp",
         "algorithm": "cpp",
         "cmath": "cpp"
-    }
+    },
+    "cmake.generator": "Unix Makefiles"
 }
