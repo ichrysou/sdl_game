@@ -17,14 +17,16 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../Dev/SDL2/include"
+  "../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include"
   "../ECS"
   "../"
+  "../libraries/pugixml/src"
   "../Dev/SDL2_image-2.0.1/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/libraries/pugixml/CMakeFiles/pugixml.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -38,23 +38,21 @@ public:
     }
 
     void setSrcOffset(int x) { //TODO: I don't like this interface.. Find a better way
-        srcRect.x = srcRect.w * x;
+        srcRect.x = srcRect.w * (x % 4); // TODO: remove magic numbers from here
+        srcRect.y = srcRect.h * (x / 4);
     }
 
     void update() override {
         //TODO: need to pass: number of frames
         if (m_animate) {
             int no_of_frames;
-            int frame_width;
             if(std::string(m_tag) == "skeleton") {
                 no_of_frames = 10;
-                frame_width = transform->width;
             }  else if (std::string(m_tag) == "knight") {
                 no_of_frames = 2;
-                frame_width = transform->width;
             } 
             int frameno =  SDL_GetTicks() / 200;
-            srcRect.x = (srcRect.w + ((frameno % no_of_frames) * frame_width)) % (frame_width * no_of_frames);
+            srcRect.x = (srcRect.w + ((frameno % no_of_frames) * transform->width)) % (transform->width * no_of_frames);
         }
  
         destRect.x = static_cast<int>(transform->position.x);

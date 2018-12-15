@@ -5,7 +5,8 @@
         "xstring": "cpp",
         "ostream": "cpp",
         "algorithm": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "iostream": "cpp"
     },
     "cmake.generator": "Unix Makefiles"
 }

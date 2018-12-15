@@ -192,6 +192,7 @@ Game.exe: CMakeFiles/Game.dir/Vector2D.obj
 Game.exe: CMakeFiles/Game.dir/Collision.obj
 Game.exe: CMakeFiles/Game.dir/ECS/ECS.obj
 Game.exe: CMakeFiles/Game.dir/build.make
+Game.exe: libraries/pugixml/libpugixml.a
 Game.exe: CMakeFiles/Game.dir/linklibs.rsp
 Game.exe: CMakeFiles/Game.dir/objects1.rsp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Game.exe"

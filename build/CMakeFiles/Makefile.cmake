@@ -26,6 +26,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/FindPackageMessage.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/FindThreads.cmake"
+  "C:/Program Files/CMake/share/cmake-3.13/Modules/GNUInstallDirs.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-GNU-C-ABI.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-GNU-C.cmake"
   "C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
@@ -40,6 +41,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.13.0-rc2/CMakeRCCompiler.cmake"
   "CMakeFiles/3.13.0-rc2/CMakeSystem.cmake"
   "../cmake/FindSDL2.cmake"
+  "../libraries/CMakeLists.txt"
+  "../libraries/pugixml/CMakeLists.txt"
+  "../libraries/pugixml/scripts/pugixml.pc.in"
   )
 
 # The corresponding makefile is:
@@ -51,9 +55,12 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libraries/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libraries/pugixml/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Game.dir/DependInfo.cmake"
+  "libraries/pugixml/CMakeFiles/pugixml.dir/DependInfo.cmake"
   )

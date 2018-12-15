@@ -53,7 +53,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    Map::LoadMap("../assets/tilesets/map", 32, 32);
+    //Map::LoadMap("../assets/tilesets/map2", 8, 8);
+    Map::LoadMapXml("../assets/tilesets/stupid_map_2.xml");
 
     player.addComponent<TransformComponent>(200, 200, 64, 64, 1);
     player.addComponent<SpriteComponent>("knight", "../assets/knight.png", true);
@@ -63,7 +64,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     for (int i = 0; i < NUMBER_OF_ENEMIES; i++) {
         auto& enemy = manager.addEntity();
-        enemy.addComponent<TransformComponent>(600 + i * 32, 800, 32, 32, 2);
+        enemy.addComponent<TransformComponent>(800 - 64, 640 - (i + 1) * 64, 32, 32, 2);
         enemy.addComponent<SpriteComponent>("skeleton", "../assets/skeleton.png", true);
         enemy.addComponent<ColliderComponent>("skeleton");
         enemy.addGroup(groupEnemies);
@@ -150,10 +151,10 @@ void Game::clean() {
     std::cout << "Game Cleaned!" << std::endl;
 }
 
-void Game::AddTile(int id, int x, int y) {
+void Game::AddTile(int id, int x, int y, int width, int height, int rotation) {
     auto& tile(manager.addEntity());
     //TODO: change tile size it can be read form the map file
-    tile.addComponent<TileComponent>(x, y, 16, 16, id);
+    tile.addComponent<TileComponent>(x, y, width, height, id, rotation);
     tile.addGroup(groupMap);
     if (id == 1)
         tile.addComponent<ColliderComponent>("wall");

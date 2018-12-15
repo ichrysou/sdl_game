@@ -23,7 +23,7 @@ public:
     static SDL_Renderer *renderer;
     static SDL_Event event;
     static std::vector<ColliderComponent*> colliders;
-    static void AddTile(int id, int x, int y);
+    static void AddTile(int id, int x, int y, int width, int height, int rotation = 0);
     
 private:
     int cntr;
