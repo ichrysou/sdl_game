@@ -110,6 +110,14 @@ CMakeFiles/Game.dir/GameObject.obj: ../game.h
 CMakeFiles/Game.dir/GameObject.obj: ../textureManager.h
 
 CMakeFiles/Game.dir/Map.obj: ../Dev/SDL2_image-2.0.1/include/SDL_image.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/Animation.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/ColliderComponent.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/Components.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/ECS.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/KeyboardController.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/SpriteComponent.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/TileComponent.h
+CMakeFiles/Game.dir/Map.obj: ../ECS/TransformComponent.h
 CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL.h
 CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_assert.h
 CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_atomic.h
@@ -155,8 +163,11 @@ CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_versi
 CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_video.h
 CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/begin_code.h
 CMakeFiles/Game.dir/Map.obj: ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/close_code.h
+CMakeFiles/Game.dir/Map.obj: ../Vector2D.h
+CMakeFiles/Game.dir/Map.obj: ../game.h
 CMakeFiles/Game.dir/Map.obj: ../libraries/pugixml/src/pugiconfig.hpp
 CMakeFiles/Game.dir/Map.obj: ../libraries/pugixml/src/pugixml.hpp
+CMakeFiles/Game.dir/Map.obj: ../textureManager.h
 CMakeFiles/Game.dir/Map.obj: ../Map.cpp
 CMakeFiles/Game.dir/Map.obj: ../Map.h
 CMakeFiles/Game.dir/Map.obj: ../game.h
@@ -165,6 +176,7 @@ CMakeFiles/Game.dir/Vector2D.obj: ../Vector2D.cpp
 CMakeFiles/Game.dir/Vector2D.obj: ../Vector2D.h
 
 CMakeFiles/Game.dir/game.obj: ../Dev/SDL2_image-2.0.1/include/SDL_image.h
+CMakeFiles/Game.dir/game.obj: ../ECS/Animation.h
 CMakeFiles/Game.dir/game.obj: ../ECS/ColliderComponent.h
 CMakeFiles/Game.dir/game.obj: ../ECS/Components.h
 CMakeFiles/Game.dir/game.obj: ../ECS/ECS.h

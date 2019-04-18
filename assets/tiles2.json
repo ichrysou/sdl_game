@@ -1,0 +1,27 @@
+{ "frames": [
+   {
+    "filename": "tiles2.png",
+    "frame": { "x": 0, "y": 0, "w": 128, "h": 206 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 206 },
+    "sourceSize": { "w": 128, "h": 206 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.3-dev",
+  "image": "C:\\Users\\ichrysou\\Desktop\\sdl_game\\sdl_game\\assets\\tiles2-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 128, "h": 206 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

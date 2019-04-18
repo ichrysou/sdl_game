@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+..//game.h
+stdio.h
+-
+iostream
+-
+SDL.h
+-
+SDL_image.h
+-
+vector
+-
+
 ../Dev/SDL2_image-2.0.1/include/SDL_image.h
 SDL.h
 ../Dev/SDL2_image-2.0.1/include/SDL.h
@@ -15,6 +27,8 @@ begin_code.h
 ../Dev/SDL2_image-2.0.1/include/begin_code.h
 close_code.h
 ../Dev/SDL2_image-2.0.1/include/close_code.h
+
+../ECS/Animation.h
 
 ../ECS/ColliderComponent.h
 string
@@ -33,12 +47,12 @@ ECS.h
 ../ECS/ECS.h
 TransformComponent.h
 ../ECS/TransformComponent.h
+ColliderComponent.h
+../ECS/ColliderComponent.h
 SpriteComponent.h
 ../ECS/SpriteComponent.h
 KeyboardController.h
 ../ECS/KeyboardController.h
-ColliderComponent.h
-../ECS/ColliderComponent.h
 TileComponent.h
 ../ECS/TileComponent.h
 
@@ -65,12 +79,16 @@ Components.h
 ../ECS/Components.h
 
 ../ECS/SpriteComponent.h
+map
+-
 Components.h
 ../ECS/Components.h
 SDL.h
 -
 ../textureManager.h
 ../textureManager.h
+Animation.h
+../ECS/Animation.h
 
 ../ECS/TileComponent.h
 ECS.h
@@ -694,15 +712,51 @@ SDL_image.h
 vector
 -
 
+../libraries/pugixml/src/pugiconfig.hpp
+
+../libraries/pugixml/src/pugixml.hpp
+pugiconfig.hpp
+../libraries/pugixml/src/pugiconfig.hpp
+stddef.h
+-
+exception
+-
+iterator
+-
+iosfwd
+-
+string
+-
+
 ../textureManager.h
 SDL.h
 -
 game.h
 ../game.h
 
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Collision.cpp
+Collision.h
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Collision.h
+ColliderComponent.h
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/ColliderComponent.h
+
 C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Collision.h
 SDL.h
 -
+
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.cpp
+Map.h
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.h
+game.h
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/game.h
+fstream
+-
+pugixml.hpp
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/pugixml.hpp
+Components.h
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Components.h
+game.h
+C:/Users/ichrysou/Desktop/sdl_game/sdl_game/game.h
 
 C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.h
 string

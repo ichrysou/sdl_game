@@ -6,9 +6,14 @@
 #include <SDL_image.h>
 #include <vector>
 
+const int
+    SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 640;
+
 class ColliderComponent;
-class Game {
-public:
+class Game
+{
+  public:
     Game();
     ~Game();
 
@@ -18,19 +23,23 @@ public:
     void update();
     void render();
     void clean();
-    bool running() {return isRunning;};
+    bool running() { return isRunning; };
 
     static SDL_Renderer *renderer;
     static SDL_Event event;
-    static std::vector<ColliderComponent*> colliders;
-    static void AddTile(int id, int x, int y, int width, int height, int rotation = 0);
-    
-private:
+    static bool isRunning;
+    static SDL_Rect camera;
+    enum groupLabels : std::size_t
+    {
+        groupMap,
+        groupPlayers,
+        groupEnemies,
+        groupColliders,
+        groupProjectiles
+    };
+
+  private:
     int cntr;
-    bool isRunning;
+
     SDL_Window *window;
-
-
-
 };
-

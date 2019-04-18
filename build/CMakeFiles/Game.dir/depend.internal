@@ -111,6 +111,14 @@ CMakeFiles/Game.dir/GameObject.obj
  C:/Users/ichrysou/Desktop/sdl_game/sdl_game/textureManager.h
 CMakeFiles/Game.dir/Map.obj
  ../Dev/SDL2_image-2.0.1/include/SDL_image.h
+ ../ECS/Animation.h
+ ../ECS/ColliderComponent.h
+ ../ECS/Components.h
+ ../ECS/ECS.h
+ ../ECS/KeyboardController.h
+ ../ECS/SpriteComponent.h
+ ../ECS/TileComponent.h
+ ../ECS/TransformComponent.h
  ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL.h
  ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_assert.h
  ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_atomic.h
@@ -156,8 +164,11 @@ CMakeFiles/Game.dir/Map.obj
  ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/SDL_video.h
  ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/begin_code.h
  ../SDL2-devel-2.0.9-VC/SDL2-2.0.9/include/close_code.h
+ ../Vector2D.h
+ ../game.h
  ../libraries/pugixml/src/pugiconfig.hpp
  ../libraries/pugixml/src/pugixml.hpp
+ ../textureManager.h
  C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.cpp
  C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.h
  C:/Users/ichrysou/Desktop/sdl_game/sdl_game/game.h
@@ -166,6 +177,7 @@ CMakeFiles/Game.dir/Vector2D.obj
  C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Vector2D.h
 CMakeFiles/Game.dir/game.obj
  ../Dev/SDL2_image-2.0.1/include/SDL_image.h
+ ../ECS/Animation.h
  ../ECS/ColliderComponent.h
  ../ECS/Components.h
  ../ECS/ECS.h
