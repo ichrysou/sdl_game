@@ -4,9 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
-        {
-            "name": "(gdb) Launch",
+        {         "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/Game.exe",
@@ -15,8 +13,8 @@
             "cwd": "${workspaceFolder}/build",
             "environment": [],
             "externalConsole": true,
-	        "MIMode": "gdb",
-            "miDebuggerPath": "C:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\gdb.exe",
+            "MIMode": "gdb",
+            
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -24,10 +22,6 @@
                     "ignoreFailures": true
                 }
             ]
-            
-
         }
-
     ]
-
 }

@@ -16,38 +16,39 @@ class SpriteComponent : public Component
     int animIndex = 0;
     std::map<const char *, Animation> animations;
     int frames;
-    int speed;
+    int  speed;
 
   public:
     SDL_RendererFlip spriteflip = SDL_FLIP_NONE;
     bool m_animate; //TODO: they are specifically exported to be access from Keyboard Controller.. Find a better way
-    const char *m_tag;
+    std::string m_id;
     SpriteComponent() = default;
-    SpriteComponent(const char *path)
+
+    SpriteComponent(std::string id)
     {
         m_animate = false;
-        setTex(path);
-        m_tag = "none";
+        setTex(id);
+        m_id = "none";
     }
-    SpriteComponent(const char *tag, const char *path, bool animate = false)
+    SpriteComponent(std::string id, bool animate = false)
     {
         m_animate = animate;
-        if (tag == "knight")
+        if (id == "knight")
         {
-            Animation walk = Animation(1, 2, 100);
-            Animation idle = Animation(0, 4, 100); //TODO: remove magic numbers
+            Animation walk = Animation(1, 2, 10);
+            Animation idle = Animation(0, 4, 10); //TODO: remove magic numbers
             animations.emplace("idle", idle);
             animations.emplace("walk", walk);
             play("idle");
         }
-        setTex(path);
-        m_tag = tag;
+        setTex(id);
+        m_id = id;
     }
 
     ~SpriteComponent()
-    {
-        SDL_DestroyTexture(texture);
+    {        
     }
+
     void init() override
     {
 
@@ -72,24 +73,28 @@ class SpriteComponent : public Component
         if (m_animate)
         {
 
-            if (std::string(m_tag) == "skeleton")
+            if (m_id == "skeleton")
             {
-                speed = 20;
+                speed = 100; // TODO: rename speed to reverse speed
                 int frameno = SDL_GetTicks() / speed; //actual
                 frames = 10;
                 srcRect.x = (srcRect.w + ((frameno % frames) * transform->width)) % (transform->width * frames);
-                Vector2D skel_pos = transform->position;
-                destRect.x = static_cast<int>(skel_pos.x) - Game::camera.x;
-                destRect.y = static_cast<int>(skel_pos.y) - Game::camera.y;
-            }
-            else if (std::string(m_tag) == "knight")
-            {
-                int frameno = SDL_GetTicks() / speed; //actual
-                srcRect.x = (srcRect.w + ((frameno % frames) * transform->width)) % (transform->width * frames);
+                animIndex = 2;
+
                 destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
                 destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
             }
-            else if (std::string(m_tag) == "thunder")
+            else if (m_id == "knight")
+            {
+                speed = 100;
+                frames = 4;
+                int frameno = SDL_GetTicks() / speed; //actual
+                srcRect.x = (srcRect.w + ((frameno % frames) * transform->width)) % (transform->width * frames);
+                animIndex = 0;
+                destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
+                destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
+            }
+            else if (m_id == "thunder")
             { // TODO: make a ProjectileComponent of player for the thunder
                 speed = 50;
                 int frameno = SDL_GetTicks() / speed; //actual
@@ -104,9 +109,9 @@ class SpriteComponent : public Component
         destRect.h = transform->height * transform->scale;
     }
 
-    void setTex(const char *path)
+    void setTex(std::string id)
     {
-        texture = TextureManager::LoadTexture(path);
+        texture = Game::assets->GetTexture(id);
     }
 
     void draw() override

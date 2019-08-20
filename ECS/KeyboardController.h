@@ -16,7 +16,7 @@ class KeyboardController : public Component
 
     void update() override
     {
-        if (sprite->m_tag == "thunder")
+        if (sprite->m_id == "thunder") // TODO: use std string
         {
             if (Game::event.type == SDL_KEYDOWN)
             {

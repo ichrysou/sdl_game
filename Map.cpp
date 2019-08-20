@@ -3,7 +3,6 @@
 #include <fstream>
 #include "pugixml.hpp"
 #include "Components.h"
-#include "game.h"
 
 extern Manager manager;
 const char *tilesheet = "../assets/tiles2.png"; // TODO: find a better way to pass this. Problem is the static functions here
@@ -15,25 +14,6 @@ Map::~Map()
 {
 }
 
-/* void Map::LoadMap(std::string path, int sizeX, int sizeY)
-{
-    char tile;
-    std::fstream mapFile;
-    mapFile.open(path);
-
-    for (int y = 0; y < sizeY; y++)
-    {
-        for (int x = 0; x < sizeX; x++)
-        {
-            //TODO: use json? or xml?
-            mapFile.get(tile);
-            Game::AddTile(atoi(&tile), x * 16 * 3, y * 16 * 3, 16, 16); // TODO: don't like the magic number -- we need to know tile size and scale here
-            mapFile.ignore();
-        }
-    }
-
-    mapFile.close();
-} */
 void Map::LoadMapXml(std::string tilemap_path)
 {
     pugi::xml_document doc;

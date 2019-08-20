@@ -5,9 +5,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <vector>
+#include "AssetManager.h"
 
-const int
-    SCREEN_WIDTH = 800;
+const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 640;
 
 class ColliderComponent;
@@ -25,10 +25,13 @@ class Game
     void clean();
     bool running() { return isRunning; };
 
+
+    static AssetManager* assets;
     static SDL_Renderer *renderer;
     static SDL_Event event;
     static bool isRunning;
     static SDL_Rect camera;
+
     enum groupLabels : std::size_t
     {
         groupMap,
@@ -40,6 +43,5 @@ class Game
 
   private:
     int cntr;
-
     SDL_Window *window;
 };

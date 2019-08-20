@@ -1,0 +1,47 @@
+[
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/main.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/main.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/main.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/game.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/game.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/game.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/textureManager.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/textureManager.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/textureManager.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/GameObject.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/GameObject.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/GameObject.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/Map.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Map.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/Vector2D.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Vector2D.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Vector2D.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/Collision.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Collision.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/Collision.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build",
+  "command": "g++   @CMakeFiles/Game.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/Game.dir/ECS/ECS.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/ECS/ECS.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/ECS/ECS.cpp"
+},
+{
+  "directory": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/libraries/pugixml",
+  "command": "g++   @CMakeFiles/pugixml.dir/includes_CXX.rsp -g   -std=gnu++14 -o CMakeFiles/pugixml.dir/src/pugixml.cpp.obj -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/libraries/pugixml/src/pugixml.cpp",
+  "file": "C:/Users/ichrysou/Desktop/sdl_game/sdl_game/libraries/pugixml/src/pugixml.cpp"
+}
+]

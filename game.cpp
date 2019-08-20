@@ -20,6 +20,8 @@ SDL_Rect Game::camera = {
     SCREEN_WIDTH,
     SCREEN_HEIGHT};
 
+AssetManager* Game::assets = new AssetManager(&manager);
+
 auto &player(manager.addEntity());
 auto &thunder(manager.addEntity());
 //auto& wall(manager.addEntity());
@@ -61,18 +63,22 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    //Map::LoadMap("../assets/tilesets/map2", 8, 8);
+
+    assets->AddTexture("knight", "../assets/knight.png");
+    assets->AddTexture("thunder", "../assets/thunder.png");
+    assets->AddTexture("skeleton", "../assets/skeleton.png");
+
     Map::LoadMapXml("../assets/stupid_map_2.xml");
 
     player.addComponent<TransformComponent>(200, 200, 64, 64, 1);
-    player.addComponent<SpriteComponent>("knight", "../assets/knight.png", true);
+    player.addComponent<SpriteComponent>("knight", true);
     player.addComponent<KeyboardController>();
-    player.addComponent<ColliderComponent>("player");
+    player.addComponent<ColliderComponent>("knight");
     player.addGroup(groupPlayers);
     auto player_pos = player.getComponent<TransformComponent>();
     thunder.addComponent<TransformComponent>(player_pos.position.x + player_pos.width, player_pos.position.y - 16, 64, 64, 2);
     thunder.addComponent<ColliderComponent>("thunder");
-    thunder.addComponent<SpriteComponent>("thunder", "../assets/thunder.png", false);
+    thunder.addComponent<SpriteComponent>("thunder", false);
 
     thunder.addComponent<KeyboardController>();
     thunder.addGroup(groupProjectiles);
@@ -81,7 +87,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     {
         auto &enemy = manager.addEntity();
         enemy.addComponent<TransformComponent>(800 - 64, 640 - (i + 1) * 64, 32, 32, 2);
-        enemy.addComponent<SpriteComponent>("skeleton", "../assets/skeleton.png", true);
+        enemy.addComponent<SpriteComponent>("skeleton", true);
         enemy.addComponent<ColliderComponent>("skeleton");
         enemy.addGroup(groupEnemies);
     }
@@ -160,20 +166,17 @@ void Game::update()
 
     for (auto &enemy : enemies)
     {
-        float speed_x = -1 + rand() % 3;
-        speed_x *= rand() % 1 ? 0 : 1;
-        float speed_y = -1 + rand() % 3;
-        speed_y *= rand() % 1 ? 0 : 1;
-        Vector2D lvelocity(speed_x, speed_y);
         Vector2D enemyPos = enemy->getComponent<TransformComponent>().position;
-
-        if (!(SDL_GetTicks() % 20))
-        {
-            Vector2D player_pos = player.getComponent<TransformComponent>().position;
-            Vector2D towards_player = (player_pos - enemy->getComponent<TransformComponent>().position);
-            lvelocity = ((towards_player / towards_player.Length()) * 3);
+        Vector2D player_pos = player.getComponent<TransformComponent>().position;
+        Vector2D towards_player = (player_pos - enemy->getComponent<TransformComponent>().position);
+        Vector2D lvelocity = towards_player / towards_player.Length() / 3;
+        if(towards_player.x < 0) {
+            enemy->getComponent<SpriteComponent>().spriteflip = SDL_FLIP_HORIZONTAL;
+        } else {
+            enemy->getComponent<SpriteComponent>().spriteflip = SDL_FLIP_NONE;
         }
         enemy->getComponent<TransformComponent>().velocity = lvelocity;
+        
         if (Collision::AABB(player.getComponent<ColliderComponent>().collider, enemy->getComponent<ColliderComponent>().collider))
         {
             player.getComponent<TransformComponent>().position = playerPos;
