@@ -20,7 +20,7 @@ SDL_Rect Game::camera = {
     SCREEN_WIDTH,
     SCREEN_HEIGHT};
 
-AssetManager* Game::assets = new AssetManager(&manager);
+AssetManager *Game::assets = new AssetManager(&manager);
 
 auto &player(manager.addEntity());
 auto &thunder(manager.addEntity());
@@ -62,7 +62,6 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     {
         isRunning = false;
     }
-
 
     assets->AddTexture("knight", "../assets/knight.png");
     assets->AddTexture("thunder", "../assets/thunder.png");
@@ -141,7 +140,7 @@ void Game::render()
 
     SDL_RenderPresent(renderer);
 }
-
+#define get_collider(x) getComponent<ColliderComponent>().collider.x
 void Game::update()
 {
     Vector2D playerPos = player.getComponent<TransformComponent>().position;
@@ -166,28 +165,62 @@ void Game::update()
 
     for (auto &enemy : enemies)
     {
-        Vector2D enemyPos = enemy->getComponent<TransformComponent>().position;
+        Vector2D enemy_pos = enemy->getComponent<TransformComponent>().position;
         Vector2D player_pos = player.getComponent<TransformComponent>().position;
-        Vector2D towards_player = (player_pos - enemy->getComponent<TransformComponent>().position);
+        Vector2D towards_player = (player_pos - enemy_pos);
         Vector2D lvelocity = towards_player / towards_player.Length() / 3;
-        if(towards_player.x < 0) {
+        if (towards_player.x < 0)
+        {
             enemy->getComponent<SpriteComponent>().spriteflip = SDL_FLIP_HORIZONTAL;
-        } else {
+        }
+        else
+        {
             enemy->getComponent<SpriteComponent>().spriteflip = SDL_FLIP_NONE;
         }
         enemy->getComponent<TransformComponent>().velocity = lvelocity;
-        
         if (Collision::AABB(player.getComponent<ColliderComponent>().collider, enemy->getComponent<ColliderComponent>().collider))
         {
             player.getComponent<TransformComponent>().position = playerPos;
         }
         if (Collision::AABB(thunder.getComponent<ColliderComponent>().collider, enemy->getComponent<ColliderComponent>().collider))
         {
-            enemy->getComponent<TransformComponent>().position = enemyPos;
+            enemy->getComponent<TransformComponent>().position = enemy_pos;
             enemy->getComponent<TransformComponent>().velocity.Zero();
         }
     }
+    // TODO: put in fuction:
+    for (auto &loc_enemy : enemies)
+    {
+        for (auto &loc_enemy2 : enemies)
+        {
+            if (&loc_enemy2 == &loc_enemy)
+                continue;
+            if (Collision::AABB(loc_enemy->getComponent<ColliderComponent>().collider, loc_enemy2->getComponent<ColliderComponent>().collider))
+            {
 
+                int maxX = std::max(loc_enemy->getComponent<ColliderComponent>().collider.x, loc_enemy2->getComponent<ColliderComponent>().collider.x); // Minimum of the boxes' right-side points (top right and bottom right) x coordinates
+                int maxY = std::max(loc_enemy->getComponent<ColliderComponent>().collider.y, loc_enemy2->getComponent<ColliderComponent>().collider.y); // Minimum of the boxes' right-side points (top right and bottom right) x coordinates
+                int minX = std::min(loc_enemy->get_collider(x) + loc_enemy->get_collider(w), loc_enemy2->get_collider(x) + loc_enemy2->get_collider(w));
+                int minY = std::min(loc_enemy->get_collider(y) + loc_enemy->get_collider(h), loc_enemy2->get_collider(y) + loc_enemy2->get_collider(h));
+                int distHoriz = minX - maxX; // The horizontal intersection distance
+                int distVert = minY - maxY;  // The vertical instersection distance
+
+                // If the boxes are overlapping less on the horizontal axis than the vertical axis,
+                // move one of the sprites (in this case, sprite0) in the opposite direction of the
+                // x-axis overlap
+                if (abs(distHoriz) < abs(distVert))
+                {
+                    loc_enemy->getComponent<TransformComponent>().velocity.x *= (loc_enemy2->getComponent<TransformComponent>().velocity.x < 0 ? 1 : -1);
+                }
+                // Else, move one of the sprites (again, I just decided to use sprite0 here,
+                // arbitrarily) in the opposite direction of the y-axis overlap
+                else
+                {
+                    loc_enemy->getComponent<TransformComponent>().velocity.y *= (loc_enemy2->getComponent<TransformComponent>().velocity.y < 0 ? 1 : -1);
+                }
+            }
+        }
+    }
     camera.x = player.getComponent<TransformComponent>().position.x - SCREEN_WIDTH / 2;
     camera.y = player.getComponent<TransformComponent>().position.y - SCREEN_HEIGHT / 2;
     if (camera.x < 0)
