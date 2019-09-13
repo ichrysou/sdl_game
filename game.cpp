@@ -23,7 +23,7 @@ SDL_Rect Game::camera = {
 AssetManager *Game::assets = new AssetManager(&manager);
 
 auto &player(manager.addEntity());
-auto &thunder(manager.addEntity());
+//auto &thunder(manager.addEntity());
 //auto& wall(manager.addEntity());
 
 Game::~Game() {}
@@ -63,24 +63,26 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    assets->AddTexture("knight", "../assets/knight.png");
+    assets->AddTexture("knight", "../assets/link_walk_right.png");
     assets->AddTexture("thunder", "../assets/thunder.png");
     assets->AddTexture("skeleton", "../assets/skeleton.png");
+    assets->AddTexture("arrow", "../assets/arrow.png");
 
     Map::LoadMapXml("../assets/stupid_map_2.xml");
 
-    player.addComponent<TransformComponent>(200, 200, 64, 64, 1);
+    player.addComponent<TransformComponent>(200, 200, 32, 32, 1);
     player.addComponent<SpriteComponent>("knight", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("knight");
     player.addGroup(groupPlayers);
     auto player_pos = player.getComponent<TransformComponent>();
-    thunder.addComponent<TransformComponent>(player_pos.position.x + player_pos.width, player_pos.position.y - 16, 64, 64, 2);
+    /* thunder.addComponent<TransformComponent>(player_pos.position.x + player_pos.width, player_pos.position.y - 16, 64, 64, 2);
     thunder.addComponent<ColliderComponent>("thunder");
     thunder.addComponent<SpriteComponent>("thunder", false);
-
     thunder.addComponent<KeyboardController>();
-    thunder.addGroup(groupProjectiles);
+ */
+    assets->CreateProjectile(Vector2D(220, 220), Vector2D(1, 0), 1000, 1, "arrow");
+    assets->CreateProjectile(Vector2D(220, 220), Vector2D(1, 1), 1000, 1, "arrow");
 
     for (int i = 0; i < NUMBER_OF_ENEMIES; i++)
     {
@@ -162,7 +164,17 @@ void Game::update()
     tile->getComponent<TileComponent>().dstRect.x += -(player_velocity.x * player_speed);
     tile->getComponent<TileComponent>().dstRect.y += -(player_velocity.y * player_speed);
 #endif
-
+    for (auto &p : projectiles)
+    {
+        for (auto &enemy : enemies)
+        {
+            if (Collision::AABB(enemy->getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
+            {
+                std::cout << "Hit enemy!" << std::endl;
+                p->destroy();
+            }
+        }
+    }
     for (auto &enemy : enemies)
     {
         Vector2D enemy_pos = enemy->getComponent<TransformComponent>().position;
@@ -181,11 +193,6 @@ void Game::update()
         if (Collision::AABB(player.getComponent<ColliderComponent>().collider, enemy->getComponent<ColliderComponent>().collider))
         {
             player.getComponent<TransformComponent>().position = playerPos;
-        }
-        if (Collision::AABB(thunder.getComponent<ColliderComponent>().collider, enemy->getComponent<ColliderComponent>().collider))
-        {
-            enemy->getComponent<TransformComponent>().position = enemy_pos;
-            enemy->getComponent<TransformComponent>().velocity.Zero();
         }
     }
     // TODO: put in fuction:
@@ -239,7 +246,7 @@ void Game::update()
     {
         camera.y = camera.h;
     }
-    thunder.getComponent<TransformComponent>().position = playerPos + Vector2D(64, -16);
+    //thunder.getComponent<TransformComponent>().position = playerPos + Vector2D(64, -16);
 }
 
 void Game::clean()

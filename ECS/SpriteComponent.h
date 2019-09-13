@@ -8,7 +8,7 @@
 
 class SpriteComponent : public Component
 {
-  private:
+private:
     TransformComponent *transform;
     SDL_Texture *texture;
 
@@ -16,9 +16,10 @@ class SpriteComponent : public Component
     int animIndex = 0;
     std::map<const char *, Animation> animations;
     int frames;
-    int  speed;
+    int speed;
+    double m_angle = NULL;
 
-  public:
+public:
     SDL_RendererFlip spriteflip = SDL_FLIP_NONE;
     bool m_animate; //TODO: they are specifically exported to be access from Keyboard Controller.. Find a better way
     std::string m_id;
@@ -30,9 +31,10 @@ class SpriteComponent : public Component
         setTex(id);
         m_id = "none";
     }
-    SpriteComponent(std::string id, bool animate = false)
+    SpriteComponent(std::string id, bool animate = false, double angle = NULL)
     {
         m_animate = animate;
+        m_angle = angle;
         if (id == "knight")
         {
             Animation walk = Animation(1, 2, 10);
@@ -46,7 +48,7 @@ class SpriteComponent : public Component
     }
 
     ~SpriteComponent()
-    {        
+    {
     }
 
     void init() override
@@ -70,12 +72,13 @@ class SpriteComponent : public Component
     {
         // TODO: change animation design pattern
         //TODO: need to pass: number of frames
+        // TODO: remove the ifs
         if (m_animate)
         {
 
             if (m_id == "skeleton")
             {
-                speed = 100; // TODO: rename speed to reverse speed
+                speed = 100;                          // TODO: rename speed to reverse speed
                 int frameno = SDL_GetTicks() / speed; //actual
                 frames = 10;
                 srcRect.x = (srcRect.w + ((frameno % frames) * transform->width)) % (transform->width * frames);
@@ -103,6 +106,13 @@ class SpriteComponent : public Component
                 destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
                 destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
             }
+            else if (m_id == "arrow")
+            {
+                destRect.x = static_cast<int>(transform->position.x - Game::camera.x);
+                destRect.y = static_cast<int>(transform->position.y - Game::camera.y);
+                destRect.w = transform->width * transform->scale;
+                destRect.h = transform->height * transform->scale;
+            }
         }
         srcRect.y = animIndex * transform->height;
         destRect.w = transform->width * transform->scale;
@@ -116,7 +126,11 @@ class SpriteComponent : public Component
 
     void draw() override
     {
-        TextureManager::Draw(texture, srcRect, destRect, spriteflip);
+        if (m_id == "arrow")
+        {
+            std::cout << "drawing arrow" << std::endl;
+        }
+        TextureManager::Draw(texture, srcRect, destRect, spriteflip, m_angle);
     }
 
     void play(const char *animName)

@@ -5,7 +5,7 @@
 
 class KeyboardController : public Component
 {
-  public:
+public:
     TransformComponent *transform;
     SpriteComponent *sprite;
     void init() override
@@ -16,7 +16,7 @@ class KeyboardController : public Component
 
     void update() override
     {
-        if (sprite->m_id == "thunder") // TODO: use std string
+        if (sprite->m_id == "thunder")
         {
             if (Game::event.type == SDL_KEYDOWN)
             {
