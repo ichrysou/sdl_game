@@ -50,7 +50,7 @@ public:
                 {
                 case SDLK_w:
                     transform->velocity.y = -1;
-                    sprite->play("walk");
+                    sprite->play("walk-up");
                     break;
                 case SDLK_a: //TODO: fix movement, react on key press not key down?
                     sprite->play("walk");
@@ -58,7 +58,7 @@ public:
                     sprite->spriteflip = SDL_FLIP_HORIZONTAL;
                     break;
                 case SDLK_s:
-                    sprite->play("walk");
+                    sprite->play("walk-down");
                     transform->velocity.y = 1;
                     break;
                 case SDLK_d:

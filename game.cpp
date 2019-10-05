@@ -63,14 +63,25 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    assets->AddTexture("knight", "../assets/link_walk_right.png");
+    assets->AddTexture("knight", "../assets/link.png");
     assets->AddTexture("thunder", "../assets/thunder.png");
     assets->AddTexture("skeleton", "../assets/skeleton.png");
     assets->AddTexture("arrow", "../assets/arrow.png");
 
     Map::LoadMapXml("../assets/stupid_map_2.xml");
+    player.addComponent<AnimationComponent>("player");
+    /* Animation link.frames = {
+        {x, y, w, h},
+        {},
+        {},
 
-    player.addComponent<TransformComponent>(200, 200, 32, 32, 1);
+    }; */
+    player.getComponent<AnimationComponent>().addAnimation(Animation("idle", "knight", 1, 1, 330, 120, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("walk", "knight", 3, 30, 240, 120, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("walk-up", "knight", 8, 30, 0, 120, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("walk-down", "knight", 8, 30, 0, 30, 30, 24));
+    //player.getComponent<AnimationComponent>().addAnimation(Animation("walk-vertical", "knight", 1, 2, 10, 0, 0, 32, 32));
+    player.addComponent<TransformComponent>(200, 200, 30, 20, 2);
     player.addComponent<SpriteComponent>("knight", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("knight");
@@ -89,6 +100,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         auto &enemy = manager.addEntity();
         enemy.addComponent<TransformComponent>(800 - 64, 640 - (i + 1) * 64, 32, 32, 2);
         enemy.addComponent<SpriteComponent>("skeleton", true);
+        enemy.addComponent<AnimationComponent>("skeleton");
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", "skeleton", 10, 30, 0, 32, 32, 32));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", "skeleton", 10, 30, 0, 64, 32, 32));
+        enemy.getComponent<AnimationComponent>().setActive("walk");
         enemy.addComponent<ColliderComponent>("skeleton");
         enemy.addGroup(groupEnemies);
     }

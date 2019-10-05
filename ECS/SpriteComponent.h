@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include "../textureManager.h"
 #include "Animation.h"
+#include "AnimationComponent.h"
 
 class SpriteComponent : public Component
 {
@@ -35,14 +36,15 @@ public:
     {
         m_animate = animate;
         m_angle = angle;
-        if (id == "knight")
+        /* TODO: remove */
+        /* if (id == "knight")
         {
             Animation walk = Animation(1, 2, 10);
             Animation idle = Animation(0, 4, 10); //TODO: remove magic numbers
             animations.emplace("idle", idle);
             animations.emplace("walk", walk);
             play("idle");
-        }
+        } */
         setTex(id);
         m_id = id;
     }
@@ -76,7 +78,7 @@ public:
         if (m_animate)
         {
 
-            if (m_id == "skeleton")
+            /* if (m_id == "skeleton")
             {
                 speed = 100;                          // TODO: rename speed to reverse speed
                 int frameno = SDL_GetTicks() / speed; //actual
@@ -87,12 +89,15 @@ public:
                 destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
                 destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
             }
-            else if (m_id == "knight")
+            else */
+            if ((m_id == "knight") || (m_id == "skeleton"))
             {
-                speed = 100;
-                frames = 4;
-                int frameno = SDL_GetTicks() / speed; //actual
-                srcRect.x = (srcRect.w + ((frameno % frames) * transform->width)) % (transform->width * frames);
+                auto animcomp = entity->getComponent<AnimationComponent>();
+                auto anim = animcomp.getActive();
+                frames = anim->m_num_frames;
+                int frameno = (SDL_GetTicks() / anim->m_speed) % frames; //actual
+                srcRect.x = anim->m_start_x + frameno * anim->m_frame_w; //(srcRect.w + (frameno * anim->m_frame_w)) % (anim->m_frame_w * frames);
+                srcRect.y = anim->m_start_y;                             // TODO(ichrysou): we can define direction and increment Ys
                 animIndex = 0;
                 destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
                 destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
@@ -114,7 +119,7 @@ public:
                 destRect.h = transform->height * transform->scale;
             }
         }
-        srcRect.y = animIndex * transform->height;
+        //       srcRect.y = animIndex * transform->height;
         destRect.w = transform->width * transform->scale;
         destRect.h = transform->height * transform->scale;
     }
@@ -126,17 +131,14 @@ public:
 
     void draw() override
     {
-        if (m_id == "arrow")
-        {
-            std::cout << "drawing arrow" << std::endl;
-        }
         TextureManager::Draw(texture, srcRect, destRect, spriteflip, m_angle);
     }
 
-    void play(const char *animName)
+    void play(std::string animName)
     {
-        frames = animations[animName].frame;
+        entity->getComponent<AnimationComponent>().setActive(animName);
+        /* frames = animations[animName].frame;
         animIndex = animations[animName].index;
-        speed = animations[animName].speed;
+        speed = animations[animName].speed; */
     }
 };
