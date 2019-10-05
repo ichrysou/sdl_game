@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Components.h"
+
 #include "SDL2/SDL.h"
 #include "../textureManager.h"
+#include "Components.h"
 
 class SpriteComponent : public Component {
    private:

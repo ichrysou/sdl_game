@@ -26,10 +26,7 @@ public:
 
         switch(id) {
 
-        case 0:        case 1:
-            path = "assets/dirt.png";
-            break;
-
+        case 0:
             path = "assets/water.png";
             break;
 
