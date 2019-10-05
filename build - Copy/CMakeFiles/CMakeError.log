@@ -1,0 +1,144 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_b0e97/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_b0e97.dir/build.make CMakeFiles/cmTC_b0e97.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0e97.dir/testCCompiler.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles/cmTC_b0e97.dir/testCCompiler.c.obj /FdCMakeFiles/cmTC_b0e97.dir/ /FS -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Microsoft (R) C/C++ Optimizing Compiler Version 19.21.27702.2 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/nologo', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/nologo' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/DWIN32', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/DWIN32' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/D_WINDOWS', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/D_WINDOWS' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/W3', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/W3' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/MDd', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/MDd' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Zi', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Zi' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Ob0', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Ob0' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Od', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Od' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/RTC1', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/RTC1' ignored
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FoCMakeFiles/cmTC_b0e97.dir/testCCompiler.c.obj' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/FdCMakeFiles/cmTC_b0e97.dir/', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FdCMakeFiles/cmTC_b0e97.dir/' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/FS', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FS' ignored
+testCCompiler.c
+Linking C executable cmTC_b0e97.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E vs_link_exe --intdir=CMakeFiles/cmTC_b0e97.dir --manifests  -- "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/link.exe" /nologo @CMakeFiles/cmTC_b0e97.dir/objects1.rsp  /out:cmTC_b0e97.exe /implib:cmTC_b0e97.lib /pdb:C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/cmTC_b0e97.pdb /version:0.0  /machine:X86  /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+LINK: command "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/link.exe C:/Program Files/Git/nologo @CMakeFiles/cmTC_b0e97.dir/objects1.rsp /out:cmTC_b0e97.exe /implib:cmTC_b0e97.lib /pdb:C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/cmTC_b0e97.pdb /version:0.0 /machine:X86 C:/Program Files/Git/debug C:/Program Files/Git/INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:cmTC_b0e97.exe.manifest" failed (exit code 1181) with the following output:
+Microsoft (R) Incremental Linker Version 14.21.27702.2
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+CMakeFiles/cmTC_b0e97.dir/testCCompiler.c.obj 
+LINK : fatal error LNK1181: cannot open input file 'C:\Program Files\Git\nologo.obj'
+make.exe[1]: *** [cmTC_b0e97.exe] Error 127
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+make.exe: *** [cmTC_b0e97/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_a1d5a/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_a1d5a.dir/build.make CMakeFiles/cmTC_a1d5a.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a1d5a.dir/testCCompiler.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles/cmTC_a1d5a.dir/testCCompiler.c.obj /FdCMakeFiles/cmTC_a1d5a.dir/ /FS -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Microsoft (R) C/C++ Optimizing Compiler Version 19.21.27702.2 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/nologo', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/nologo' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/DWIN32', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/DWIN32' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/D_WINDOWS', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/D_WINDOWS' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/W3', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/W3' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/MDd', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/MDd' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Zi', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Zi' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Ob0', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Ob0' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Od', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Od' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/RTC1', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/RTC1' ignored
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FoCMakeFiles/cmTC_a1d5a.dir/testCCompiler.c.obj' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/FdCMakeFiles/cmTC_a1d5a.dir/', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FdCMakeFiles/cmTC_a1d5a.dir/' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/FS', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FS' ignored
+testCCompiler.c
+Linking C executable cmTC_a1d5a.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E vs_link_exe --intdir=CMakeFiles/cmTC_a1d5a.dir --manifests  -- "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/link.exe" /nologo @CMakeFiles/cmTC_a1d5a.dir/objects1.rsp  /out:cmTC_a1d5a.exe /implib:cmTC_a1d5a.lib /pdb:C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/cmTC_a1d5a.pdb /version:0.0  /machine:X86  /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+LINK: command "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/link.exe C:/Program Files/Git/nologo @CMakeFiles/cmTC_a1d5a.dir/objects1.rsp /out:cmTC_a1d5a.exe /implib:cmTC_a1d5a.lib /pdb:C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/cmTC_a1d5a.pdb /version:0.0 /machine:X86 C:/Program Files/Git/debug C:/Program Files/Git/INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:cmTC_a1d5a.exe.manifest" failed (exit code 1181) with the following output:
+Microsoft (R) Incremental Linker Version 14.21.27702.2
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+CMakeFiles/cmTC_a1d5a.dir/testCCompiler.c.obj 
+LINK : fatal error LNK1181: cannot open input file 'C:\Program Files\Git\nologo.obj'
+make.exe[1]: *** [cmTC_a1d5a.exe] Error 127
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+make.exe: *** [cmTC_a1d5a/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/GnuWin32/bin/make.exe" "cmTC_8897f/fast"
+C:/PROGRA~2/GnuWin32/bin/make.exe -f CMakeFiles/cmTC_8897f.dir/build.make CMakeFiles/cmTC_8897f.dir/build
+make.exe[1]: Entering directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8897f.dir/testCCompiler.c.obj
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/cl.exe"  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1   /FoCMakeFiles/cmTC_8897f.dir/testCCompiler.c.obj /FdCMakeFiles/cmTC_8897f.dir/ /FS -c C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Microsoft (R) C/C++ Optimizing Compiler Version 19.21.27702.2 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/nologo', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/nologo' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/DWIN32', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/DWIN32' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/D_WINDOWS', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/D_WINDOWS' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/W3', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/W3' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/MDd', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/MDd' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Zi', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Zi' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Ob0', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Ob0' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/Od', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/Od' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/RTC1', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/RTC1' ignored
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FoCMakeFiles/cmTC_8897f.dir/testCCompiler.c.obj' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/FdCMakeFiles/cmTC_8897f.dir/', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FdCMakeFiles/cmTC_8897f.dir/' ignored
+cl : Command line warning D9024 : unrecognized source file type 'C:/Program Files/Git/FS', object file assumed
+cl : Command line warning D9027 : source file 'C:/Program Files/Git/FS' ignored
+testCCompiler.c
+Linking C executable cmTC_8897f.exe
+cd C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp && "C:/Program Files/CMake/bin/cmake.exe" -E vs_link_exe --intdir=CMakeFiles/cmTC_8897f.dir --manifests  -- "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/link.exe" /nologo @CMakeFiles/cmTC_8897f.dir/objects1.rsp  /out:cmTC_8897f.exe /implib:cmTC_8897f.lib /pdb:C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/cmTC_8897f.pdb /version:0.0  /machine:X86  /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+LINK: command "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/link.exe C:/Program Files/Git/nologo @CMakeFiles/cmTC_8897f.dir/objects1.rsp /out:cmTC_8897f.exe /implib:cmTC_8897f.lib /pdb:C:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp/cmTC_8897f.pdb /version:0.0 /machine:X86 C:/Program Files/Git/debug C:/Program Files/Git/INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:cmTC_8897f.exe.manifest" failed (exit code 1181) with the following output:
+Microsoft (R) Incremental Linker Version 14.21.27702.2
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+CMakeFiles/cmTC_8897f.dir/testCCompiler.c.obj 
+LINK : fatal error LNK1181: cannot open input file 'C:\Program Files\Git\nologo.obj'
+make.exe[1]: *** [cmTC_8897f.exe] Error 127
+make.exe[1]: Leaving directory `c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp'
+make.exe: *** [cmTC_8897f/fast] Error 2
+
+

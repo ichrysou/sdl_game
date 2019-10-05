@@ -1,79 +1,68 @@
 #include "Map.h"
-#include "textureManager.h"
+#include "game.h"
+#include <fstream>
+#include "pugixml.hpp"
+#include "Components.h"
 
-int lvl1[20][25] = {
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-};
-
-Map::Map() {
-    dirt = TextureManager::LoadTexture("../assets/dirt.png");
-    grass = TextureManager::LoadTexture("../assets/grass.png");
-    water = TextureManager::LoadTexture("../assets/water.png");
-    LoadMap(lvl1);
-    src.x = src.y = 0;
-    src.w = dest.w = 32;
-    src.h = dest.h = 32;
-
-    dest.x = dest.y = 0;
+extern Manager manager;
+const char *tilesheet = "../assets/tiles2.png"; // TODO: find a better way to pass this. Problem is the static functions here
+Map::Map()
+{
 }
 
-Map::~Map() {
-    SDL_DestroyTexture(grass);
-    SDL_DestroyTexture(water);
-    SDL_DestroyTexture(dirt);
+Map::~Map()
+{
 }
 
-void Map::LoadMap(int arr[20][25]) {
-    for (int row  = 0; row < 20; row++) {
-        for (int col = 0; col < 25; col++) {
-            map[row][col] = arr[row][col];
+void Map::LoadMapXml(std::string tilemap_path)
+{
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(tilemap_path.c_str());
+    if (!result)
+        return;
+    int tileswide = doc.child("tilemap").attribute("tileswide").as_int();
+    int tileshigh = doc.child("tilemap").attribute("tileshigh").as_int();
+    int tilewidth = doc.child("tilemap").attribute("tilewidth").as_int();
+    int tileheight = doc.child("tilemap").attribute("tileheight").as_int();
+    pugi::xpath_node_set layer0 = doc.select_nodes("/tilemap/layer[@number='0']");
+
+    for (pugi::xpath_node tile : layer0[0].node().children())
+    {
+        pugi::xml_node node = tile.node();
+        int x = node.attribute("x").as_int();
+        int y = node.attribute("y").as_int();
+        int index = node.attribute("index").as_int();
+        int rot = node.attribute("rot").as_int();
+        if (index < 0)
+            index = 3;                    // TODO: decide what happens
+        int srcX = index % 4 * tilewidth; //TODO: load metadata for source png here as well to derive the
+        int srcY = index / 4 * tileheight;
+        int scale = 2;
+        AddTile(srcX, srcY, x * tilewidth, y * tileheight, tilewidth, tileheight, rot, scale); //TODO: remove some params
+    }
+    pugi::xpath_node_set layer1 = doc.select_nodes("/tilemap/layer[@number='1']"); // colliders
+
+    for (pugi::xpath_node tile : layer1[0].node().children())
+    {
+        pugi::xml_node node = tile.node();
+        int x = node.attribute("x").as_int();
+        int y = node.attribute("y").as_int();
+        int index = node.attribute("index").as_int();
+        int rot = node.attribute("rot").as_int();
+        if (index != -1)
+        {
+            auto &col(manager.addEntity());
+            std::cout << x << " " << y << std::endl;
+            col.addComponent<ColliderComponent>("terrain", x * tilewidth, y * tileheight, tilewidth, tileheight); //TODO: rmv magic number for scale
+            col.addGroup(Game::groupColliders);
         }
     }
 }
 
-void Map::DrawMap() {
-    int tile_type = 0;
-    for (int row  = 0; row < 20; row++) {
-        for (int col = 0; col < 25; col++) {
-            tile_type = map[row][col];
-
-            dest.x = col * 32;
-            dest.y = row * 32;
-
-            switch(tile_type) {
-            case 0: // water
-                TextureManager::Draw(water, src, dest);
-                break;
-            case 1: // grass
-                TextureManager::Draw(grass, src, dest);
-                break;
-            case 2: // dirt
-                TextureManager::Draw(dirt, src, dest);
-                break;
-            default:
-                break;
-            }
-
-
-        }
-    }
+void Map::AddTile(int srcX, int srcY, int x, int y, int width, int height, int rotation, int scale)
+{
+    auto &tile(manager.addEntity());
+    //TODO: change tile size it can be read form the map file
+    tile.addComponent<TileComponent>(srcX, srcY, x, y, width, height, rotation, tilesheet, scale);
+    tile.addGroup(Game::groupMap);
 }

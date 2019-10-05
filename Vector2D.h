@@ -25,7 +25,9 @@ public:
 
 
     void Zero();
+    float Length();
     Vector2D& operator*(const int& i);
+    Vector2D& operator/(const int& i);
 
     friend std::ostream& operator<<(std::ostream& stream, const Vector2D& vec);
 

@@ -1,20 +1,16 @@
 #pragma once
+#include <string>
 
-#include "game.h"
-
-class Map {
+class Map
+{
+private:
 public:
-    Map();
-    ~Map();
-    void LoadMap(int arr[20][25]);
-    void DrawMap();
+  Map();
+  ~Map();
+  //    static void LoadMap(std::string path, int sizeX, int sizeY);
+
+  static void LoadMapXml(std::string path);
+  static void AddTile(int srcX, int srcY, int x, int y, int width, int height, int rotation, int scale);
 
 private:
-    SDL_Rect src, dest;
-    SDL_Texture *dirt;
-    SDL_Texture *grass;
-    SDL_Texture *water;
-
-    int map[20][25];
 };
-

@@ -1,5 +1,5 @@
 #include "Vector2D.h"
-
+#include <cmath>
 Vector2D::Vector2D() {
     x = 0.0f;
     y = 0.0f;
@@ -60,6 +60,15 @@ Vector2D& Vector2D::operator*(const int& i) {
     this->x *= i;
     this->y *= i;
     return *this;
+}
+
+Vector2D& Vector2D::operator/(const int& i) {
+    this->x /= i;
+    this->y /= i;
+    return *this;
+}
+float Vector2D::Length() {
+    return sqrt(pow(this->x, 2) + pow(this->y, 2));
 }
 
 void Vector2D::Zero() {
