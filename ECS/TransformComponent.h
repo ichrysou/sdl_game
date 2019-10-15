@@ -5,9 +5,10 @@
 class
     TransformComponent : public Component
 {
-  public:
+public:
     Vector2D position;
     Vector2D velocity;
+    Vector2D orientation;
 
     int height = 32;
     int width = 32;
@@ -49,6 +50,8 @@ class
     void init() override
     {
         velocity.Zero();
+        orientation.x = 1;
+        orientation.y = 0;
     }
 
     void update() override

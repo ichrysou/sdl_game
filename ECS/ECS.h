@@ -104,7 +104,7 @@ class Entity {
 
 class Manager {
    private:
-    std::vector<std::unique_ptr<Entity>> entities;
+    std::vector<std::shared_ptr<Entity>> entities;
     std::array<std::vector<Entity*>, maxGroups> groupedEntities;
    public:
     void update() {
@@ -130,7 +130,7 @@ class Manager {
          * of the vector. Then returns the iterator at the beginning of the elements
          * to be removed. There, erase will take action and clear those  obsolete elements out */
         entities.erase(std::remove_if(std::begin(entities), std::end(entities),
-                                      [](const std::unique_ptr<Entity>& mEntity) { return !mEntity->isActive(); }),
+                                      [](const std::shared_ptr<Entity>& mEntity) { return !mEntity->isActive(); }),
                        std::end(entities));
     }
 
@@ -141,10 +141,24 @@ class Manager {
     std::vector<Entity*>& getGroup(GroupID lgroup) {
         return groupedEntities[lgroup];
     }
-
+    //TODO: refactor this service to
+    //have better performance (e.g. filtering in entt)
+    template <typename T>
+    std::vector<std::shared_ptr<Entity>> getEntities()
+    {
+        std::vector<std::shared_ptr<Entity>> filtered;
+        for (auto &e : entities)
+        {
+            if (e->hasComponent<T>())
+            {
+                filtered.emplace_back(e);
+            }
+        }
+        return filtered;
+    }
     Entity& addEntity() {
         Entity* e = new Entity(*this);
-        std::unique_ptr<Entity> uPtr{e};
+        std::shared_ptr<Entity> uPtr{e};
         entities.emplace_back(std::move(uPtr));
         return *e;
     }

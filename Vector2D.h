@@ -26,6 +26,7 @@ public:
 
     void Zero();
     float Length();
+    Vector2D getDirection();
     Vector2D& operator*(const int& i);
     Vector2D& operator/(const int& i);
 

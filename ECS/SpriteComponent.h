@@ -72,24 +72,9 @@ public:
 
     void update() override
     {
-        // TODO: change animation design pattern
-        //TODO: need to pass: number of frames
         // TODO: remove the ifs
         if (m_animate)
         {
-
-            /* if (m_id == "skeleton")
-            {
-                speed = 100;                          // TODO: rename speed to reverse speed
-                int frameno = SDL_GetTicks() / speed; //actual
-                frames = 10;
-                srcRect.x = (srcRect.w + ((frameno % frames) * transform->width)) % (transform->width * frames);
-                animIndex = 2;
-
-                destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
-                destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;
-            }
-            else */
             if ((m_id == "knight") || (m_id == "skeleton"))
             {
                 auto animcomp = entity->getComponent<AnimationComponent>();
@@ -133,7 +118,7 @@ public:
     {
         TextureManager::Draw(texture, srcRect, destRect, spriteflip, m_angle);
     }
-
+    //TODO: remove play (should be part of animation component)
     void play(std::string animName)
     {
         entity->getComponent<AnimationComponent>().setActive(animName);

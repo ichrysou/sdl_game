@@ -1,4 +1,4 @@
-The system is: Windows - 10.0.17763 - AMD64
+The system is: Windows - 10.0.18362 - AMD64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.21.27702/bin/Hostx64/x86/cl.exe 
 Build flags: 
@@ -50,17 +50,17 @@ The CXX compiler identification is MSVC, found in "c:/Users/ichrysou/Desktop/sdl
 Determining if the C compiler works passed with the following output:
 Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Ninja/ninja.exe" "cmTC_be625"
-[1/2] Building C object CMakeFiles\cmTC_be625.dir\testCCompiler.c.obj
-[2/2] Linking C executable cmTC_be625.exe
+Run Build Command:"C:/Ninja/ninja.exe" "cmTC_1f4aa"
+[1/2] Building C object CMakeFiles\cmTC_1f4aa.dir\testCCompiler.c.obj
+[2/2] Linking C executable cmTC_1f4aa.exe
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Ninja/ninja.exe" "cmTC_3fe32"
-[1/2] Building C object CMakeFiles\cmTC_3fe32.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_3fe32.exe
+Run Build Command:"C:/Ninja/ninja.exe" "cmTC_93403"
+[1/2] Building C object CMakeFiles\cmTC_93403.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_93403.exe
 
 
 
@@ -68,9 +68,9 @@ Run Build Command:"C:/Ninja/ninja.exe" "cmTC_3fe32"
 Detecting C [] compiler features compiled with the following output:
 Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Ninja/ninja.exe" "cmTC_50f8a"
-[1/2] Building C object CMakeFiles\cmTC_50f8a.dir\feature_tests.c.obj
-[2/2] Linking C executable cmTC_50f8a.exe
+Run Build Command:"C:/Ninja/ninja.exe" "cmTC_febf5"
+[1/2] Building C object CMakeFiles\cmTC_febf5.dir\feature_tests.c.obj
+[2/2] Linking C executable cmTC_febf5.exe
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -78,17 +78,17 @@ Run Build Command:"C:/Ninja/ninja.exe" "cmTC_50f8a"
 Determining if the CXX compiler works passed with the following output:
 Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Ninja/ninja.exe" "cmTC_57185"
-[1/2] Building CXX object CMakeFiles\cmTC_57185.dir\testCXXCompiler.cxx.obj
-[2/2] Linking CXX executable cmTC_57185.exe
+Run Build Command:"C:/Ninja/ninja.exe" "cmTC_6ecfb"
+[1/2] Building CXX object CMakeFiles\cmTC_6ecfb.dir\testCXXCompiler.cxx.obj
+[2/2] Linking CXX executable cmTC_6ecfb.exe
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Ninja/ninja.exe" "cmTC_de054"
-[1/2] Building CXX object CMakeFiles\cmTC_de054.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_de054.exe
+Run Build Command:"C:/Ninja/ninja.exe" "cmTC_69e1d"
+[1/2] Building CXX object CMakeFiles\cmTC_69e1d.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_69e1d.exe
 
 
 
@@ -96,9 +96,9 @@ Run Build Command:"C:/Ninja/ninja.exe" "cmTC_de054"
 Detecting CXX [] compiler features compiled with the following output:
 Change Dir: c:/Users/ichrysou/Desktop/sdl_game/sdl_game/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"C:/Ninja/ninja.exe" "cmTC_17b10"
-[1/2] Building CXX object CMakeFiles\cmTC_17b10.dir\feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_17b10.exe
+Run Build Command:"C:/Ninja/ninja.exe" "cmTC_7d84b"
+[1/2] Building CXX object CMakeFiles\cmTC_7d84b.dir\feature_tests.cxx.obj
+[2/2] Linking CXX executable cmTC_7d84b.exe
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers

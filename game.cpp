@@ -1,3 +1,5 @@
+
+#include "Systems.h"
 #include "game.h"
 #include "textureManager.h"
 #include "Map.h"
@@ -76,7 +78,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         {},
 
     }; */
+
+    //player.getComponent<AnimationComponent>().addAnimation(Animation("bow-down", "knight", 3, 150, 240, 150, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("idle", "knight", 1, 1, 330, 120, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("bow", "knight", 3, 150, 240, 150, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk", "knight", 3, 30, 240, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-up", "knight", 8, 30, 0, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-down", "knight", 8, 30, 0, 30, 30, 24));
@@ -179,7 +184,7 @@ void Game::update()
     tile->getComponent<TileComponent>().dstRect.x += -(player_velocity.x * player_speed);
     tile->getComponent<TileComponent>().dstRect.y += -(player_velocity.y * player_speed);
 #endif
-    for (auto &p : projectiles)
+    /* for (auto &p : projectiles)
     {
         for (auto &enemy : enemies)
         {
@@ -189,7 +194,7 @@ void Game::update()
                 p->destroy();
             }
         }
-    }
+    } */
     for (auto &enemy : enemies)
     {
         Vector2D enemy_pos = enemy->getComponent<TransformComponent>().position;
@@ -262,6 +267,8 @@ void Game::update()
         camera.y = camera.h;
     }
     //thunder.getComponent<TransformComponent>().position = playerPos + Vector2D(64, -16);
+    auto arrow_sys = ArrowSystem(manager);
+    arrow_sys.update();
 }
 
 void Game::clean()
