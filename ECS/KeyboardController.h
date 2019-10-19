@@ -5,44 +5,42 @@
 
 class KeyboardController : public Component
 {
+    SDL_Keycode m_last_pressed;
+
 public:
-    TransformComponent *transform;
-    SpriteComponent *sprite;
-    AnimationComponent *animation;
+    bool A = false;
+    bool S = false;
+    bool D = false;
+    bool W = false;
+    bool SPACE = false;
+    bool at_least_one_pressed() { return A || W || S || D || SPACE; }
+    SDL_Keycode last_key_pressed() { return m_last_pressed; }
     void init() override
     {
-        transform = &entity->getComponent<TransformComponent>();
-        sprite = &entity->getComponent<SpriteComponent>();
-        animation = &entity->getComponent<AnimationComponent>();
     }
 
     void update() override
     {
-
         if (Game::event.type == SDL_KEYDOWN)
         {
+            m_last_pressed = Game::event.key.keysym.sym;
             switch (Game::event.key.keysym.sym)
             {
+
             case SDLK_SPACE:
-                animation->setActive("bow");
+                SPACE = true;
                 break;
             case SDLK_w:
-                transform->velocity.y = -1;
-                sprite->play("walk-up");
+                W = true;
                 break;
-            case SDLK_a: //TODO: fix movement, react on key press not key down?
-                sprite->play("walk");
-                transform->velocity.x = -1;
-                sprite->spriteflip = SDL_FLIP_HORIZONTAL;
+            case SDLK_a:
+                A = true;
                 break;
             case SDLK_s:
-                sprite->play("walk-down");
-                transform->velocity.y = 1;
+                S = true;
                 break;
             case SDLK_d:
-                sprite->play("walk");
-                transform->velocity.x = 1;
-                break;
+                D = true;
                 break;
             default:
                 break;
@@ -52,25 +50,21 @@ public:
         {
             switch (Game::event.key.keysym.sym)
             {
-            case SDLK_SPACE:
+            case SDLK_SPACE: //TODO: add release arrow event here
+                SPACE = false;
+                break;
             case SDLK_w:
-                sprite->play("idle");
-                transform->velocity.y = 0;
+                W = false;
                 break;
             case SDLK_a:
-                sprite->play("idle");
-                if (transform->velocity.x == -1)
-                    transform->velocity.x = 0;
-                sprite->spriteflip = SDL_FLIP_NONE;
+                A = false;
+
                 break;
             case SDLK_s:
-                sprite->play("idle");
-                transform->velocity.y = 0;
+                S = false;
                 break;
             case SDLK_d:
-                sprite->play("idle");
-                if (transform->velocity.x == 1)
-                    transform->velocity.x = 0;
+                D = false;
                 break;
             case SDLK_ESCAPE:
                 Game::isRunning = false;

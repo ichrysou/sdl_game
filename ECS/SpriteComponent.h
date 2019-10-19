@@ -36,15 +36,6 @@ public:
     {
         m_animate = animate;
         m_angle = angle;
-        /* TODO: remove */
-        /* if (id == "knight")
-        {
-            Animation walk = Animation(1, 2, 10);
-            Animation idle = Animation(0, 4, 10); //TODO: remove magic numbers
-            animations.emplace("idle", idle);
-            animations.emplace("walk", walk);
-            play("idle");
-        } */
         setTex(id);
         m_id = id;
     }
@@ -72,7 +63,7 @@ public:
 
     void update() override
     {
-        // TODO: remove the ifs
+        // TODO: remove animation from here. Add an animation system.
         if (m_animate)
         {
             if ((m_id == "knight") || (m_id == "skeleton"))
@@ -117,13 +108,5 @@ public:
     void draw() override
     {
         TextureManager::Draw(texture, srcRect, destRect, spriteflip, m_angle);
-    }
-    //TODO: remove play (should be part of animation component)
-    void play(std::string animName)
-    {
-        entity->getComponent<AnimationComponent>().setActive(animName);
-        /* frames = animations[animName].frame;
-        animIndex = animations[animName].index;
-        speed = animations[animName].speed; */
     }
 };

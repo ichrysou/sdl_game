@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "Vector2D.h"
 #include <cmath>
 Vector2D::Vector2D()
@@ -53,6 +54,19 @@ Vector2D &operator/(Vector2D &v1, const Vector2D &v2)
 {
     return v1.Divide(v2);
 }
+bool Vector2D::operator==(Vector2D &v1)
+{
+    return v1.x == this->x && v1.y == this->y;
+}
+bool Vector2D::operator==(int number)
+{
+    return number == this->x && number == this->y;
+}
+
+bool Vector2D::operator!=(Vector2D &v1)
+{
+    return !(*this == v1);
+}
 Vector2D &Vector2D::operator+=(const Vector2D &vec)
 {
     return this->Add(vec);
@@ -86,6 +100,11 @@ Vector2D &Vector2D::operator/(const int &i)
 float Vector2D::Length()
 {
     return sqrt(pow(this->x, 2) + pow(this->y, 2));
+}
+
+int Vector2D::getAngle()
+{
+    return (std::atan2(y, x) * 180 / M_PI);
 }
 
 Vector2D Vector2D::getDirection()

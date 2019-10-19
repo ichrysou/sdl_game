@@ -23,6 +23,9 @@ SDL_Rect Game::camera = {
     SCREEN_HEIGHT};
 
 AssetManager *Game::assets = new AssetManager(&manager);
+// create systems
+auto movement_sys = PlayerMovementSystem(manager);
+auto arrow_sys = ArrowSystem(manager);
 
 auto &player(manager.addEntity());
 //auto &thunder(manager.addEntity());
@@ -115,6 +118,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     //wall.addComponent<TransformComponent>(300.0f, 300.0f, 32, 32, 1);
     //wall.addComponent<SpriteComponent>("../assets/dirt.png");
     //wall.addComponent<ColliderComponent>("wall");
+    // initialize Systems
 }
 
 void Game::handleEvents()
@@ -270,7 +274,9 @@ void Game::update()
         camera.y = camera.h;
     }
     //thunder.getComponent<TransformComponent>().position = playerPos + Vector2D(64, -16);
-    auto arrow_sys = ArrowSystem(manager);
+    // TODO: add systems to System Manager and update in the game engine just like components
+
+    movement_sys.update();
     arrow_sys.update();
 }
 
