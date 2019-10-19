@@ -97,8 +97,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     thunder.addComponent<SpriteComponent>("thunder", false);
     thunder.addComponent<KeyboardController>();
  */
-    assets->CreateProjectile(Vector2D(220, 220), Vector2D(1, 0), 1000, 1, "arrow");
-    assets->CreateProjectile(Vector2D(220, 220), Vector2D(1, 1), 1000, 1, "arrow");
+    //assets->CreateProjectile(Vector2D(220, 220), Vector2D(0, 1), 1000, 1, "arrow", 90);
+    assets->CreateProjectile(Vector2D(220, 220), Vector2D(0, 1), 1000, 1, "arrow", Vector2D(0, 1).getAngle());
 
     for (int i = 0; i < NUMBER_OF_ENEMIES; i++)
     {
@@ -120,7 +120,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 void Game::handleEvents()
 {
 
-    SDL_PollEvent(&event);
+    if (!SDL_PollEvent(&event))
+    {
+        event.type = 0;
+    }
 
     switch (event.type)
     {
