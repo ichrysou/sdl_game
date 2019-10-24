@@ -84,6 +84,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     //player.getComponent<AnimationComponent>().addAnimation(Animation("bow-down", "knight", 3, 150, 240, 150, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("idle", "knight", 1, 1, 330, 120, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("idle-up", "knight", 1, 1, 210, 120, 30, 24)); //TODO: make speed 0 for motionless animations
+    player.getComponent<AnimationComponent>().addAnimation(Animation("idle-down", "knight", 1, 1, 120, 30, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("bow", "knight", 3, 150, 240, 150, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk", "knight", 3, 30, 240, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-up", "knight", 8, 30, 0, 120, 30, 24));
@@ -111,6 +113,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         enemy.addComponent<AnimationComponent>("skeleton");
         enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", "skeleton", 10, 30, 0, 32, 32, 32));
         enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", "skeleton", 10, 30, 0, 64, 32, 32));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", "skeleton", 10, 100, 0, 128, 32, 32, false));
         enemy.getComponent<AnimationComponent>().setActive("walk");
         enemy.addComponent<ColliderComponent>("skeleton");
         enemy.addGroup(groupEnemies);

@@ -70,10 +70,10 @@ public:
             {
                 auto animcomp = entity->getComponent<AnimationComponent>();
                 auto anim = animcomp.getActive();
-                frames = anim->m_num_frames;
-                int frameno = (SDL_GetTicks() / anim->m_speed) % frames; //actual
-                srcRect.x = anim->m_start_x + frameno * anim->m_frame_w; //(srcRect.w + (frameno * anim->m_frame_w)) % (anim->m_frame_w * frames);
-                srcRect.y = anim->m_start_y;                             // TODO(ichrysou): we can define direction and increment Ys
+                int frameno = (SDL_GetTicks() / anim->m_speed) % anim->m_num_frames; //actual
+                anim->setCurrentFrame(frameno);
+                srcRect.x = anim->m_start_x + anim->getCurrentFrame() * anim->m_frame_w; //(srcRect.w + (frameno * anim->m_frame_w)) % (anim->m_frame_w * frames);
+                srcRect.y = anim->m_start_y;                                             // TODO(ichrysou): we can define direction and increment Ys
                 animIndex = 0;
                 destRect.x = static_cast<int>(transform->position.x) - Game::camera.x;
                 destRect.y = static_cast<int>(transform->position.y) - Game::camera.y;

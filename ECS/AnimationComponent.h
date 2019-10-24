@@ -15,9 +15,8 @@ private:
     std::string m_name; //name of the sprite
     std::string m_active_name;
     Animation *m_active;
-    /*     int m_num_frames;
+    /* int m_num_frames;
     int m_anim_speed;
-
     std::string m_active_name; // name of the specific animation for a sprite
     int m_index;
     double m_angle; */
@@ -33,6 +32,8 @@ public:
     {
         if (m_animations.find(name) != m_animations.end())
             m_active = &m_animations[name];
+        else
+            std::cout << "animation not found" << std::endl;
     }
     Animation *getActive()
     {

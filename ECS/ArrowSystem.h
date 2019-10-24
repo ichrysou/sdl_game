@@ -56,7 +56,7 @@ public:
                   projectile->getComponent<ColliderComponent>().collider,
                   tile->getComponent<ColliderComponent>().collider))
           {
-            //std::cout << "hit tileeeee" << std::endl;
+            projectile->destroy(); //std::cout << "hit tileeeee" << std::endl;//TODO: make the arrow to bounce back
           }
         }
       }
@@ -68,8 +68,13 @@ public:
                   projectile->getComponent<ColliderComponent>().collider,
                   enemy->getComponent<ColliderComponent>().collider))
           {
-            //std::cout << "hit enemyyyyyyyy" << std::endl;
+            //TODO: generate enemy kill event, this will be the reaction:
+            enemy->getComponent<AnimationComponent>().setActive("die");
           }
+        }
+        if (enemy->getComponent<AnimationComponent>().getActive()->isDone())
+        {
+          enemy->destroy();
         }
       }
       /* for (auto &collider : colliders)

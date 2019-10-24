@@ -12,7 +12,7 @@ AssetManager::~AssetManager()
 void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int range, int speed, std::string id, int angle)
 {
     auto &projectile(manager->addEntity());
-    projectile.addComponent<TransformComponent>(pos.x, pos.y, 64, 64, 1);
+    projectile.addComponent<TransformComponent>(pos.x, pos.y, 16, 32, 1);
     //TODO: add this to Vector2D as getAngle()
     projectile.addComponent<SpriteComponent>(id, true, angle);
     projectile.addComponent<ProjectileComponent>(range, speed, vel);

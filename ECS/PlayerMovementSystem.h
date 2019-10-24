@@ -18,9 +18,30 @@ private:
         auto transform = &player->getComponent<TransformComponent>();
         auto sprite = &player->getComponent<SpriteComponent>();
         auto zero = Vector2D(0, 0);
+        auto up = Vector2D(0, vel_w);
+        auto down = Vector2D(0, vel_s);
+        auto left = Vector2D(vel_a, 0);
+        auto right = Vector2D(vel_d, 0);
         if (transform->velocity == zero)
         {
-            animation->setActive("idle");
+            if (transform->orientation == left)
+            {
+                animation->setActive("idle");
+                sprite->spriteflip = SDL_FLIP_HORIZONTAL;
+            }
+            else if (transform->orientation == right)
+            {
+                animation->setActive("idle");
+                sprite->spriteflip = SDL_FLIP_NONE;
+            }
+            else if (transform->orientation == up)
+            {
+                animation->setActive("idle-up");
+            }
+            else if (transform->orientation == down)
+            {
+                animation->setActive("idle-down");
+            }
         }
         else
         {
