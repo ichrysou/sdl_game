@@ -1,12 +1,11 @@
 #include "textureManager.h"
+#include "game.h"
 #include <SDL_image.h>
 
-#include <direct.h>
 #include <stdlib.h>
 #include <stdio.h>
 SDL_Texture *TextureManager::LoadTexture(const char *texture)
 {
-
     SDL_Surface *tempSurface = IMG_Load(texture);
     if (!tempSurface)
     {
@@ -26,3 +25,10 @@ void TextureManager::Draw(SDL_Texture *tex, SDL_Rect src, SDL_Rect dest, SDL_Ren
 {
     SDL_RenderCopyEx(Game::renderer, tex, &src, &dest, angle, NULL, flip);
 };
+
+void TextureManager::DrawSquare(SDL_Rect rect){
+    SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
+    rect.x -= Game::camera.x;
+    rect.y -= Game::camera.y;
+    SDL_RenderDrawRect(Game::renderer, &rect);
+}

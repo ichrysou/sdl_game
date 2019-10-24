@@ -169,21 +169,25 @@ void Game::render()
     {
         projectile->draw();
     }
+    for (auto &collider : colliders)
+    {
+        collider->draw();
+    }
 
     SDL_RenderPresent(renderer);
 }
 #define get_collider(x) getComponent<ColliderComponent>().collider.x
 void Game::update()
 {
+
+
     Vector2D playerPos = player.getComponent<TransformComponent>().position;
     manager.refresh();
     manager.update();
-
     for (auto &col : colliders)
     {
         if (Collision::AABB(player.getComponent<ColliderComponent>(), col->getComponent<ColliderComponent>()))
         {
-            std::cout << "collision" << std::endl;
             player.getComponent<TransformComponent>().position = playerPos;
         }
     }
@@ -194,17 +198,7 @@ void Game::update()
     tile->getComponent<TileComponent>().dstRect.x += -(player_velocity.x * player_speed);
     tile->getComponent<TileComponent>().dstRect.y += -(player_velocity.y * player_speed);
 #endif
-    /* for (auto &p : projectiles)
-    {
-        for (auto &enemy : enemies)
-        {
-            if (Collision::AABB(enemy->getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
-            {
-                std::cout << "Hit enemy!" << std::endl;
-                p->destroy();
-            }
-        }
-    } */
+
     for (auto &enemy : enemies)
     {
         Vector2D enemy_pos = enemy->getComponent<TransformComponent>().position;

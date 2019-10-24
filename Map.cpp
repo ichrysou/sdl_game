@@ -44,16 +44,19 @@ void Map::LoadMapXml(std::string tilemap_path)
 
     for (pugi::xpath_node tile : layer1[0].node().children())
     {
+
         pugi::xml_node node = tile.node();
         int x = node.attribute("x").as_int();
         int y = node.attribute("y").as_int();
+
         int index = node.attribute("index").as_int();
         int rot = node.attribute("rot").as_int();
         if (index != -1)
         {
+
             auto &col(manager.addEntity());
-            std::cout << x << " " << y << std::endl;
-            col.addComponent<ColliderComponent>("terrain", x * tilewidth, y * tileheight, tilewidth, tileheight); //TODO: rmv magic number for scale
+            std::cout << "x " << x * tilewidth << "y " << y * tileheight <<" index " << index<<std::endl;
+            col.addComponent<ColliderComponent>("terrain", x * tilewidth, y * tileheight, tilewidth, tileheight, 2); //TODO: rmv magic number for scale
             col.addGroup(Game::groupColliders);
         }
     }

@@ -4,7 +4,8 @@
 #include "ECS.h"
 #include "TransformComponent.h"
 #include "game.h"
-
+#include "textureManager.h"
+#define DEBUG
 class ColliderComponent : public Component
 {
   public:
@@ -18,13 +19,13 @@ class ColliderComponent : public Component
     {
         tag = t;
     }
-    ColliderComponent(std::string t, int xpos, int ypos, int width, int height)
+    ColliderComponent(std::string t, int xpos, int ypos, int width, int height, int scale = 1)
     {
         tag = t;
-        collider.x = xpos * 2;
-        collider.y = ypos * 2; //TODO: scaling issue and magic number hate
-        collider.w = width;
-        collider.h = height;
+        collider.x = xpos * scale;
+        collider.y = ypos * scale;
+        collider.w = width * scale;
+        collider.h = height * scale;
     }
     void init() override
     {
@@ -35,8 +36,16 @@ class ColliderComponent : public Component
         transform = &entity->getComponent<TransformComponent>(); */
         /* entity->addGroup(Game::groupColliders); */
     }
+
+#ifdef DEBUG
+    void draw() {
+        TextureManager::DrawSquare(collider);
+    };
+#endif
+
     void update() override
     {
+        //TODO: rotate the colliders!
         if (entity->hasComponent<TransformComponent>())
         {
             auto transform = &entity->getComponent<TransformComponent>();

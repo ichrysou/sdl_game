@@ -35,7 +35,7 @@ using ComponentArray = std::array<Component*, maxComponents>;
 /* base class */
 class Component {
    public:
-    Entity* entity;    /* reference to the owner */
+    Entity* entity; /* reference to the owner */
 
     virtual void init() {}
     virtual void update() {}
@@ -53,10 +53,8 @@ class Entity {
     ComponentBitSet componentBitSet;
     GroupBitSet groupBitSet;
 
-
-
    public:
-   Entity(Manager& manager) : m_manager(manager) {}
+    Entity(Manager& manager) : m_manager(manager) {}
 
     void update() {
         for (auto& c : components) c->update();
@@ -72,14 +70,10 @@ class Entity {
     bool hasComponent() const {
         return componentBitSet[getComponentTypeID<T>()];
     }
-    bool hasGroup(GroupID group) const {
-        return groupBitSet[group];
-    }
+    bool hasGroup(GroupID group) const { return groupBitSet[group]; }
 
     void addGroup(GroupID group);
-    void delGroup(GroupID group) {
-        groupBitSet[group] = false;
-    }
+    void delGroup(GroupID group) { groupBitSet[group] = false; }
 
     template <typename T, typename... TArgs>
     T& addComponent(TArgs&&... mArgs) {
@@ -106,6 +100,7 @@ class Manager {
    private:
     std::vector<std::shared_ptr<Entity>> entities;
     std::array<std::vector<Entity*>, maxGroups> groupedEntities;
+
    public:
     void update() {
         for (auto& e : entities) e->update();
@@ -116,13 +111,8 @@ class Manager {
     void refresh() {
         for (auto i(0u); i < maxGroups; i++) {
             auto& v(groupedEntities[i]);
-            v.erase(
-                std::remove_if(std::begin(v), std::end(v),[i](Entity *entity)
-                {
-                    return !entity->isActive() || !entity->hasGroup(i);
-                }),
-                std::end(v)
-            );
+            v.erase(std::remove_if(std::begin(v), std::end(v), [i](Entity* entity) { return !entity->isActive() || !entity->hasGroup(i); }),
+                    std::end(v));
         }
 
         /* remove_if re-orders the elements in a way that:
@@ -134,28 +124,22 @@ class Manager {
                        std::end(entities));
     }
 
-    void AddToGroup(Entity *lentity, GroupID lgroup) {
-        groupedEntities[lgroup].emplace_back(lentity);
-    }
+    void AddToGroup(Entity* lentity, GroupID lgroup) { groupedEntities[lgroup].emplace_back(lentity); }
 
-    std::vector<Entity*>& getGroup(GroupID lgroup) {
-        return groupedEntities[lgroup];
-    }
-    //TODO: refactor this service to
-    //have better performance (e.g. filtering in entt)
+    std::vector<Entity*>& getGroup(GroupID lgroup) { return groupedEntities[lgroup]; }
+    // TODO: refactor this service to
+    // have better performance (e.g. filtering in entt)
     template <typename T>
-    std::vector<std::shared_ptr<Entity>> getEntities()
-    {
+    std::vector<std::shared_ptr<Entity>> getEntities() {
         std::vector<std::shared_ptr<Entity>> filtered;
-        for (auto &e : entities)
-        {
-            if (e->hasComponent<T>())
-            {
+        for (auto& e : entities) {
+            if (e->hasComponent<T>()) {
                 filtered.emplace_back(e);
             }
         }
         return filtered;
     }
+
     Entity& addEntity() {
         Entity* e = new Entity(*this);
         std::shared_ptr<Entity> uPtr{e};
