@@ -24,15 +24,15 @@ class ArrowSystem {
 
             if (keyboard->SPACE) {
                 attack_pressed = true;
-                animation->setActive("bow");
+                animation->setActive("bow"); // TODO: correct buggy last-animation-wins principle
             }
+
             if (attack_pressed) {
                 if (!keyboard->SPACE) {
 
                     attack_pressed = false;
                     auto transform = player->getComponent<TransformComponent>();
-                    std::cout << "atttacckkk released x" << transform.position.x << " y " << transform.position.y << std::endl;
-                    Game::assets->CreateProjectile(transform.position, transform.orientation, 1000, 1, "arrow",
+                    Game::assets->CreateProjectile(transform.position, transform.orientation, 1000, 2, "arrow",
                                                    transform.orientation.getAngle());
                 }
             }
@@ -48,11 +48,7 @@ class ArrowSystem {
                     auto recA = projectile->getComponent<ColliderComponent>().collider;
                     auto recB = tile->getComponent<ColliderComponent>().collider;
                     if (Collision::AABB(recA, recB)) {
-
-                        std::cout << "arrow x " << recA.x << "y " << recA.y <<std::endl;
-                        std::cout << "probs with x " << recB.x << "y " << recB.y <<std::endl;
-
-                        projectile->destroy();  // std::cout << "hit tileeeee" << std::endl;//TODO: make the arrow to bounce back
+                        projectile->destroy();
                     }
                 }
             }
@@ -60,12 +56,11 @@ class ArrowSystem {
                 if (enemy->hasComponent<ColliderComponent>()) {
                     if (Collision::AABB(projectile->getComponent<ColliderComponent>().collider,
                                         enemy->getComponent<ColliderComponent>().collider)) {
-                        // TODO: generate enemy kill event, this will be the reaction:
-                        enemy->getComponent<AnimationComponent>().setActive("die");
+                        enemy->addComponent<DeadComponent>();
+                        enemy->getComponent<AnimationComponent>().setActive("die"); // -->animation system
+                        enemy->getComponent<TransformComponent>().velocity.Zero(); // -->enemy movement system
+                        /* enemy->delGroup(Game::groupEnemies);  // --> entity garbage collection system? */
                     }
-                }
-                if (enemy->getComponent<AnimationComponent>().getActive()->isDone()) {
-                    enemy->destroy();
                 }
             }
         }

@@ -1,15 +1,13 @@
 #pragma once
 
-struct Frame
-{
+struct Frame {
     int m_x;
     int m_y;
     int m_w;
     int m_h;
 };
 
-struct Animation
-{
+struct Animation {
     std::string m_name;
     std::string m_tex_id;
     std::vector<Frame> m_frames;
@@ -24,13 +22,12 @@ struct Animation
     bool m_done = false;
     bool m_played_last = false;
     Animation() {}
-    Animation(int f, int s)
-    {
+    Animation(int f, int s) {
         m_num_frames = f;
         m_speed = s;
     };
-    Animation(std::string name, std::string tex_id, int frames, int speed, int start_x, int start_y, int frame_w, int frame_h, bool loop = true)
-    {
+    Animation(std::string name, std::string tex_id, int frames, int speed, int start_x, int start_y, int frame_w, int frame_h,
+              bool loop = true) {
         m_name = name;
         m_tex_id = tex_id;
         m_num_frames = frames;
@@ -44,24 +41,19 @@ struct Animation
     std::string getName() { return m_name; };
     void reset() { m_done = false; };
     int getCurrentFrame() { return m_current_frame; };
-    void changeFrame()
-    {
-        int frameno = (SDL_GetTicks() / m_speed) % m_num_frames; //actual
+    void changeFrame() {
+        int frameno = (SDL_GetTicks() / m_speed) % m_num_frames;  // actual
         setCurrentFrame(frameno);
     };
     bool isDone() { return m_done; };
-    void setCurrentFrame(int frameno)
-    {
-        if (frameno == m_num_frames - 1)
-        {
+    bool isLoop() { return m_loop; };
+    void setCurrentFrame(int frameno) {
+        if (frameno == m_num_frames - 1) {
             m_played_last = true;
         }
-        if (!m_loop)
-        {
-            if (m_done)
-                return;
-            if (m_played_last)
-                m_done = true;
+        if (!m_loop) {
+            if (m_done) return;
+            if (m_played_last) m_done = true;
         }
         m_current_frame = frameno;
     };

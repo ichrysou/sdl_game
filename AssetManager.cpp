@@ -9,7 +9,7 @@ void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int range, int s
     auto &projectile(manager->addEntity());
     projectile.addComponent<TransformComponent>(pos.x, pos.y, 16, 32, 1);
     // TODO: add this to Vector2D as getAngle()
-    projectile.addComponent<SpriteComponent>(id, true, angle);
+    projectile.addComponent<SpriteComponent>(id, angle);
     projectile.addComponent<ProjectileComponent>(range, speed, vel);
     projectile.addComponent<ColliderComponent>("projectile", pos.x, pos.y, 16, 32);
     projectile.addGroup(Game::groupProjectiles);

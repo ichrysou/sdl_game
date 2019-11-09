@@ -13,7 +13,7 @@ public:
     void init() override
     {
         m_transform = &entity->getComponent<TransformComponent>();
-        m_transform->velocity = m_velocity;
+        m_transform->velocity = m_velocity * m_speed;
     };
     void update() override
     {
