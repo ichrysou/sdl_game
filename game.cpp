@@ -6,6 +6,7 @@
 #include "Systems.h"
 #include "Vector2D.h"
 #include "textureManager.h"
+#include <SDL_ttf.h>
 
 #define NUMBER_OF_ENEMIES 10
 
@@ -53,6 +54,15 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
+
+    int imgFlags = IMG_INIT_PNG;
+    IMG_Init(imgFlags);
+    if (TTF_Init() < 0) {
+        std::cout << "error" << std::endl;
+    }
+
+
+
     assets->AddTexture("knight", "../assets/link.png");
     assets->AddTexture("thunder", "../assets/thunder.png");
     assets->AddTexture("skeleton", "../assets/skeleton.png");
@@ -61,17 +71,17 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     Map::LoadMapXml("../assets/stupid_map_2.xml");
     player.addComponent<AnimationComponent>("player");
 
-    // player.getComponent<AnimationComponent>().addAnimation(Animation("bow-down", "knight", 3, 150, 240, 150, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("bow-down", "knight", 3, 150, 0, 60, 30, 24, false));
     player.getComponent<AnimationComponent>().addAnimation(Animation("idle", "knight", 1, 1, 330, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(
         Animation("idle-up", "knight", 1, 1, 210, 120, 30, 24));  // TODO: make speed 0 for motionless animations
     player.getComponent<AnimationComponent>().addAnimation(Animation("idle-down", "knight", 1, 1, 120, 30, 30, 24));
-    player.getComponent<AnimationComponent>().addAnimation(Animation("bow", "knight", 3, 150, 240, 150, 30, 24));
+    player.getComponent<AnimationComponent>().addAnimation(Animation("bow", "knight", 3, 150, 240, 150, 30, 24, false));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk", "knight", 3, 30, 240, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-up", "knight", 8, 30, 0, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-down", "knight", 8, 30, 0, 30, 30, 24));
     // player.getComponent<AnimationComponent>().addAnimation(Animation("walk-vertical", "knight", 1, 2, 10, 0, 0, 32, 32));
-    player.addComponent<TransformComponent>(200, 200, 30, 20, 2);
+    player.addComponent<TransformComponent>(200, 200, 25, 20, 2);
     player.addComponent<SpriteComponent>("knight");
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("knight");
@@ -136,7 +146,7 @@ void Game::render() {
         collider->draw();
     }
 
-    SDL_RenderPresent(renderer);
+//    SDL_RenderPresent(renderer);
 }
 #define get_collider(x) getComponent<ColliderComponent>().collider.x
 void Game::update() {
@@ -165,62 +175,7 @@ void Game::update() {
             player.getComponent<TransformComponent>().position = playerPos;
         }
     }
-    // TODO: put in fuction:
-    for (auto &loc_enemy : enemies) {
-        for (auto &loc_enemy2 : enemies) {
-            if (&loc_enemy2 == &loc_enemy) continue;
-            if (loc_enemy->hasComponent<DeadComponent>())
-              continue;
-            if (loc_enemy2->hasComponent<DeadComponent>())
-              continue;
-            if (Collision::AABB(
-                    loc_enemy->getComponent<ColliderComponent>().collider,
-                    loc_enemy2->getComponent<ColliderComponent>().collider)) {
-              int maxX = std::max(
-                  loc_enemy->getComponent<ColliderComponent>().collider.x,
-                  loc_enemy2->getComponent<ColliderComponent>()
-                      .collider
-                      .x); // Minimum of the boxes' right-side points (top right
-                           // and bottom right) x coordinates
-              int maxY = std::max(
-                  loc_enemy->getComponent<ColliderComponent>().collider.y,
-                  loc_enemy2->getComponent<ColliderComponent>()
-                      .collider
-                      .y); // Minimum of the boxes' right-side points (top right
-                           // and bottom right) x coordinates
-              int minX = std::min(
-                  loc_enemy->get_collider(x) + loc_enemy->get_collider(w),
-                  loc_enemy2->get_collider(x) + loc_enemy2->get_collider(w));
-              int minY = std::min(
-                  loc_enemy->get_collider(y) + loc_enemy->get_collider(h),
-                  loc_enemy2->get_collider(y) + loc_enemy2->get_collider(h));
-              int distHoriz =
-                  minX - maxX; // The horizontal intersection distance
-              int distVert = minY - maxY; // The vertical instersection distance
 
-              // If the boxes are overlapping less on the horizontal axis than
-              // the vertical axis, move one of the sprites (in this case,
-              // sprite0) in the opposite direction of the x-axis overlap
-              if (abs(distHoriz) < abs(distVert)) {
-                loc_enemy->getComponent<TransformComponent>().velocity.x *=
-                    (loc_enemy2->getComponent<TransformComponent>().velocity.x <
-                             0
-                         ? 1
-                         : -1);
-              }
-              // Else, move one of the sprites (again, I just decided to use
-              // sprite0 here, arbitrarily) in the opposite direction of the
-              // y-axis overlap
-              else {
-                loc_enemy->getComponent<TransformComponent>().velocity.y *=
-                    (loc_enemy2->getComponent<TransformComponent>().velocity.y <
-                             0
-                         ? 1
-                         : -1);
-              }
-            }
-        }
-    }
     camera.x = player.getComponent<TransformComponent>().position.x - SCREEN_WIDTH / 2;
     camera.y = player.getComponent<TransformComponent>().position.y - SCREEN_HEIGHT / 2;
     if (camera.x < 0) {

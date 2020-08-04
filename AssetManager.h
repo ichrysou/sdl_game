@@ -20,4 +20,5 @@ public:
   // Texture Management
   void AddTexture(std::string id, const char *path);
   SDL_Texture *GetTexture(std::string id);
+
 };

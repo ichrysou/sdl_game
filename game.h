@@ -23,6 +23,7 @@ public:
   void update();
   void render();
   void clean();
+
   bool running() { return isRunning; };
 
   static AssetManager *assets;

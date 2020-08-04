@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/main.cpp.o -c /home/ichrysou/projects/sdl_game/main.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/main.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/game.cpp.o -c /home/ichrysou/projects/sdl_game/game.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/game.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/AssetManager.cpp.o -c /home/ichrysou/projects/sdl_game/AssetManager.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/AssetManager.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/textureManager.cpp.o -c /home/ichrysou/projects/sdl_game/textureManager.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/textureManager.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/GameObject.cpp.o -c /home/ichrysou/projects/sdl_game/GameObject.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/GameObject.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/Map.cpp.o -c /home/ichrysou/projects/sdl_game/Map.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/Map.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/Vector2D.cpp.o -c /home/ichrysou/projects/sdl_game/Vector2D.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/Vector2D.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/Collision.cpp.o -c /home/ichrysou/projects/sdl_game/Collision.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/Collision.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/Game.dir/ECS/ECS.cpp.o -c /home/ichrysou/projects/sdl_game/ECS/ECS.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/ECS/ECS.cpp"
+},
+{
+  "directory": "/home/ichrysou/projects/sdl_game/build/libraries/pugixml",
+  "command": "/usr/bin/c++   -I/usr/include/SDL2 -I/home/ichrysou/projects/sdl_game/ECS -I/home/ichrysou/projects/sdl_game -I/home/ichrysou/projects/sdl_game/libraries/pugixml/src -I/home/ichrysou/projects/sdl_game/Dev/SDL2_image-2.0.1/include  -g   -std=gnu++14 -o CMakeFiles/pugixml.dir/src/pugixml.cpp.o -c /home/ichrysou/projects/sdl_game/libraries/pugixml/src/pugixml.cpp",
+  "file": "/home/ichrysou/projects/sdl_game/libraries/pugixml/src/pugixml.cpp"
+}
+]

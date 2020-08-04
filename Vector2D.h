@@ -27,6 +27,10 @@ public:
     bool operator==(int number);
     bool operator!=(Vector2D &v1);
     void Zero();
+    static Vector2D &right();
+    static Vector2D &left();
+    static Vector2D &up();
+    static Vector2D &down();
     float Length();
     int getAngle();
     Vector2D getDirection();

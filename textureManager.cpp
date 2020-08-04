@@ -23,6 +23,7 @@ SDL_Texture *TextureManager::LoadTexture(const char *texture)
 
 void TextureManager::Draw(SDL_Texture *tex, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip, double angle)
 {
+//    SDL_SetTextureColorMod(tex, 125, 125, 25);
     SDL_RenderCopyEx(Game::renderer, tex, &src, &dest, angle, NULL, flip);
 };
 

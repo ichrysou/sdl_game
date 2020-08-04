@@ -1,6 +1,27 @@
 #define _USE_MATH_DEFINES
 #include "Vector2D.h"
 #include <cmath>
+
+Vector2D &Vector2D::right() {
+  static Vector2D right(1, 0);
+  return right;
+};
+
+Vector2D &Vector2D::left() {
+  static Vector2D left(-1, 0);
+  return left;
+};
+
+Vector2D &Vector2D::up() {
+  static Vector2D up(0, -1);
+  return up;
+};
+
+Vector2D &Vector2D::down() {
+  static Vector2D down(0, 1);
+  return down;
+};
+
 Vector2D::Vector2D()
 {
     x = 0.0f;

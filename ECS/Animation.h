@@ -39,7 +39,7 @@ struct Animation {
         m_loop = loop;
     };
     std::string getName() { return m_name; };
-    void reset() { m_done = false; };
+    void reset() { m_done = false; m_played_last = false; };
     int getCurrentFrame() { return m_current_frame; };
     void changeFrame() {
         int frameno = (SDL_GetTicks() / m_speed) % m_num_frames;  // actual

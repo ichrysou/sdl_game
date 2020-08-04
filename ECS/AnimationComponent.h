@@ -40,6 +40,7 @@ class AnimationComponent : public Component {
     void update() {
         auto anim = getActive();
         if (m_active_name != anim->getName()) {
+            anim->reset();
             m_frameno = 0;
             m_active_name = anim->getName();
         }

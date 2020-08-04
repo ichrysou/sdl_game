@@ -24,12 +24,17 @@ class ArrowSystem {
 
             if (keyboard->SPACE) {
                 attack_pressed = true;
-                animation->setActive("bow"); // TODO: correct buggy last-animation-wins principle
+                auto transform = player->getComponent<TransformComponent>();
+                if (transform.orientation == Vector2D::right() ||
+                    transform.orientation == Vector2D::left())
+                  animation->setActive("bow"); // TODO: correct buggy
+                                               // last-animation-wins principle
+                if (transform.orientation == Vector2D::down())
+                  animation->setActive("bow-down"); // TODO: correct buggy last-animation-wins
             }
 
             if (attack_pressed) {
                 if (!keyboard->SPACE) {
-
                     attack_pressed = false;
                     auto transform = player->getComponent<TransformComponent>();
                     Game::assets->CreateProjectile(transform.position, transform.orientation, 1000, 2, "arrow",
@@ -57,8 +62,8 @@ class ArrowSystem {
                     if (Collision::AABB(projectile->getComponent<ColliderComponent>().collider,
                                         enemy->getComponent<ColliderComponent>().collider)) {
                         enemy->addComponent<DeadComponent>();
-                        enemy->getComponent<AnimationComponent>().setActive("die"); // -->animation system
-                        enemy->getComponent<TransformComponent>().velocity.Zero(); // -->enemy movement system
+                        enemy->getComponent<AnimationComponent>().setActive("die");  // -->animation system
+                        enemy->getComponent<TransformComponent>().velocity.Zero();   // -->enemy movement system
                         /* enemy->delGroup(Game::groupEnemies);  // --> entity garbage collection system? */
                     }
                 }

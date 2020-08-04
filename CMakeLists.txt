@@ -10,9 +10,9 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${Game_SOURCE_DIR}/cmake")
-set(SDL2DIR "${PROJECT_SOURCE_DIR}/Dev/SDL2")
-set(SDL2_PATH "${PROJECT_SOURCE_DIR}/Dev/SDL2")
-set(SDL2_LIBRARY "${PROJECT_SOURCE_DIR}/Dev/SDL2/lib/x86")
+# set(SDL2DIR "${PROJECT_SOURCE_DIR}/Dev/SDL2")
+# set(SDL2_PATH "${PROJECT_SOURCE_DIR}/Dev/SDL2")
+# set(SDL2_LIBRARY "${PROJECT_SOURCE_DIR}/Dev/SDL2/lib/x86")
 
 find_package(SDL2 REQUIRED)
 #add_subdirectory(${PROJECT_SOURCE_DIR}/Dev/SDL2_image-2.0.1/lib/x86/)
@@ -25,8 +25,8 @@ include_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2_image-2.0.1/include)
 link_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2/lib/x86)
 link_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2_image-2.0.1/lib/x86)
 add_subdirectory(libraries)
-add_executable(Game main.cpp game.cpp AssetManager.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp Collision.cpp ECS/ECS.cpp)
+add_executable(Game main.cpp game.cpp AssetManager.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp Collision.cpp ECS/ECS.cpp Text.cpp)
 
-target_link_libraries(Game SDL2main SDL2 SDL2_image pugixml)
+target_link_libraries(Game SDL2main SDL2 SDL2_image pugixml SDL2_ttf)
 
 
