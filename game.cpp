@@ -6,6 +6,8 @@
 #include "Systems.h"
 #include "Vector2D.h"
 #include "textureManager.h"
+#include <algorithm>
+#include <cmath>
 #include <SDL_ttf.h>
 
 #define NUMBER_OF_ENEMIES 10
@@ -66,9 +68,13 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     assets->AddTexture("knight", "../assets/link.png");
     assets->AddTexture("thunder", "../assets/thunder.png");
     assets->AddTexture("skeleton", "../assets/skeleton.png");
+    assets->AddTexture("skeleton-ice", "../assets/skeleton_ice.png");
+    assets->AddTexture("skeleton-moss", "../assets/skeleton_moss.png");
+    assets->AddTexture("player-azure", "../assets/player_azure.png");
+    assets->AddTexture("player-crimson", "../assets/player_crimson.png");
     assets->AddTexture("arrow", "../assets/arrow.png");
 
-    Map::LoadMapXml("../assets/stupid_map_2.xml");
+    Map::LoadMapXml("../assets/forest_path.xml");
     player.addComponent<AnimationComponent>("player");
 
     player.getComponent<AnimationComponent>().addAnimation(Animation("bow-down", "knight", 3, 150, 0, 60, 30, 24, false));
@@ -93,12 +99,14 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
 
     for (int i = 0; i < NUMBER_OF_ENEMIES; i++) {
         auto &enemy = manager.addEntity();
-        enemy.addComponent<TransformComponent>(800 - 64, 640 - (i + 1) * 64, 32, 32, 2);
-        enemy.addComponent<SpriteComponent>("skeleton");
-        enemy.addComponent<AnimationComponent>("skeleton");
-        enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", "skeleton", 10, 30, 0, 32, 32, 32));
-        enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", "skeleton", 10, 30, 0, 64, 32, 32));
-        enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", "skeleton", 10, 130, 0, 128, 32, 32, false));
+        const char *enemyTexture = i % 3 == 1 ? "skeleton-ice" : (i % 3 == 2 ? "skeleton-moss" : "skeleton");
+        enemy.addComponent<TransformComponent>(Map::WorldWidth() - 400 + (i % 2) * 80,
+                                              80 + (i / 2) * 112, 32, 32, 2);
+        enemy.addComponent<SpriteComponent>(enemyTexture);
+        enemy.addComponent<AnimationComponent>(enemyTexture);
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", enemyTexture, 10, 30, 0, 32, 32, 32));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", enemyTexture, 10, 30, 0, 64, 32, 32));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", enemyTexture, 10, 130, 0, 128, 32, 32, false));
         enemy.getComponent<AnimationComponent>().setActive("walk");
         enemy.addComponent<ColliderComponent>("skeleton");
         enemy.addGroup(groupEnemies);
@@ -113,6 +121,36 @@ void Game::handleEvents() {
     switch (event.type) {
         case SDL_QUIT:
             isRunning = false;
+            break;
+
+        case SDL_KEYDOWN:
+            if (event.key.repeat == 0 &&
+                (event.key.keysym.sym == SDLK_1 || event.key.keysym.sym == SDLK_2)) {
+                const char *mapPath = event.key.keysym.sym == SDLK_1
+                                          ? "../assets/forest_path.xml"
+                                          : "../assets/ruined_courtyard.xml";
+                if (Map::LoadMapXml(mapPath)) {
+                    auto &transform = player.getComponent<TransformComponent>();
+                    transform.position = Vector2D(200, 200);
+                    player.getComponent<ColliderComponent>().update();
+                    auto &mapEnemies = manager.getGroup(groupEnemies);
+                    for (std::size_t i = 0; i < mapEnemies.size(); ++i) {
+                        auto &enemyTransform = mapEnemies[i]->getComponent<TransformComponent>();
+                        enemyTransform.position = Vector2D(
+                            Map::WorldWidth() - 400 + (i % 2) * 80,
+                            80 + (i / 2) * 112);
+                        mapEnemies[i]->getComponent<ColliderComponent>().update();
+                    }
+                    camera.x = 0;
+                    camera.y = 0;
+                }
+            }
+            if (event.key.repeat == 0 && event.key.keysym.sym >= SDLK_F1 &&
+                event.key.keysym.sym <= SDLK_F3) {
+                static const char *playerTextures[] = {"knight", "player-azure", "player-crimson"};
+                const int selected = event.key.keysym.sym - SDLK_F1;
+                player.getComponent<AnimationComponent>().setTextureOverride(playerTextures[selected]);
+            }
             break;
 
         default:
@@ -152,6 +190,11 @@ void Game::render() {
 void Game::update() {
     Vector2D playerPos = player.getComponent<TransformComponent>().position;
     manager.refresh();
+    std::vector<Vector2D> previousEnemyPositions;
+    previousEnemyPositions.reserve(enemies.size());
+    for (auto &enemy : enemies) {
+        previousEnemyPositions.push_back(enemy->getComponent<TransformComponent>().position);
+    }
     manager.update();
     for (auto &col : colliders) {
         if (Collision::AABB(player.getComponent<ColliderComponent>(), col->getComponent<ColliderComponent>())) {
@@ -164,7 +207,12 @@ void Game::update() {
         Vector2D enemy_pos = enemy->getComponent<TransformComponent>().position;
         Vector2D player_pos = player.getComponent<TransformComponent>().position;
         Vector2D towards_player = (player_pos - enemy_pos);
-        Vector2D lvelocity = towards_player / towards_player.Length() / 3;
+        float distance = towards_player.Length();
+        Vector2D lvelocity;
+        if (distance > 0.0f) {
+            lvelocity.x = towards_player.x / distance / 3.0f;
+            lvelocity.y = towards_player.y / distance / 3.0f;
+        }
         if (towards_player.x < 0) {
             enemy->getComponent<SpriteComponent>().spriteflip = SDL_FLIP_HORIZONTAL;
         } else {
@@ -176,20 +224,64 @@ void Game::update() {
         }
     }
 
-    camera.x = player.getComponent<TransformComponent>().position.x - SCREEN_WIDTH / 2;
-    camera.y = player.getComponent<TransformComponent>().position.y - SCREEN_HEIGHT / 2;
-    if (camera.x < 0) {
-        camera.x = 0;
+    for (std::size_t i = 0; i < enemies.size(); ++i) {
+        if (enemies[i]->hasComponent<DeadComponent>()) continue;
+        for (std::size_t j = i + 1; j < enemies.size(); ++j) {
+            if (enemies[j]->hasComponent<DeadComponent>()) continue;
+            auto &transformA = enemies[i]->getComponent<TransformComponent>();
+            auto &transformB = enemies[j]->getComponent<TransformComponent>();
+            float dx = transformB.position.x - transformA.position.x;
+            float dy = transformB.position.y - transformA.position.y;
+            float distance = std::sqrt(dx * dx + dy * dy);
+            float minimumDistance = 0.75f * std::min(transformA.width * transformA.scale,
+                                                    transformB.width * transformB.scale);
+            if (distance >= minimumDistance) continue;
+
+            float directionX = distance > 0.0f ? dx / distance : 1.0f;
+            float directionY = distance > 0.0f ? dy / distance : 0.0f;
+            float pushDistance = (minimumDistance - distance) / 2.0f;
+            transformA.position.x -= directionX * pushDistance;
+            transformA.position.y -= directionY * pushDistance;
+            transformB.position.x += directionX * pushDistance;
+            transformB.position.y += directionY * pushDistance;
+        }
     }
-    if (camera.y < 0) {
-        camera.y = 0;
+    for (std::size_t i = 0; i < enemies.size(); ++i) {
+        auto &enemy = enemies[i];
+        if (enemy->hasComponent<DeadComponent>()) continue;
+        auto &transform = enemy->getComponent<TransformComponent>();
+        auto &collider = enemy->getComponent<ColliderComponent>();
+        Vector2D movedPosition = transform.position;
+
+        transform.position.x = movedPosition.x;
+        transform.position.y = previousEnemyPositions[i].y;
+        collider.update();
+        bool blockedX = false;
+        for (auto &wall : colliders) {
+            if (Collision::AABB(collider, wall->getComponent<ColliderComponent>())) {
+                blockedX = true;
+                break;
+            }
+        }
+        if (blockedX) transform.position.x = previousEnemyPositions[i].x;
+
+        transform.position.y = movedPosition.y;
+        collider.update();
+        for (auto &wall : colliders) {
+            if (Collision::AABB(collider, wall->getComponent<ColliderComponent>())) {
+                transform.position.y = previousEnemyPositions[i].y;
+                break;
+            }
+        }
+        collider.update();
     }
-    if (camera.x > camera.w) {
-        camera.x = camera.w;
-    }
-    if (camera.y > camera.h) {
-        camera.y = camera.h;
-    }
+
+    camera.x = std::max(0, std::min(
+        static_cast<int>(player.getComponent<TransformComponent>().position.x) - SCREEN_WIDTH / 2,
+        Map::WorldWidth() - camera.w));
+    camera.y = std::max(0, std::min(
+        static_cast<int>(player.getComponent<TransformComponent>().position.y) - SCREEN_HEIGHT / 2,
+        Map::WorldHeight() - camera.h));
     // thunder.getComponent<TransformComponent>().position = playerPos + Vector2D(64, -16);
     // TODO: add systems to System Manager and update in the game engine just like components
 

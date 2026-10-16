@@ -59,7 +59,11 @@ class SpriteComponent : public Component {
         destRect.h = transform->height * transform->scale;
     }
 
-    void setTex(std::string id) { m_id = id; texture = Game::assets->GetTexture(id); }
+    void setTex(std::string id) {
+        if (m_id == id) return;
+        m_id = id;
+        texture = Game::assets->GetTexture(id);
+    }
 
     void draw() { TextureManager::Draw(texture, srcRect, destRect, spriteflip, m_angle); }
 };
