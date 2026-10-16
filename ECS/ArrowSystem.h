@@ -37,8 +37,8 @@ class ArrowSystem {
                 if (!keyboard->SPACE) {
                     attack_pressed = false;
                     auto transform = player->getComponent<TransformComponent>();
-                    Game::assets->CreateProjectile(transform.position, transform.orientation, 1000, 2, "arrow",
-                                                   transform.orientation.getAngle());
+                    Game::assets->CreateThunderProjectile(transform.position, transform.orientation, 1000, 2,
+                                                          transform.orientation.getAngle());
                 }
             }
         }

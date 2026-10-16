@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 
         game->update();
         game->render();
+        if (!frameTime) frameTime = 1;
         fps = 1000 / frameTime;
         sum += fps;
         if (cntr++ == 100) {
