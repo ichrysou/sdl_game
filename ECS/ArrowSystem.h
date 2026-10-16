@@ -37,8 +37,11 @@ class ArrowSystem {
                 if (!keyboard->SPACE) {
                     attack_pressed = false;
                     auto transform = player->getComponent<TransformComponent>();
-                    Game::assets->CreateThunderProjectile(transform.position, transform.orientation, 1000, 2,
-                                                          transform.orientation.getAngle());
+                    Vector2D playerCenter(
+                        transform.position.x + transform.width * transform.scale / 2.0f,
+                        transform.position.y + transform.height * transform.scale / 2.0f);
+                    Game::assets->CreateThunderMelee(playerCenter, transform.orientation,
+                                                     transform.orientation.getAngle());
                 }
             }
         }
@@ -48,6 +51,7 @@ class ArrowSystem {
         auto tiles = m_manager.getGroup(Game::groupColliders);
 
         for (auto &projectile : projectiles) {
+            if (!projectile->hasComponent<ProjectileComponent>()) continue;
             for (auto &tile : tiles) {
                 if (tile->hasComponent<ColliderComponent>()) {
                     auto recA = projectile->getComponent<ColliderComponent>().collider;

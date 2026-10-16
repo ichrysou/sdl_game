@@ -72,6 +72,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     assets->AddTexture("skeleton-moss", "../assets/skeleton_moss.png");
     assets->AddTexture("player-azure", "../assets/player_azure.png");
     assets->AddTexture("player-crimson", "../assets/player_crimson.png");
+    assets->AddTexture("hero-warden", "../assets/hero_warden.png");
     assets->AddTexture("arrow", "../assets/arrow.png");
 
     Map::LoadMapXml("../assets/forest_path.xml");
@@ -146,8 +147,9 @@ void Game::handleEvents() {
                 }
             }
             if (event.key.repeat == 0 && event.key.keysym.sym >= SDLK_F1 &&
-                event.key.keysym.sym <= SDLK_F3) {
-                static const char *playerTextures[] = {"knight", "player-azure", "player-crimson"};
+                event.key.keysym.sym <= SDLK_F4) {
+                static const char *playerTextures[] = {
+                    "knight", "player-azure", "player-crimson", "hero-warden"};
                 const int selected = event.key.keysym.sym - SDLK_F1;
                 player.getComponent<AnimationComponent>().setTextureOverride(playerTextures[selected]);
             }
