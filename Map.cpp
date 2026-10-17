@@ -1,15 +1,45 @@
 #include "Map.h"
 #include "game.h"
+#include <SDL.h>
 #include <fstream>
 #include "pugixml.hpp"
 #include "Components.h"
 #include <iostream>
 
 extern Manager manager;
-const char *tilesheet = "../assets/tiles2.png"; // TODO: find a better way to pass this. Problem is the static functions here
+const char *tilesheet = "../assets/tileset_new.png"; // TODO: find a better way to pass this. Problem is the static functions here
 namespace {
+constexpr int mapScale = 1;
 int mapWorldWidth = 0;
 int mapWorldHeight = 0;
+
+// Deterministic per-tile hash so a map looks the same every load, but
+// adjacent tiles of the same index are drawn from different variants /
+// orientations. This breaks up the repetition of large uniform tile areas.
+unsigned int posHash(int x, int y)
+{
+    unsigned int h = (unsigned int)(x * 73856093) ^ (unsigned int)(y * 19349663) ^ 0x9e3779b9u;
+    h ^= h >> 16;
+    h *= 0x85ebca6bu;
+    h ^= h >> 13;
+    h *= 0xc2b2ae35u;
+    h ^= h >> 16;
+    return h;
+}
+
+// Visual variants for tile types that can repeat across large areas.
+// Picking per-tile (deterministically by position) keeps the map stable
+// while making floors/walls look less like a single stamped image.
+const int stoneFloorVariants[] = {0, 4, 8, 14, 15};
+constexpr int stoneFloorVariantCount = sizeof(stoneFloorVariants) / sizeof(stoneFloorVariants[0]);
+
+bool isStoneFloor(int index)
+{
+    for (int i = 0; i < stoneFloorVariantCount; ++i)
+        if (stoneFloorVariants[i] == index)
+            return true;
+    return false;
+}
 
 void clearMapEntities()
 {
@@ -24,16 +54,36 @@ void addTileAt(int x, int y, int index, int rotation, int tilewidth, int tilehei
 {
     if (index < 0)
         index = 3;
+
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+    int rotationDegrees = 0;
+
+    if (isStoneFloor(index))
+    {
+        // Randomize among stone-floor variants and rotate/flip per tile.
+        unsigned int h = posHash(x, y);
+        index = stoneFloorVariants[h % stoneFloorVariantCount];
+        if (h & 1u)
+            flip = (SDL_RendererFlip)(flip | SDL_FLIP_HORIZONTAL);
+        if (h & 2u)
+            flip = (SDL_RendererFlip)(flip | SDL_FLIP_VERTICAL);
+        rotationDegrees = ((h >> 2) & 3u) * 90;
+    }
+    else if (rotation != 0)
+    {
+        rotationDegrees = rotation * 90;
+    }
+
     int srcX = index % 4 * tilewidth;
     int srcY = index / 4 * tileheight;
-    Map::AddTile(srcX, srcY, x * tilewidth, y * tileheight, tilewidth, tileheight, rotation, 2);
+    Map::AddTile(srcX, srcY, x * tilewidth, y * tileheight, tilewidth, tileheight, rotationDegrees, flip, mapScale);
 }
 
 void addColliderAt(int x, int y, int tilewidth, int tileheight)
 {
     auto &collider(manager.addEntity());
     collider.addComponent<ColliderComponent>("terrain", x * tilewidth, y * tileheight,
-                                               tilewidth, tileheight, 2);
+                                               tilewidth, tileheight, mapScale);
     collider.addGroup(Game::groupColliders);
 }
 }
@@ -80,14 +130,18 @@ bool Map::LoadMapXml(std::string tilemap_path)
     }
 
     clearMapEntities();
-    mapWorldWidth = tileswide * tilewidth * 2;
-    mapWorldHeight = tileshigh * tileheight * 2;
+    mapWorldWidth = tileswide * tilewidth * mapScale;
+    mapWorldHeight = tileshigh * tileheight * mapScale;
+    const std::string mapName = tilemap.attribute("name").as_string();
+    const bool outdoorMap = mapName == "Forest Path" || mapName == "Ruined Courtyard";
 
     for (pugi::xml_node item : layer0.children())
     {
         if (std::string(item.name()) == "fill")
         {
             int index = item.attribute("index").as_int();
+            if (outdoorMap && index == 2)
+                index = 1;
             for (int y = 0; y < tileshigh; ++y)
                 for (int x = 0; x < tileswide; ++x)
                     addTileAt(x, y, index, 0, tilewidth, tileheight);
@@ -99,14 +153,19 @@ bool Map::LoadMapXml(std::string tilemap_path)
             int width = item.attribute("width").as_int();
             int height = item.attribute("height").as_int();
             int index = item.attribute("index").as_int();
+            if (outdoorMap && index == 2)
+                index = 1;
             for (int row = y; row < y + height; ++row)
                 for (int column = x; column < x + width; ++column)
                     addTileAt(column, row, index, 0, tilewidth, tileheight);
         }
         else if (std::string(item.name()) == "tile")
         {
+            int index = item.attribute("index").as_int();
+            if (outdoorMap && index == 2)
+                index = 1;
             addTileAt(item.attribute("x").as_int(), item.attribute("y").as_int(),
-                      item.attribute("index").as_int(), item.attribute("rot").as_int(),
+                      index, item.attribute("rot").as_int(),
                       tilewidth, tileheight);
         }
     }
@@ -142,10 +201,10 @@ int Map::WorldHeight()
     return mapWorldHeight;
 }
 
-void Map::AddTile(int srcX, int srcY, int x, int y, int width, int height, int rotation, int scale)
+void Map::AddTile(int srcX, int srcY, int x, int y, int width, int height, int rotation, SDL_RendererFlip flip, int scale)
 {
     auto &tile(manager.addEntity());
     //TODO: change tile size it can be read form the map file
-    tile.addComponent<TileComponent>(srcX, srcY, x, y, width, height, rotation, tilesheet, scale);
+    tile.addComponent<TileComponent>(srcX, srcY, x, y, width, height, rotation, flip, tilesheet, scale);
     tile.addGroup(Game::groupMap);
 }
