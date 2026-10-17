@@ -7,7 +7,6 @@
 class ArrowSystem {
    private:
     Manager &m_manager;
-    bool attack_pressed = false;
 
    public:
     ArrowSystem(Manager &manager) : m_manager(manager) {}
@@ -20,30 +19,16 @@ class ArrowSystem {
         auto players = m_manager.getGroup(Game::groupPlayers);
         for (auto &player : players) {
             auto keyboard = &player->getComponent<KeyboardController>();
-            auto animation = &player->getComponent<AnimationComponent>();
 
-            if (keyboard->SPACE) {
-                attack_pressed = true;
-                auto transform = player->getComponent<TransformComponent>();
-                if (transform.orientation == Vector2D::right() ||
-                    transform.orientation == Vector2D::left())
-                  animation->setActive("bow"); // TODO: correct buggy
-                                               // last-animation-wins principle
-                if (transform.orientation == Vector2D::down())
-                  animation->setActive("bow-down"); // TODO: correct buggy last-animation-wins
+            if (keyboard->spacePressedThisFrame) {
+                auto &transform = player->getComponent<TransformComponent>();
+                player->getComponent<AnimationComponent>().play("thunder-attack");
+                player->getComponent<SpriteComponent>().spriteflip =
+                    transform.orientation.x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+                Game::assets->CreateThunderMelee(transform, transform.orientation,
+                                                 transform.orientation.getAngle());
             }
-
-            if (attack_pressed) {
-                if (!keyboard->SPACE) {
-                    attack_pressed = false;
-                    auto transform = player->getComponent<TransformComponent>();
-                    Vector2D playerCenter(
-                        transform.position.x + transform.width * transform.scale / 2.0f,
-                        transform.position.y + transform.height * transform.scale / 2.0f);
-                    Game::assets->CreateThunderMelee(playerCenter, transform.orientation,
-                                                     transform.orientation.getAngle());
-                }
-            }
+            keyboard->clearTransientInput();
         }
 
         auto projectiles = m_manager.getGroup(Game::groupProjectiles);
@@ -62,14 +47,15 @@ class ArrowSystem {
                 }
             }
             for (auto &enemy : enemies) {
-                if (enemy->hasComponent<ColliderComponent>()) {
-                    if (Collision::AABB(projectile->getComponent<ColliderComponent>().collider,
-                                        enemy->getComponent<ColliderComponent>().collider)) {
-                        enemy->addComponent<DeadComponent>();
-                        enemy->getComponent<AnimationComponent>().setActive("die");  // -->animation system
-                        enemy->getComponent<TransformComponent>().velocity.Zero();   // -->enemy movement system
-                        /* enemy->delGroup(Game::groupEnemies);  // --> entity garbage collection system? */
-                    }
+                if (enemy->hasComponent<DeadComponent>() ||
+                    !enemy->hasComponent<ColliderComponent>()) continue;
+                if (Collision::AABB(projectile->getComponent<ColliderComponent>().collider,
+                                    enemy->getComponent<ColliderComponent>().collider)) {
+                    enemy->addComponent<DeadComponent>();
+                    enemy->getComponent<AnimationComponent>().setActive("die");  // -->animation system
+                    enemy->getComponent<TransformComponent>().velocity.Zero();   // -->enemy movement system
+                    projectile->destroy();
+                    break;
                 }
             }
         }

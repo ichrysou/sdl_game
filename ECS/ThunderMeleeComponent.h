@@ -10,13 +10,19 @@
 class ThunderMeleeComponent : public Component
 {
 public:
-    ThunderMeleeComponent(Manager &manager, Vector2D origin, Vector2D direction)
-        : m_manager(manager), m_origin(origin), m_direction(direction)
+    ThunderMeleeComponent(Manager &manager, TransformComponent &owner, Vector2D direction)
+        : m_manager(manager), m_owner(owner), m_direction(direction)
     {
     }
 
     void update() override
     {
+        constexpr float frameSize = 64.0f;
+        m_origin = Vector2D(
+            m_owner.position.x + m_owner.width * m_owner.scale / 2.0f,
+            m_owner.position.y + m_owner.height * m_owner.scale / 2.0f);
+        auto &attackTransform = entity->getComponent<TransformComponent>();
+
         auto animation = entity->getComponent<AnimationComponent>().getActive();
         if (animation->isDone())
         {
@@ -24,11 +30,16 @@ public:
             return;
         }
 
+        // attack starts at the player and grows outward; was starting 64px away
         const float maximumReach = animation->m_frame_w * entity->getComponent<TransformComponent>().scale;
         const float expansion = animation->m_num_frames > 1
                                     ? static_cast<float>(animation->getCurrentFrame()) / (animation->m_num_frames - 1)
                                     : 1.0f;
         const float reach = maximumReach * expansion;
+        attackTransform.position = Vector2D(
+            m_origin.x + m_direction.x * reach - frameSize / 2.0f,
+            m_origin.y + m_direction.y * reach - frameSize / 2.0f);
+
         const float halfWidth = animation->m_frame_h *
                                 entity->getComponent<TransformComponent>().scale * 0.25f;
 
@@ -61,6 +72,7 @@ public:
 
 private:
     Manager &m_manager;
+    TransformComponent &m_owner;
     Vector2D m_origin;
     Vector2D m_direction;
 };

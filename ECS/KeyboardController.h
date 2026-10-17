@@ -5,7 +5,7 @@
 
 class KeyboardController : public Component
 {
-    SDL_Keycode m_last_pressed;
+    SDL_Keycode m_last_pressed = SDLK_UNKNOWN;
 
 public:
     bool A = false;
@@ -13,22 +13,25 @@ public:
     bool D = false;
     bool W = false;
     bool SPACE = false;
+    bool spacePressedThisFrame = false;
+    bool spaceReleasedThisFrame = false;
     bool at_least_one_pressed() { return A || W || S || D || SPACE; }
     SDL_Keycode last_key_pressed() { return m_last_pressed; }
     void init() override
     {
     }
 
-    void update() override
+    void handleEvent(const SDL_Event &event)
     {
-        if (Game::event.type == SDL_KEYDOWN)
+        if (event.type == SDL_KEYDOWN)
         {
-            m_last_pressed = Game::event.key.keysym.sym;
-            switch (Game::event.key.keysym.sym)
+            m_last_pressed = event.key.keysym.sym;
+            switch (event.key.keysym.sym)
             {
 
             case SDLK_SPACE:
                 SPACE = true;
+                if (event.key.repeat == 0) spacePressedThisFrame = true;
                 break;
             case SDLK_w:
                 W = true;
@@ -42,16 +45,20 @@ public:
             case SDLK_d:
                 D = true;
                 break;
+            case SDLK_ESCAPE:
+                Game::isRunning = false;
+                break;
             default:
                 break;
             }
         }
-        if (Game::event.type == SDL_KEYUP)
+        if (event.type == SDL_KEYUP)
         {
-            switch (Game::event.key.keysym.sym)
+            switch (event.key.keysym.sym)
             {
             case SDLK_SPACE: //TODO: add release arrow event here
                 SPACE = false;
+                spaceReleasedThisFrame = true;
                 break;
             case SDLK_w:
                 W = false;
@@ -66,13 +73,16 @@ public:
             case SDLK_d:
                 D = false;
                 break;
-            case SDLK_ESCAPE:
-                Game::isRunning = false;
-                break;
             default:
                 break;
             }
         }
+    }
+
+    void clearTransientInput()
+    {
+        spacePressedThisFrame = false;
+        spaceReleasedThisFrame = false;
     }
 }
 

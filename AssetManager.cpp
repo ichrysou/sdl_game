@@ -15,26 +15,16 @@ void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int range, int s
     projectile.addGroup(Game::groupProjectiles);
 }
 
-void AssetManager::CreateThunderMelee(Vector2D playerCenter, Vector2D direction, int angle) {
-    constexpr float frameSize = 64.0f;
-    constexpr float scale = 2.0f;
-    constexpr float lateralOffset = 10.0f;
-    const float perpendicularX = -direction.y;
-    const float perpendicularY = direction.x;
-    const float spriteCenterX = playerCenter.x + direction.x * frameSize +
-                                perpendicularX * lateralOffset;
-    const float spriteCenterY = playerCenter.y + direction.y * frameSize +
-                                perpendicularY * lateralOffset;
-
+void AssetManager::CreateThunderMelee(TransformComponent &playerTransform, Vector2D direction, int angle) {
     auto &attack(manager->addEntity());
-    attack.addComponent<TransformComponent>(spriteCenterX - frameSize,
-                                             spriteCenterY - frameSize,
-                                             64, 64, static_cast<int>(scale));
+    // scale 1 matches the (now scale-1) player; was scale 2 before the shrink
+    attack.addComponent<TransformComponent>(playerTransform.position.x,
+                                             playerTransform.position.y, 64, 64, 1);
+    attack.addComponent<ThunderMeleeComponent>(*manager, playerTransform, direction);
     attack.addComponent<SpriteComponent>("thunder", angle);
     attack.addComponent<AnimationComponent>("thunder");
     attack.getComponent<AnimationComponent>().addAnimation(
-        Animation("melee", "thunder", 11, 60, 0, 0, 64, 64, false));
-    attack.addComponent<ThunderMeleeComponent>(*manager, playerCenter, direction);
+        Animation("melee", "thunder", 11, 32, 0, 0, 64, 64, false));
     attack.addGroup(Game::groupProjectiles);
 }
 
