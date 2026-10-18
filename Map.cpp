@@ -12,6 +12,7 @@ namespace {
 constexpr int mapScale = 1;
 int mapWorldWidth = 0;
 int mapWorldHeight = 0;
+std::vector<SDL_Point> torchPositions;
 
 // Deterministic per-tile hash so a map looks the same every load, but
 // adjacent tiles of the same index are drawn from different variants /
@@ -54,6 +55,9 @@ void addTileAt(int x, int y, int index, int rotation, int tilewidth, int tilehei
 {
     if (index < 0)
         index = 3;
+    if (index == 16)
+        torchPositions.push_back({x * tilewidth + tilewidth / 2,
+                                  y * tileheight + tileheight / 2});
 
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     int rotationDegrees = 0;
@@ -130,6 +134,7 @@ bool Map::LoadMapXml(std::string tilemap_path)
     }
 
     clearMapEntities();
+    torchPositions.clear();
     mapWorldWidth = tileswide * tilewidth * mapScale;
     mapWorldHeight = tileshigh * tileheight * mapScale;
     const std::string mapName = tilemap.attribute("name").as_string();
@@ -199,6 +204,11 @@ int Map::WorldWidth()
 int Map::WorldHeight()
 {
     return mapWorldHeight;
+}
+
+const std::vector<SDL_Point> &Map::TorchPositions()
+{
+    return torchPositions;
 }
 
 void Map::AddTile(int srcX, int srcY, int x, int y, int width, int height, int rotation, SDL_RendererFlip flip, int scale)

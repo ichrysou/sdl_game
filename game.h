@@ -6,6 +6,7 @@
 #include <SDL_image.h>
 #include <vector>
 #include "AssetManager.h"
+#include "LightingSystem.h"
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -42,6 +43,9 @@ public:
   };
 
 private:
+  void setupLightingForCurrentMap();
+
   int cntr;
   SDL_Window *window;
+  LightingSystem lighting;
 };

@@ -12,13 +12,17 @@
 #include <random>
 #include <SDL_ttf.h>
 
-#define NUMBER_OF_ENEMIES 10
+#define NUMBER_OF_ENEMIES 16
 
 extern Manager manager;
 extern Entity &player;
 
 namespace {
 std::mt19937 randomEngine(std::random_device{}());
+constexpr std::size_t MAX_ACTIVE_ENEMIES = 24;
+constexpr Uint32 MIN_ENEMY_SPAWN_INTERVAL_MS = 2500;
+constexpr Uint32 MAX_ENEMY_SPAWN_INTERVAL_MS = 5000;
+Uint32 nextEnemySpawnAt = 0;
 
 bool overlapsAny(const SDL_Rect &candidate, const std::vector<Entity *> &entities)
 {
@@ -121,6 +125,87 @@ void placeEnemiesRandomly()
             std::cerr << "Could not find a clear random spawn for an enemy." << std::endl;
     }
 }
+
+Entity &addEnemy(int type, int x, int y)
+{
+    const bool isBlob = type == 0;
+    const char *enemyTexture = isBlob ? "blob" : (type == 1 ? "skeleton-ice" : "skeleton-moss");
+    auto &enemy = manager.addEntity();
+    enemy.addComponent<TransformComponent>(x, y, 32, 32, 1);
+    enemy.addComponent<SpriteComponent>(enemyTexture);
+    if (isBlob)
+        enemy.getComponent<SpriteComponent>().setRenderScale(1.5f);
+    enemy.addComponent<AnimationComponent>(enemyTexture);
+    if (isBlob) {
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", enemyTexture, 4, 120, 0, 0, 64, 64));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", enemyTexture, 4, 90, 0, 0, 64, 64));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", enemyTexture, 4, 75, 0, 0, 64, 64, false));
+    } else {
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", enemyTexture, 10, 30, 0, 32, 32, 32));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", enemyTexture, 10, 30, 0, 64, 32, 32));
+        enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", enemyTexture, 10, 130, 0, 128, 32, 32, false));
+    }
+    enemy.getComponent<AnimationComponent>().setActive("walk");
+    enemy.addComponent<ColliderComponent>(isBlob ? "blob" : "skeleton");
+    enemy.addGroup(Game::groupEnemies);
+    return enemy;
+}
+
+bool spawnRandomEnemy()
+{
+    constexpr int enemySize = 32;
+    constexpr float minimumPlayerDistance = 240.0f;
+    const int worldWidth = Map::WorldWidth();
+    const int worldHeight = Map::WorldHeight();
+    if (worldWidth <= enemySize || worldHeight <= enemySize)
+        return false;
+
+    std::uniform_int_distribution<int> xDistribution(0, worldWidth - enemySize);
+    std::uniform_int_distribution<int> yDistribution(0, worldHeight - enemySize);
+    std::uniform_int_distribution<int> typeDistribution(0, 2);
+    const auto &playerPosition = player.getComponent<TransformComponent>().position;
+    const auto &walls = manager.getGroup(Game::groupColliders);
+    const auto &enemies = manager.getGroup(Game::groupEnemies);
+
+    for (int attempt = 0; attempt < 10000; ++attempt) {
+        const int x = xDistribution(randomEngine);
+        const int y = yDistribution(randomEngine);
+        SDL_Rect candidate{x, y, enemySize, enemySize};
+        const float dx = x - playerPosition.x;
+        const float dy = y - playerPosition.y;
+        if (dx * dx + dy * dy < minimumPlayerDistance * minimumPlayerDistance ||
+            overlapsAny(candidate, walls) || overlapsAny(candidate, enemies))
+            continue;
+
+        addEnemy(typeDistribution(randomEngine), x, y);
+        return true;
+    }
+    return false;
+}
+
+void scheduleNextEnemySpawn()
+{
+    std::uniform_int_distribution<Uint32> intervalDistribution(
+        MIN_ENEMY_SPAWN_INTERVAL_MS, MAX_ENEMY_SPAWN_INTERVAL_MS);
+    nextEnemySpawnAt = SDL_GetTicks() + intervalDistribution(randomEngine);
+}
+
+void replenishEnemies()
+{
+    const Uint32 now = SDL_GetTicks();
+    if (!SDL_TICKS_PASSED(now, nextEnemySpawnAt))
+        return;
+
+    std::size_t livingEnemies = 0;
+    for (const auto *enemy : manager.getGroup(Game::groupEnemies)) {
+        if (!enemy->hasComponent<DeadComponent>())
+            ++livingEnemies;
+    }
+
+    if (livingEnemies < MAX_ACTIVE_ENEMIES)
+        spawnRandomEnemy();
+    scheduleNextEnemySpawn();
+}
 }
 
 SDL_Renderer *Game::renderer = nullptr;
@@ -217,6 +302,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     assets->AddTexture("blob", "../assets/blob.png");
 
     Map::LoadMapXml("../assets/dungeon_crypt.xml");
+    lighting.initialize(renderer);
+    setupLightingForCurrentMap();
     player.addComponent<AnimationComponent>("player");
 
     player.getComponent<AnimationComponent>().addAnimation(Animation("bow-down", "knight", 3, 150, 0, 60, 30, 24, false));
@@ -248,31 +335,12 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     // assets->CreateProjecptile(Vector2D(220, 220), Vector2D(0, 1), 1000, 1, "arrow", Vector2D(0, 1).getAngle());
 
     for (int i = 0; i < NUMBER_OF_ENEMIES; i++) {
-        auto &enemy = manager.addEntity();
-        bool isBlob = (i % 3 == 0);
-        const char *enemyTexture = isBlob ? "blob"
-                                          : (i % 3 == 1 ? "skeleton-ice" : (i % 3 == 2 ? "skeleton-moss" : "skeleton"));
-        enemy.addComponent<TransformComponent>(Map::WorldWidth() - 400 + (i % 2) * 80,
-                                              80 + (i / 2) * 112, 32, 32, 1);
-        enemy.addComponent<SpriteComponent>(enemyTexture);
-        if (isBlob)
-            enemy.getComponent<SpriteComponent>().setRenderScale(1.5f);
-        enemy.addComponent<AnimationComponent>(enemyTexture);
-        if (isBlob) {
-            // blob.png contains four 64x64 bounce frames; the entity remains 32x32 in-game.
-            enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", enemyTexture, 4, 120, 0, 0, 64, 64));
-            enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", enemyTexture, 4, 90, 0, 0, 64, 64));
-            enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", enemyTexture, 4, 75, 0, 0, 64, 64, false));
-        } else {
-            enemy.getComponent<AnimationComponent>().addAnimation(Animation("idle", enemyTexture, 10, 30, 0, 32, 32, 32));
-            enemy.getComponent<AnimationComponent>().addAnimation(Animation("walk", enemyTexture, 10, 30, 0, 64, 32, 32));
-            enemy.getComponent<AnimationComponent>().addAnimation(Animation("die", enemyTexture, 10, 130, 0, 128, 32, 32, false));
-        }
-        enemy.getComponent<AnimationComponent>().setActive("walk");
-        enemy.addComponent<ColliderComponent>(isBlob ? "blob" : "skeleton");
-        enemy.addGroup(groupEnemies);
+        const int x = Map::WorldWidth() - 400 + (i % 2) * 80;
+        const int y = 80 + (i / 2) * 112;
+        addEnemy(i % 3, x, y);
     }
     placeEnemiesRandomly();
+    scheduleNextEnemySpawn();
 }
 
 // Spawns the crypt boss in the boss room of assets/dungeon_crypt.xml.
@@ -322,6 +390,7 @@ void Game::handleEvents() {
                         "../assets/dungeon_crypt.xml"};
                     const char *mapPath = mapPaths[event.key.keysym.sym - SDLK_1];
                     if (Map::LoadMapXml(mapPath)) {
+                        setupLightingForCurrentMap();
                         if (placeHeroAtNearestClearPosition(Vector2D(200, 200))) {
                             placeEnemiesRandomly();
                             if (std::string(mapPath) == "../assets/dungeon_crypt.xml")
@@ -383,7 +452,7 @@ void Game::render() {
         collider->draw();
     }
 
-    // boss health bar (visual indicator above the necromanceress)
+
     for (auto *enemy : enemies) {
         if (enemy->hasComponent<ColliderComponent>() &&
             enemy->getComponent<ColliderComponent>().tag == "boss" &&
@@ -406,6 +475,7 @@ void Game::render() {
         }
     }
 
+    lighting.render(camera);
     SDL_RenderPresent(renderer);
 }
 #define get_collider(x) getComponent<ColliderComponent>().collider.x
@@ -415,6 +485,7 @@ void Game::update() {
     const Vector2D previousPlayerPosition = playerTransform.position;
     auto &playerSprite = player.getComponent<SpriteComponent>();
     manager.refresh();
+    replenishEnemies();
     std::vector<Vector2D> previousEnemyPositions;
     previousEnemyPositions.reserve(enemies.size());
     for (auto &enemy : enemies) {
@@ -544,6 +615,18 @@ void Game::update() {
     camera.y = std::max(0, std::min(
         static_cast<int>(player.getComponent<TransformComponent>().position.y) - camera.h / 2,
         Map::WorldHeight() - camera.h));
+    lighting.clearLights();
+    const auto &playerPosition = playerTransform.position;
+    lighting.addLight(playerPosition.x + playerTransform.width * playerTransform.scale * 0.5f,
+                      playerPosition.y + playerTransform.height * playerTransform.scale * 0.5f,
+                      144.0f, 0.82f);
+    const Uint32 flicker = SDL_GetTicks() / 180;
+    for (const SDL_Point &torch : Map::TorchPositions()) {
+        const float radius = 232.0f + static_cast<float>((torch.x / 13 + torch.y / 7 + flicker) % 5) * 3.0f;
+        lighting.addLight(static_cast<float>(torch.x), static_cast<float>(torch.y),
+                          radius, 1.0f);
+    }
+    lighting.update();
     // thunder.getComponent<TransformComponent>().position = playerPos + Vector2D(64, -16);
     // TODO: add systems to System Manager and update in the game engine just like components
 
@@ -553,6 +636,7 @@ void Game::update() {
 }
 
 void Game::clean() {
+    lighting.clean();
     if (renderer) {
         SDL_DestroyRenderer(renderer);
         renderer = nullptr;
@@ -565,4 +649,19 @@ void Game::clean() {
     IMG_Quit();
     SDL_Quit();
     std::cout << "Game Cleaned!" << std::endl;
+}
+
+void Game::setupLightingForCurrentMap()
+{
+    std::vector<SDL_Rect> occluders;
+    const auto &walls = manager.getGroup(groupColliders);
+    occluders.reserve(walls.size());
+    for (const auto *wall : walls)
+        occluders.push_back(wall->getComponent<ColliderComponent>().collider);
+
+    lighting.configureMap(Map::WorldWidth(), Map::WorldHeight(), 32, occluders);
+    lighting.clearLights();
+    for (const SDL_Point &torch : Map::TorchPositions())
+        lighting.addLight(static_cast<float>(torch.x), static_cast<float>(torch.y),
+                          232.0f, 1.0f);
 }
