@@ -10,3 +10,4 @@
 #include "ProjectileComponent.h"
 #include "AnimationComponent.h"
 #include "CleanupComponent.h"
+#include "ThunderMeleeComponent.h"

@@ -25,8 +25,7 @@ include_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2_image-2.0.1/include)
 link_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2/lib/x86)
 link_directories(${PROJECT_SOURCE_DIR}/Dev/SDL2_image-2.0.1/lib/x86)
 add_subdirectory(libraries)
-add_executable(Game main.cpp game.cpp AssetManager.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp Collision.cpp ECS/ECS.cpp Text.cpp)
+add_executable(Game main.cpp game.cpp LightingSystem.cpp AssetManager.cpp textureManager.cpp GameObject.cpp Map.cpp Vector2D.cpp Collision.cpp ECS/ECS.cpp Text.cpp)
 
 target_link_libraries(Game SDL2main SDL2 SDL2_image pugixml SDL2_ttf)
-
 

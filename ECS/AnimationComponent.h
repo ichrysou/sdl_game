@@ -11,6 +11,7 @@ class AnimationComponent : public Component {
     std::map<std::string, Animation> m_animations;
     std::string m_name;  // name of the sprite
     std::string m_active_name;
+    std::string m_texture_override;
     Animation *m_active;
     int m_frame_timestamp = 0;
     int m_time_delta = 0;
@@ -36,6 +37,22 @@ class AnimationComponent : public Component {
         else
             std::cout << "animation not found" << std::endl;
     }
+    void play(std::string name) {
+        auto animation = m_animations.find(name);
+        if (animation == m_animations.end()) {
+            std::cout << "animation not found" << std::endl;
+            return;
+        }
+        m_active = &animation->second;
+        m_active->reset();
+        m_frameno = 0;
+        m_frame_timestamp = SDL_GetTicks();
+        m_active_name = name;
+    }
+    void setTextureOverride(std::string texture) {
+        m_texture_override = texture;
+        entity->getComponent<SpriteComponent>().setTex(texture);
+    }
     Animation *getActive() { return m_active; }
     void update() {
         auto anim = getActive();
@@ -46,7 +63,9 @@ class AnimationComponent : public Component {
         }
         anim->setCurrentFrame(m_frameno);
         auto sprite = &entity->getComponent<SpriteComponent>();
-        sprite->setSrcXY(anim->m_start_x + anim->getCurrentFrame() * anim->m_frame_w, anim->m_start_y);
+        sprite->setTex(m_texture_override.empty() ? anim->m_tex_id : m_texture_override);
+        sprite->setSrcFrame(anim->m_start_x + anim->getCurrentFrame() * anim->m_frame_w,
+                            anim->m_start_y, anim->m_frame_w, anim->m_frame_h);
         m_time_delta = SDL_GetTicks() - m_frame_timestamp;
         if (m_time_delta >= anim->m_speed) {
             m_frameno = (m_frameno + 1) % anim->m_num_frames;

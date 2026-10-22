@@ -6,6 +6,8 @@
 #include "Vector2D.h"
 #include "ECS/ECS.h"
 
+class TransformComponent;
+
 class AssetManager
 {
 private:
@@ -17,6 +19,7 @@ public:
   ~AssetManager();
   // game objects
   void CreateProjectile(Vector2D pos, Vector2D vel, int range, int speed, std::string id, int angle);
+  void CreateThunderMelee(TransformComponent &playerTransform, Vector2D direction, int angle);
   // Texture Management
   void AddTexture(std::string id, const char *path);
   SDL_Texture *GetTexture(std::string id);

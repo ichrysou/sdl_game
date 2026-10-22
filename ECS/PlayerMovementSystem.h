@@ -16,6 +16,10 @@ private:
         auto animation = &player->getComponent<AnimationComponent>();
         auto transform = &player->getComponent<TransformComponent>();
         auto sprite = &player->getComponent<SpriteComponent>();
+        auto activeAnimation = animation->getActive();
+        if (activeAnimation->getName() == "thunder-attack" &&
+            !activeAnimation->isDone())
+            return;
         auto zero = Vector2D(0, 0);
         auto up = Vector2D(0, vel_w);
         auto down = Vector2D(0, vel_s);
