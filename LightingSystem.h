@@ -30,7 +30,9 @@ private:
         float intensity;
     };
 
-    bool hasLineOfSight(int startX, int startY, int targetX, int targetY) const;
+    bool hasLineOfSight(float startX, float startY, float targetX, float targetY,
+                        bool stopAtTargetTile = false) const;
+    void smoothIllumination();
     void ensureOverlaySize(int width, int height);
 
     SDL_Renderer *m_renderer = nullptr;
@@ -42,7 +44,7 @@ private:
     int m_worldWidth = 0;
     int m_worldHeight = 0;
     int m_tileSize = 32;
-    int m_cellSize = 16;
+    int m_cellSize = 8;
     int m_gridWidth = 0;
     int m_gridHeight = 0;
     int m_blockerWidth = 0;
@@ -50,6 +52,7 @@ private:
     std::vector<unsigned char> m_blockers;
     std::vector<unsigned char> m_explored;
     std::vector<float> m_illumination;
+    std::vector<float> m_smoothed;
     std::vector<Light> m_lights;
     std::vector<Uint32> m_pixels;
 };

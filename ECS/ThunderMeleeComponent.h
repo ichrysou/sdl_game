@@ -30,15 +30,15 @@ public:
             return;
         }
 
-        // attack starts at the player and grows outward; was starting 64px away
         const float maximumReach = animation->m_frame_w * entity->getComponent<TransformComponent>().scale;
         const float expansion = animation->m_num_frames > 1
                                     ? static_cast<float>(animation->getCurrentFrame()) / (animation->m_num_frames - 1)
                                     : 1.0f;
         const float reach = maximumReach * expansion;
+        const float visualOffset = frameSize / 2.0f;
         attackTransform.position = Vector2D(
-            m_origin.x + m_direction.x * reach - frameSize / 2.0f,
-            m_origin.y + m_direction.y * reach - frameSize / 2.0f);
+            m_origin.x + m_direction.x * (reach + visualOffset) - frameSize / 2.0f,
+            m_origin.y + m_direction.y * (reach + visualOffset) - frameSize / 2.0f);
 
         const float halfWidth = animation->m_frame_h *
                                 entity->getComponent<TransformComponent>().scale * 0.25f;

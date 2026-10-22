@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iostream>
+#include <limits>
 
 namespace
 {
@@ -62,33 +63,30 @@ void LightingSystem::addLight(float x, float y, float radius, float intensity)
         m_lights.push_back({x, y, radius, std::min(1.0f, intensity)});
 }
 
-bool LightingSystem::hasLineOfSight(int startX, int startY, int targetX, int targetY) const
+bool LightingSystem::hasLineOfSight(float startX, float startY, float targetX, float targetY,
+                                    bool stopAtTargetTile) const
 {
-    int x = startX;
-    int y = startY;
-    const int dx = std::abs(targetX - startX);
-    const int sx = startX < targetX ? 1 : -1;
-    const int dy = -std::abs(targetY - startY);
-    const int sy = startY < targetY ? 1 : -1;
-    int error = dx + dy;
+    const float dx = targetX - startX;
+    const float dy = targetY - startY;
+    const float distance = std::sqrt(dx * dx + dy * dy);
+    if (distance <= std::numeric_limits<float>::epsilon())
+        return true;
 
-    while (x != targetX || y != targetY)
+    const int targetTileX = static_cast<int>(targetX / m_tileSize);
+    const int targetTileY = static_cast<int>(targetY / m_tileSize);
+
+    // Walk the segment with sub-tile steps so grazing rays that only clip a
+    // tile corner still register, without locking visibility to whole tiles.
+    const int steps = static_cast<int>(distance / (m_tileSize * 0.25f)) + 1;
+    for (int i = 1; i < steps; ++i)
     {
-        const int doubledError = 2 * error;
-        if (doubledError >= dy)
-        {
-            error += dy;
-            x += sx;
-        }
-        if (doubledError <= dx)
-        {
-            error += dx;
-            y += sy;
-        }
-        if (x == targetX && y == targetY)
-            break;
-        if (x < 0 || y < 0 || x >= m_blockerWidth || y >= m_blockerHeight ||
-            m_blockers[static_cast<std::size_t>(y) * m_blockerWidth + x])
+        const float t = static_cast<float>(i) / steps;
+        const int tileX = static_cast<int>((startX + dx * t) / m_tileSize);
+        const int tileY = static_cast<int>((startY + dy * t) / m_tileSize);
+        if (stopAtTargetTile && tileX == targetTileX && tileY == targetTileY)
+            return true;
+        if (tileX < 0 || tileY < 0 || tileX >= m_blockerWidth || tileY >= m_blockerHeight ||
+            m_blockers[static_cast<std::size_t>(tileY) * m_blockerWidth + tileX])
             return false;
     }
     return true;
@@ -108,8 +106,6 @@ void LightingSystem::update()
                                    static_cast<int>((light.x + light.radius) / m_cellSize));
         const int bottom = std::min(m_gridHeight - 1,
                                     static_cast<int>((light.y + light.radius) / m_cellSize));
-        const int sourceTileX = static_cast<int>(light.x) / m_tileSize;
-        const int sourceTileY = static_cast<int>(light.y) / m_tileSize;
 
         for (int y = top; y <= bottom; ++y)
         {
@@ -123,13 +119,43 @@ void LightingSystem::update()
                 if (distance >= light.radius)
                     continue;
 
-                const int targetTileX = static_cast<int>(worldX) / m_tileSize;
-                const int targetTileY = static_cast<int>(worldY) / m_tileSize;
-                if (!hasLineOfSight(sourceTileX, sourceTileY, targetTileX, targetTileY))
+                // Occluder tiles are "self-lit": their own tile would fail the
+                // ray test against themselves, so walls would stay pitch black
+                // even right next to a light. Instead let them receive pure
+                // proximity falloff so nearby walls emerge gradually.
+                const int tileX = static_cast<int>(worldX / m_tileSize);
+                const int tileY = static_cast<int>(worldY / m_tileSize);
+                float visible = 0.0f;
+                const bool isOccluder =
+                    tileX >= 0 && tileY >= 0 && tileX < m_blockerWidth && tileY < m_blockerHeight &&
+                    m_blockers[static_cast<std::size_t>(tileY) * m_blockerWidth + tileX];
+                if (isOccluder)
+                {
+                    // Light the tile itself if nothing blocks the path *before*
+                    // it, so walls deeply buried behind other walls stay dark.
+                    visible = hasLineOfSight(light.x, light.y, worldX, worldY, true) ? 1.0f : 0.0f;
+                }
+                else
+                {
+                    // Sample the cell at its center and four corners. Sharing the
+                    // corner samples between neighboring cells makes partially
+                    // occluded cells fade gradually instead of snapping to
+                    // full-on/full-off, which removes the blocky shadow steps.
+                    const float half = m_cellSize * 0.5f;
+                    const float sampleX[5] = {worldX, worldX - half, worldX + half, worldX, worldX};
+                    const float sampleY[5] = {worldY, worldY, worldY, worldY - half, worldY + half};
+                    for (int i = 0; i < 5; ++i)
+                    {
+                        if (hasLineOfSight(light.x, light.y, sampleX[i], sampleY[i]))
+                            visible += 0.2f;
+                    }
+                }
+                if (visible <= 0.0f)
                     continue;
 
-                const float falloff = 1.0f - distance / light.radius;
-                const float strength = light.intensity * falloff * falloff;
+                const float falloff = std::max(0.0f, 1.0f - distance / light.radius);
+                const float shaped = falloff * falloff * (3.0f - 2.0f * falloff);
+                const float strength = light.intensity * shaped * visible;
                 const std::size_t index = static_cast<std::size_t>(y) * m_gridWidth + x;
                 m_illumination[index] = std::max(m_illumination[index], strength);
                 if (strength > 0.015f)
@@ -137,6 +163,34 @@ void LightingSystem::update()
             }
         }
     }
+
+    smoothIllumination();
+}
+
+void LightingSystem::smoothIllumination()
+{
+    // Single 3x3 blur pass to blend the remaining differences between
+    // neighboring cells so the light gradient stays continuous.
+    m_smoothed.assign(m_illumination.size(), 0.0f);
+
+    for (int y = 0; y < m_gridHeight; ++y)
+    {
+        const int y0 = std::max(0, y - 1);
+        const int y1 = std::min(m_gridHeight - 1, y + 1);
+        for (int x = 0; x < m_gridWidth; ++x)
+        {
+            const int x0 = std::max(0, x - 1);
+            const int x1 = std::min(m_gridWidth - 1, x + 1);
+            float sum = 0.0f;
+            for (int ny = y0; ny <= y1; ++ny)
+                for (int nx = x0; nx <= x1; ++nx)
+                    sum += m_illumination[static_cast<std::size_t>(ny) * m_gridWidth + nx];
+            m_smoothed[static_cast<std::size_t>(y) * m_gridWidth + x] =
+                sum / (3.0f * 3.0f);
+        }
+    }
+
+    std::swap(m_smoothed, m_illumination);
 }
 
 void LightingSystem::ensureOverlaySize(int width, int height)
@@ -154,8 +208,12 @@ void LightingSystem::ensureOverlaySize(int width, int height)
     if (!m_renderer || width <= 0 || height <= 0)
         return;
 
+    // Linear filtering turns the low-res overlay into a smooth gradient
+    // instead of an upscaled mosaic of hard-edged squares.
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     m_overlay = SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGBA32,
                                   SDL_TEXTUREACCESS_STREAMING, width, height);
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
     if (!m_overlay)
     {
         m_overlayFailed = true;
