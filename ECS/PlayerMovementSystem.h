@@ -16,10 +16,10 @@ private:
         auto animation = &player->getComponent<AnimationComponent>();
         auto transform = &player->getComponent<TransformComponent>();
         auto sprite = &player->getComponent<SpriteComponent>();
-        auto activeAnimation = animation->getActive();
-        if (activeAnimation->getName() == "thunder-attack" &&
-            !activeAnimation->isDone())
+        if (sprite->isThunderCasting())
             return;
+        if (sprite->finishThunderCast())
+            animation->setTextureOverride("hero-warden");
         auto zero = Vector2D(0, 0);
         auto up = Vector2D(0, vel_w);
         auto down = Vector2D(0, vel_s);
@@ -109,6 +109,8 @@ public:
         auto players = m_manager.getGroup(Game::groupPlayers);
         for (auto &player : players)
         {
+            if (player->getComponent<SpriteComponent>().isThunderCasting())
+                continue;
             move_player(player);
             animate_movement(player);
         }

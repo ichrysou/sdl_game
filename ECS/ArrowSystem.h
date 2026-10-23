@@ -7,6 +7,9 @@
 class ArrowSystem {
    private:
     Manager &m_manager;
+    Entity *m_pendingThunderOwner = nullptr;
+    Uint32 m_thunderReleaseAt = 0;
+    Vector2D m_pendingThunderDirection;
 
    public:
     ArrowSystem(Manager &manager) : m_manager(manager) {}
@@ -22,13 +25,47 @@ class ArrowSystem {
 
             if (keyboard->spacePressedThisFrame) {
                 auto &transform = player->getComponent<TransformComponent>();
-                player->getComponent<AnimationComponent>().play("thunder-attack");
-                player->getComponent<SpriteComponent>().spriteflip =
-                    transform.orientation.x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
-                Game::assets->CreateThunderMelee(transform, transform.orientation,
-                                                 transform.orientation.getAngle());
+                auto &animation = player->getComponent<AnimationComponent>();
+                auto &sprite = player->getComponent<SpriteComponent>();
+                if (sprite.isThunderCasting() || m_pendingThunderOwner) {
+                    keyboard->clearTransientInput();
+                    continue;
+                }
+                if (transform.orientation.x != 0.0f) {
+                    animation.setTextureOverride("hero-cast");
+                    animation.play("thunder-right");
+                    sprite.spriteflip = transform.orientation.x < 0
+                                            ? SDL_FLIP_HORIZONTAL
+                                            : SDL_FLIP_NONE;
+                    sprite.setSrcFrame(0, 0, 30, 24);
+                } else {
+                    animation.setTextureOverride("hero-cast");
+                    const bool castingUp = transform.orientation.y < 0;
+                    animation.play(castingUp ? "thunder-up" : "thunder-down");
+                    sprite.setSrcFrame(0, castingUp ? 48 : 24, 30, 24);
+                }
+                sprite.startThunderCast(transform.orientation);
+                transform.velocity.Zero();
+                m_pendingThunderOwner = player;
+                m_pendingThunderDirection = transform.orientation;
+                m_thunderReleaseAt = SDL_GetTicks() + 210;
             }
             keyboard->clearTransientInput();
+        }
+
+        if (m_pendingThunderOwner &&
+            SDL_TICKS_PASSED(SDL_GetTicks(), m_thunderReleaseAt)) {
+            auto &transform = m_pendingThunderOwner->getComponent<TransformComponent>();
+            auto &sprite = m_pendingThunderOwner->getComponent<SpriteComponent>();
+            const Vector2D center(
+                transform.position.x + transform.width * transform.scale * 0.5f,
+                transform.position.y + transform.height * transform.scale * 0.5f);
+            const Vector2D staffTip = sprite.getThunderStaffTipWorld(0.5f);
+            const Vector2D originOffset(staffTip.x - center.x, staffTip.y - center.y);
+            Game::assets->CreateThunderMelee(
+                transform, m_pendingThunderDirection, m_pendingThunderDirection.getAngle(),
+                originOffset);
+            m_pendingThunderOwner = nullptr;
         }
 
         auto projectiles = m_manager.getGroup(Game::groupProjectiles);

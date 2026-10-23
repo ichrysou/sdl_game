@@ -15,12 +15,13 @@ void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int range, int s
     projectile.addGroup(Game::groupProjectiles);
 }
 
-void AssetManager::CreateThunderMelee(TransformComponent &playerTransform, Vector2D direction, int angle) {
+void AssetManager::CreateThunderMelee(TransformComponent &playerTransform, Vector2D direction,
+                                      int angle, Vector2D originOffset) {
     auto &attack(manager->addEntity());
     // scale 1 matches the (now scale-1) player; was scale 2 before the shrink
     attack.addComponent<TransformComponent>(playerTransform.position.x,
                                              playerTransform.position.y, 64, 64, 1);
-    attack.addComponent<ThunderMeleeComponent>(*manager, playerTransform, direction);
+    attack.addComponent<ThunderMeleeComponent>(*manager, playerTransform, direction, originOffset);
     attack.addComponent<SpriteComponent>("thunder", angle);
     attack.addComponent<AnimationComponent>("thunder");
     attack.getComponent<AnimationComponent>().addAnimation(

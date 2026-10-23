@@ -10,8 +10,10 @@
 class ThunderMeleeComponent : public Component
 {
 public:
-    ThunderMeleeComponent(Manager &manager, TransformComponent &owner, Vector2D direction)
-        : m_manager(manager), m_owner(owner), m_direction(direction)
+    ThunderMeleeComponent(Manager &manager, TransformComponent &owner, Vector2D direction,
+                          Vector2D originOffset)
+        : m_manager(manager), m_owner(owner), m_direction(direction),
+          m_originOffset(originOffset)
     {
     }
 
@@ -21,6 +23,8 @@ public:
         m_origin = Vector2D(
             m_owner.position.x + m_owner.width * m_owner.scale / 2.0f,
             m_owner.position.y + m_owner.height * m_owner.scale / 2.0f);
+        m_origin.x += m_originOffset.x;
+        m_origin.y += m_originOffset.y;
         auto &attackTransform = entity->getComponent<TransformComponent>();
 
         auto animation = entity->getComponent<AnimationComponent>().getActive();
@@ -35,10 +39,18 @@ public:
                                     ? static_cast<float>(animation->getCurrentFrame()) / (animation->m_num_frames - 1)
                                     : 1.0f;
         const float reach = maximumReach * expansion;
-        const float visualOffset = frameSize / 2.0f;
+        const float angle = std::atan2(m_direction.y, m_direction.x);
+        const float anchorX = -frameSize / 2.0f;
+        const float anchorY = 30.0f - frameSize / 2.0f;
+        const float rotatedAnchorX =
+            std::cos(angle) * anchorX - std::sin(angle) * anchorY;
+        const float rotatedAnchorY =
+            std::sin(angle) * anchorX + std::cos(angle) * anchorY;
+        const float boltStartX = m_origin.x + m_direction.x * reach;
+        const float boltStartY = m_origin.y + m_direction.y * reach;
         attackTransform.position = Vector2D(
-            m_origin.x + m_direction.x * (reach + visualOffset) - frameSize / 2.0f,
-            m_origin.y + m_direction.y * (reach + visualOffset) - frameSize / 2.0f);
+            boltStartX - rotatedAnchorX - frameSize / 2.0f,
+            boltStartY - rotatedAnchorY - frameSize / 2.0f);
 
         const float halfWidth = animation->m_frame_h *
                                 entity->getComponent<TransformComponent>().scale * 0.25f;
@@ -75,4 +87,5 @@ private:
     TransformComponent &m_owner;
     Vector2D m_origin;
     Vector2D m_direction;
+    Vector2D m_originOffset;
 };

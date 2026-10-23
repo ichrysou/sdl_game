@@ -297,6 +297,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     assets->AddTexture("player-azure", "../assets/player_azure.png");
     assets->AddTexture("player-crimson", "../assets/player_crimson.png");
     assets->AddTexture("hero-warden", "../assets/hero_warden_v2.png");
+    assets->AddTexture("hero-cast", "../assets/hero_cast.png");
     assets->AddTexture("arrow", "../assets/arrow.png");
     assets->AddTexture("necro", "../assets/necromancer.png");
     assets->AddTexture("blob", "../assets/blob.png");
@@ -316,7 +317,11 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-up", "knight", 8, 30, 0, 120, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(Animation("walk-down", "knight", 8, 30, 0, 30, 30, 24));
     player.getComponent<AnimationComponent>().addAnimation(
-        Animation("thunder-attack", "knight", 3, 80, 0, 60, 30, 24, false));
+        Animation("thunder-right", "hero-cast", 5, 84, 0, 0, 30, 24, false));
+    player.getComponent<AnimationComponent>().addAnimation(
+        Animation("thunder-down", "hero-cast", 5, 84, 0, 24, 30, 24, false));
+    player.getComponent<AnimationComponent>().addAnimation(
+        Animation("thunder-up", "hero-cast", 5, 84, 0, 48, 30, 24, false));
     // player.getComponent<AnimationComponent>().addAnimation(Animation("walk-vertical", "knight", 1, 2, 10, 0, 0, 32, 32));
     player.addComponent<TransformComponent>(200, 200, 25, 20, 1);
     player.addComponent<SpriteComponent>("knight");
@@ -620,6 +625,13 @@ void Game::update() {
     lighting.addLight(playerPosition.x + playerTransform.width * playerTransform.scale * 0.5f,
                       playerPosition.y + playerTransform.height * playerTransform.scale * 0.5f,
                       144.0f, 0.82f);
+    if (playerSprite.isThunderCasting()) {
+        const Vector2D staffTip = playerSprite.getThunderStaffTipWorld(
+            playerSprite.getThunderCastProgress());
+        const float flash = playerSprite.getThunderCastProgress();
+        const float intensity = flash > 0.42f && flash < 0.68f ? 1.0f : 0.72f;
+        lighting.addLight(staffTip.x, staffTip.y, 176.0f, intensity);
+    }
     const Uint32 flicker = SDL_GetTicks() / 180;
     for (const SDL_Point &torch : Map::TorchPositions()) {
         const float radius = 232.0f + static_cast<float>((torch.x / 13 + torch.y / 7 + flicker) % 5) * 3.0f;
