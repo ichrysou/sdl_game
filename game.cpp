@@ -629,8 +629,17 @@ void Game::update() {
         const Vector2D staffTip = playerSprite.getThunderStaffTipWorld(
             playerSprite.getThunderCastProgress());
         const float flash = playerSprite.getThunderCastProgress();
-        const float intensity = flash > 0.42f && flash < 0.68f ? 1.0f : 0.72f;
-        lighting.addLight(staffTip.x, staffTip.y, 176.0f, intensity);
+        const float intensity = flash > 0.42f && flash < 0.68f ? 1.0f : 0.9f;
+        lighting.addLight(staffTip.x, staffTip.y, 280.0f, intensity);
+    }
+    for (auto *projectile : projectiles) {
+        if (!projectile->isActive() ||
+            !projectile->hasComponent<ThunderMeleeComponent>())
+            continue;
+
+        const Vector2D boltTip =
+            projectile->getComponent<ThunderMeleeComponent>().getLightPosition();
+        lighting.addLight(boltTip.x, boltTip.y, 208.0f, 1.0f);
     }
     const Uint32 flicker = SDL_GetTicks() / 180;
     for (const SDL_Point &torch : Map::TorchPositions()) {

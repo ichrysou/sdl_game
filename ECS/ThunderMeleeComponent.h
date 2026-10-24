@@ -39,6 +39,10 @@ public:
                                     ? static_cast<float>(animation->getCurrentFrame()) / (animation->m_num_frames - 1)
                                     : 1.0f;
         const float reach = maximumReach * expansion;
+        const float collisionReach = reach + maximumReach * expansion;
+        m_lightPosition = Vector2D(
+            m_origin.x + m_direction.x * collisionReach,
+            m_origin.y + m_direction.y * collisionReach);
         const float angle = std::atan2(m_direction.y, m_direction.x);
         const float anchorX = -frameSize / 2.0f;
         const float anchorY = 30.0f - frameSize / 2.0f;
@@ -72,7 +76,7 @@ public:
                 (std::abs(m_direction.y) * collider.w + std::abs(m_direction.x) * collider.h) / 2.0f;
 
             if (along + enemyHalfLength < 0.0f ||
-                along - enemyHalfLength > reach ||
+                along - enemyHalfLength > collisionReach ||
                 across > halfWidth + enemyHalfWidth)
                 continue;
 
@@ -82,10 +86,16 @@ public:
         }
     }
 
+    Vector2D getLightPosition() const
+    {
+        return m_lightPosition;
+    }
+
 private:
     Manager &m_manager;
     TransformComponent &m_owner;
     Vector2D m_origin;
     Vector2D m_direction;
     Vector2D m_originOffset;
+    Vector2D m_lightPosition;
 };
