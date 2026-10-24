@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include <map>
 #include <random>
 #include <SDL_ttf.h>
 
@@ -632,6 +633,18 @@ void Game::update() {
         const float intensity = flash > 0.42f && flash < 0.68f ? 1.0f : 0.9f;
         lighting.addLight(staffTip.x, staffTip.y, 280.0f, intensity);
     }
+    struct BubbleLightCluster {
+        float xSum = 0.0f;
+        float ySum = 0.0f;
+        float maximumRadius = 0.0f;
+        float intensity = 0.0f;
+        float minX = 0.0f;
+        float maxX = 0.0f;
+        float minY = 0.0f;
+        float maxY = 0.0f;
+        std::size_t count = 0;
+    };
+    std::map<std::pair<int, int>, BubbleLightCluster> bubbleLights;
     for (auto *projectile : projectiles) {
         if (!projectile->isActive())
             continue;
@@ -645,9 +658,40 @@ void Game::update() {
             const auto &bubble =
                 projectile->getComponent<BubbleProjectileComponent>();
             const Vector2D lightPosition = bubble.getLightPosition();
-            lighting.addLight(lightPosition.x, lightPosition.y,
-                              bubble.getLightRadius(), bubble.getLightIntensity());
+            const auto key = std::make_pair(
+                static_cast<int>(lightPosition.x / 128.0f),
+                static_cast<int>(lightPosition.y / 128.0f));
+            auto &cluster = bubbleLights[key];
+            if (cluster.count == 0) {
+                cluster.minX = cluster.maxX = lightPosition.x;
+                cluster.minY = cluster.maxY = lightPosition.y;
+            } else {
+                cluster.minX = std::min(cluster.minX, lightPosition.x);
+                cluster.maxX = std::max(cluster.maxX, lightPosition.x);
+                cluster.minY = std::min(cluster.minY, lightPosition.y);
+                cluster.maxY = std::max(cluster.maxY, lightPosition.y);
+            }
+            cluster.xSum += lightPosition.x;
+            cluster.ySum += lightPosition.y;
+            cluster.maximumRadius =
+                std::max(cluster.maximumRadius, bubble.getLightRadius());
+            cluster.intensity =
+                std::max(cluster.intensity, bubble.getLightIntensity());
+            ++cluster.count;
         }
+    }
+    for (const auto &entry : bubbleLights) {
+        const auto &cluster = entry.second;
+        const float centerX = cluster.xSum / cluster.count;
+        const float centerY = cluster.ySum / cluster.count;
+        const float halfWidth = std::max(centerX - cluster.minX,
+                                         cluster.maxX - centerX);
+        const float halfHeight = std::max(centerY - cluster.minY,
+                                          cluster.maxY - centerY);
+        const float spread = std::sqrt(halfWidth * halfWidth +
+                                       halfHeight * halfHeight);
+        lighting.addLight(centerX, centerY, cluster.maximumRadius + spread,
+                          cluster.intensity);
     }
     const Uint32 flicker = SDL_GetTicks() / 180;
     for (const SDL_Point &torch : Map::TorchPositions()) {

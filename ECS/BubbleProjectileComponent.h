@@ -52,12 +52,37 @@ public:
                                &previousB, &previousA);
         SDL_SetRenderDrawBlendMode(Game::renderer, SDL_BLENDMODE_BLEND);
 
-        drawFilledCircle(centerX, centerY, radius * 3, 28, 105, 190, 18);
-        drawFilledCircle(centerX, centerY, radius * 2, 35, 150, 220, 30);
-        drawFilledCircle(centerX, centerY, radius, 72, 196, 230, 88);
-        drawCircleOutline(centerX, centerY, radius, 160, 240, 255, 210);
+        constexpr int segments = 32;
+        SDL_Vertex vertices[segments + 1];
+        int indices[segments * 3];
+        vertices[0].position = SDL_FPoint{centerX, centerY};
+        vertices[0].color = SDL_Color{72, 196, 230, 92};
+        vertices[0].tex_coord = SDL_FPoint{0.0f, 0.0f};
+        SDL_Point outline[segments + 1];
+        for (int i = 0; i < segments; ++i)
+        {
+            const float angle = 6.2831853f * i / segments;
+            const float x = std::cos(angle);
+            const float y = std::sin(angle);
+            vertices[i + 1].position =
+                SDL_FPoint{centerX + x * radius * 2.0f,
+                           centerY + y * radius * 2.0f};
+            vertices[i + 1].color = SDL_Color{35, 150, 220, 0};
+            vertices[i + 1].tex_coord = SDL_FPoint{0.0f, 0.0f};
+            indices[i * 3] = 0;
+            indices[i * 3 + 1] = i + 1;
+            indices[i * 3 + 2] = (i + 1) % segments + 1;
+            outline[i] = SDL_Point{
+                static_cast<int>(centerX + x * radius),
+                static_cast<int>(centerY + y * radius)};
+        }
+        indices[segments * 3 - 1] = 1;
+        outline[segments] = outline[0];
+        SDL_RenderGeometry(Game::renderer, nullptr, vertices, segments + 1,
+                           indices, segments * 3);
 
         SDL_SetRenderDrawColor(Game::renderer, 230, 255, 255, 225);
+        SDL_RenderDrawLines(Game::renderer, outline, segments + 1);
         SDL_RenderDrawLine(Game::renderer,
                            static_cast<int>(centerX - radius * 0.35f),
                            static_cast<int>(centerY - radius * 0.35f),
@@ -86,37 +111,6 @@ public:
     }
 
 private:
-    void drawFilledCircle(float centerX, float centerY, int radius,
-                          Uint8 r, Uint8 g, Uint8 b, Uint8 a) const
-    {
-        SDL_SetRenderDrawColor(Game::renderer, r, g, b, a);
-        for (int y = -radius; y <= radius; ++y)
-        {
-            const int x = static_cast<int>(
-                std::sqrt(static_cast<float>(radius * radius - y * y)));
-            SDL_RenderDrawLine(Game::renderer,
-                               static_cast<int>(centerX) - x,
-                               static_cast<int>(centerY) + y,
-                               static_cast<int>(centerX) + x,
-                               static_cast<int>(centerY) + y);
-        }
-    }
-
-    void drawCircleOutline(float centerX, float centerY, int radius,
-                           Uint8 r, Uint8 g, Uint8 b, Uint8 a) const
-    {
-        SDL_SetRenderDrawColor(Game::renderer, r, g, b, a);
-        for (int y = -radius; y <= radius; ++y)
-        {
-            const int x = static_cast<int>(
-                std::sqrt(static_cast<float>(radius * radius - y * y)));
-            SDL_RenderDrawPoint(Game::renderer, static_cast<int>(centerX) - x,
-                                static_cast<int>(centerY) + y);
-            SDL_RenderDrawPoint(Game::renderer, static_cast<int>(centerX) + x,
-                                static_cast<int>(centerY) + y);
-        }
-    }
-
     TransformComponent *m_transform = nullptr;
     Vector2D m_direction;
     int m_diameter;
