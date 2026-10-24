@@ -19,6 +19,7 @@ public:
   ~AssetManager();
   // game objects
   void CreateProjectile(Vector2D pos, Vector2D vel, int range, int speed, std::string id, int angle);
+  void CreateBubble(TransformComponent &owner, Vector2D direction, int diameter);
   void CreateThunderMelee(TransformComponent &playerTransform, Vector2D direction, int angle,
                           Vector2D originOffset);
   // Texture Management

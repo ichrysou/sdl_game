@@ -3,6 +3,7 @@
 #include "ColliderComponent.h"
 #include "ProjectileComponent.h"
 #include "game.h"
+#include <cmath>
 
 class ArrowSystem {
    private:
@@ -10,6 +11,8 @@ class ArrowSystem {
     Entity *m_pendingThunderOwner = nullptr;
     Uint32 m_thunderReleaseAt = 0;
     Vector2D m_pendingThunderDirection;
+    std::size_t m_nextBubbleSize = 0;
+    std::size_t m_nextBubbleCount = 0;
 
    public:
     ArrowSystem(Manager &manager) : m_manager(manager) {}
@@ -22,6 +25,27 @@ class ArrowSystem {
         auto players = m_manager.getGroup(Game::groupPlayers);
         for (auto &player : players) {
             auto keyboard = &player->getComponent<KeyboardController>();
+
+            if (keyboard->bubblePressedThisFrame) {
+                static const int bubbleSizes[] = {12, 20, 30};
+                const int bubbleCount = m_nextBubbleCount == 0 ? 2 : 3;
+                m_nextBubbleCount = 1 - m_nextBubbleCount;
+                const auto &transform = player->getComponent<TransformComponent>();
+                const Vector2D direction = transform.orientation;
+                const float baseAngle = std::atan2(direction.y, direction.x);
+                constexpr float spread = 0.12f;
+                for (int i = 0; i < bubbleCount; ++i) {
+                    const float angle = baseAngle +
+                        (i - (bubbleCount - 1) * 0.5f) * spread;
+                    Game::assets->CreateBubble(
+                        player->getComponent<TransformComponent>(),
+                        Vector2D(std::cos(angle), std::sin(angle)),
+                        bubbleSizes[m_nextBubbleSize]);
+                    m_nextBubbleSize =
+                        (m_nextBubbleSize + 1) %
+                        (sizeof(bubbleSizes) / sizeof(bubbleSizes[0]));
+                }
+            }
 
             if (keyboard->spacePressedThisFrame) {
                 auto &transform = player->getComponent<TransformComponent>();
@@ -73,7 +97,9 @@ class ArrowSystem {
         auto tiles = m_manager.getGroup(Game::groupColliders);
 
         for (auto &projectile : projectiles) {
-            if (!projectile->hasComponent<ProjectileComponent>()) continue;
+            if (!projectile->hasComponent<ProjectileComponent>() &&
+                !projectile->hasComponent<BubbleProjectileComponent>())
+                continue;
             for (auto &tile : tiles) {
                 if (tile->hasComponent<ColliderComponent>()) {
                     auto recA = projectile->getComponent<ColliderComponent>().collider;
@@ -83,6 +109,7 @@ class ArrowSystem {
                     }
                 }
             }
+            if (!projectile->isActive()) continue;
             for (auto &enemy : enemies) {
                 if (enemy->hasComponent<DeadComponent>() ||
                     !enemy->hasComponent<ColliderComponent>()) continue;

@@ -15,6 +15,24 @@ void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int range, int s
     projectile.addGroup(Game::groupProjectiles);
 }
 
+void AssetManager::CreateBubble(TransformComponent &owner, Vector2D direction,
+                                int diameter) {
+    const float centerX = owner.position.x + owner.width * owner.scale * 0.5f;
+    const float centerY = owner.position.y + owner.height * owner.scale * 0.5f;
+    const float spawnOffset = owner.width * owner.scale * 0.5f + diameter * 0.5f;
+    const Vector2D position(centerX + direction.x * spawnOffset - diameter * 0.5f,
+                            centerY + direction.y * spawnOffset - diameter * 0.5f);
+
+    auto &bubble(manager->addEntity());
+    bubble.addComponent<TransformComponent>(position.x, position.y, diameter,
+                                             diameter, 1);
+    bubble.addComponent<BubbleProjectileComponent>(direction, diameter);
+    bubble.addComponent<ColliderComponent>("bubble", static_cast<int>(position.x),
+                                            static_cast<int>(position.y), diameter,
+                                            diameter);
+    bubble.addGroup(Game::groupProjectiles);
+}
+
 void AssetManager::CreateThunderMelee(TransformComponent &playerTransform, Vector2D direction,
                                       int angle, Vector2D originOffset) {
     auto &attack(manager->addEntity());

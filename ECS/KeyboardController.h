@@ -15,6 +15,7 @@ public:
     bool SPACE = false;
     bool spacePressedThisFrame = false;
     bool spaceReleasedThisFrame = false;
+    bool bubblePressedThisFrame = false;
     bool at_least_one_pressed() { return A || W || S || D || SPACE; }
     SDL_Keycode last_key_pressed() { return m_last_pressed; }
     void init() override
@@ -32,6 +33,9 @@ public:
             case SDLK_SPACE:
                 SPACE = true;
                 if (event.key.repeat == 0) spacePressedThisFrame = true;
+                break;
+            case SDLK_e:
+                if (event.key.repeat == 0) bubblePressedThisFrame = true;
                 break;
             case SDLK_w:
                 W = true;
@@ -83,6 +87,7 @@ public:
     {
         spacePressedThisFrame = false;
         spaceReleasedThisFrame = false;
+        bubblePressedThisFrame = false;
     }
 }
 

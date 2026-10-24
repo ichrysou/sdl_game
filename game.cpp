@@ -633,13 +633,21 @@ void Game::update() {
         lighting.addLight(staffTip.x, staffTip.y, 280.0f, intensity);
     }
     for (auto *projectile : projectiles) {
-        if (!projectile->isActive() ||
-            !projectile->hasComponent<ThunderMeleeComponent>())
+        if (!projectile->isActive())
             continue;
 
-        const Vector2D boltTip =
-            projectile->getComponent<ThunderMeleeComponent>().getLightPosition();
-        lighting.addLight(boltTip.x, boltTip.y, 208.0f, 1.0f);
+        if (projectile->hasComponent<ThunderMeleeComponent>()) {
+            const Vector2D boltTip =
+                projectile->getComponent<ThunderMeleeComponent>().getLightPosition();
+            lighting.addLight(boltTip.x, boltTip.y, 208.0f, 1.0f);
+        }
+        if (projectile->hasComponent<BubbleProjectileComponent>()) {
+            const auto &bubble =
+                projectile->getComponent<BubbleProjectileComponent>();
+            const Vector2D lightPosition = bubble.getLightPosition();
+            lighting.addLight(lightPosition.x, lightPosition.y,
+                              bubble.getLightRadius(), bubble.getLightIntensity());
+        }
     }
     const Uint32 flicker = SDL_GetTicks() / 180;
     for (const SDL_Point &torch : Map::TorchPositions()) {
